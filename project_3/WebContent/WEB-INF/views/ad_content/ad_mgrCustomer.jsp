@@ -17,7 +17,7 @@
 <!-- JS -->
 	<!-- <script type="text/javascript" src=""></script> -->
 <!-- CSS -->
-	<link rel="stylesheet" type="text/css" href="http://localhost:8080/HKland_admin/common/css/main.css"/>
+	<link rel="stylesheet" type="text/css" href="http://localhost:8080/project_3/ad_common/css/main.css"/>
 <!-- Title -->
 	<title>HK LAND에 오신걸 환영합니다!</title>
 </head>
