@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+/* 기본 CSS SET */
+body, th, td, div, ul, ol, li, dl, dt, dd, form, fieldset, legend, textarea, p, input, select { margin: 0; padding: 0 }
+fieldset, img { border: 0px }
+ul, ol, li, dl { list-style: none }
+input, select, textarea, button { border-radius: 0px; vertical-align: middle; }
+body, th, td, input, select, textarea { font-size: 13px; font-family: '맑은 고딕', '돋움', sans-serif; color: #222; letter-spacing: -1px }
+a { color: #FFFFFF; text-decoration: none }
+a:HOVER { color:#A0A0A0; text-decoration: underline; }
+.inputBox { border: 1px solid #EDEDED; background-color: #FFFFFF; }
+.btn { border: 1px solid #EDEDED; 	background-color: #FFFFFF; cursor: pointer; }
+
+/* Wrap */
+
+/* header */
+#header { width: 100%; height: 55px; background-color: #CC493C; position: relative;}
+#main_title{ color:#FFFFFF; text-shadow: 1px 1px 1px #000; font-weight: bold; font-size: 25px; line-height:50px; margin-left: 15px; }
+
+/* container */
+#container{ width: 100%; margin: 0px; position: absolute; top:55px; left: 0px; right:0px; margin:0px; min-height:0px; bottom: 0px; float: none; overflow: hidden;}
+
+/* leftArea */
+#leftArea{ width: 300px; height: 864px; background-color: #464854; top: 0px; bottom: 0px; left: 0px; float: left;}
+#loginBox{ width: 280px; height:115px; margin: 50px 8px 0px;}
+#findInfo{ color:#FFFFFF; width:278px; text-align: right; margin-top: 2px; text-shadow: 1px 1px 1px #000;}
+#menu_list{ display: block; height: 530px; border-top:1px solid #EEEEEE; border-bottom: 1px solid #EEEEEE; width:280px; margin-left:10px; padding-top: 20px; margin-top:15px;}
+.menu_title{ width: 270px; height:50px; margin-top: 10px; border-bottom: 1px solid #3F414B; color:#FFFFFF; padding-left:10px; line-height: 40px; font-weight: bold; font-size: 15px; text-shadow: 1px 1px 1px #000;}
+
+/* rightArea */
+#rightArea{ width: auto; height: 864px; float: left; }
+#r_content{ margin: 50px 50px 0px 50px;}
+#r_content_title{ width: 1000px; height: 70px; border: 1px solid #d9534f; border-radius: 10px;}
+#r_content_title h2{ margin-top: 17px; margin-left: 15px; }
+h2 #smallText{ font-size: 15px; }
+#r_content_view{ margin-top: 30px; }
+
+/* footer */
+#footer{ width:100%; height:30px; position: absolute; bottom: 0px; display: block; background-color: #EEEEEE; }
+

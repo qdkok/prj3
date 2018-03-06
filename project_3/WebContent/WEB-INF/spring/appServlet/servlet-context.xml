@@ -22,6 +22,7 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="kr.co.sist" />
+	<context:component-scan base-package="kr.co.sist.admin" />
 	
 	
 	

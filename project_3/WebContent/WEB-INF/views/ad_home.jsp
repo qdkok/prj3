@@ -1,0 +1,45 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page session="true" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<!-- 부가적인 테마 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<!-- JS -->
+	<!-- <script type="text/javascript" src=""></script> -->
+<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="http://localhost:8080/project_3/ad_common/css/main.css"/>
+<!-- Title -->
+	<title>HK LAND에 오신걸 환영합니다!</title>
+</head>
+<body>
+<div id="wrap">
+	<div id="header">
+		<span id="main_title"><a href="ad_index.do">HK LAND 관리자 페이지</a></span>
+	</div>
+	<div id="container">
+		<!-- LeftArea -->
+		<div id="leftArea">
+			<jsp:include page="/common/leftArea.do"/>
+		</div><!-- leftArea End -->
+		<!-- RightArea -->
+		<div id="rightArea">
+			<div id="r_content">
+				메뉴를 선택해주세요.
+			</div>
+		</div><!-- rightArea End -->
+	</div>
+	<div id="footer">footer</div>
+</div>
+
+</body>
+</html>
