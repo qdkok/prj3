@@ -10,6 +10,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import kr.co.sist.admin.domain.MemberDomain;
+
 public class HklandAdminDAO {
 	private static HklandAdminDAO embd;
 	private static SqlSessionFactory ssf;
@@ -41,13 +43,13 @@ public class HklandAdminDAO {
 		return ssf;
 	}// getSqlSessionFactory
 
-	public List<String> selectEname() throws SQLException, IOException {
-		List<String> id = null;
+	public List<MemberDomain> selectMember() throws SQLException, IOException {
+		List<MemberDomain> memList = null;
 		SqlSession ss = null;
 
 		try {
 			ss = getSqlSessionFactory().openSession();
-			 id = ss.selectList("kr.co.sist.exam3.selAdim");
+			memList = ss.selectList("kr.co.sist.admin.selMember");
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -57,15 +59,15 @@ public class HklandAdminDAO {
 			} // end if
 		} // end finally
 
-		return  id;
+		return  memList;
 	}// selectEname
 
 	public static void main(String[] args) {
 		HklandAdminDAO dmbs=HklandAdminDAO.getInstance();
 		try {
-			List<String> test=dmbs.selectEname();
-			for(String tt:test) {
-				System.out.println(tt);
+			List<MemberDomain> test=dmbs.selectMember();
+			for(MemberDomain tt:test) {
+				System.out.println(tt.getId()+"/"+tt.getName()+"/"+tt.getBirth()+"/"+tt.getGender()+"/"+tt.getEmail()+"/"+tt.getPhone()+"/"+tt.getInputdate());
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

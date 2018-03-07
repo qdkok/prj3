@@ -1,3 +1,6 @@
+<%@page import="kr.co.sist.admin.domain.MemberDomain"%>
+<%@page import="java.util.List"%>
+<%@page import="kr.co.sist.admin.dao.HklandAdminDAO"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="true" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -41,32 +44,38 @@
 					<table id="" class="table table-striped table-bordered">
 					 	<thead>
 					 		<tr>
-						 		<td>번호</td>
+						 		<td>ID</td>
 						 		<td>이름</td>
-						 		<td>아이디</td>
+						 		<td>생년월일</td>
+						 		<td>성별</td>
+						 		<td>이메일</td>
+						 		<td>전화번호</td>
+						 		<td>가입일</td>
 					 		</tr>
 					 	</thead>
 					 	<tbody>
-						 	<tr>
-						 		<td>123</td>
-						 		<td>김회언</td>
-						 		<td>slhgesa</td>
-					 		</tr>
-						 	<tr>
-						 		<td>123</td>
-						 		<td>김회언</td>
-						 		<td>slhgesa</td>
-						 	</tr>
-						 	<tr>
-						 		<td>123</td>
-						 		<td>김회언</td>
-						 		<td>slhgesa</td>
-						 	</tr>
-						 	<tr>
-						 		<td>123</td>
-						 		<td>김회언</td>
-						 		<td>slhgesa</td>
-						 	</tr>
+					 		<%
+					 			HklandAdminDAO hk_dao=HklandAdminDAO.getInstance();
+					 			List<MemberDomain> member = hk_dao.selectMember();
+					 			session.setAttribute("member", member);
+					 		%>
+							<c:catch var="e">
+							</c:catch>
+							<c:if test="${ e ne null }">
+								${e }
+								사용자 정보 로딩중 문제발생
+							</c:if>
+							<c:forEach var="member" items="${member}">
+								<tr>
+							 		<td>${member.id }</td>
+							 		<td>${member.name} </td>
+							 		<td>${member.birth }</td>
+							 		<td>${member.gender }</td>
+							 		<td>${member.email }</td>
+							 		<td>${member.phone }</td>
+							 		<td>${member.inputdate }</td>
+						 		</tr>
+					 		</c:forEach>
 					 	</tbody>
 					</table>
 				</div>

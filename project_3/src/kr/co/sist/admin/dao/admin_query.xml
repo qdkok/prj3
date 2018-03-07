@@ -2,11 +2,21 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.co.sist.exam3">
+<mapper namespace="kr.co.sist.admin">
 	<!-- 컬럼과 setter 매핑 -->
-
-	<!-- procedure 호출 : select -->
-	<select id="selAdim"  resultType="String">
-		SELECT A_ID FROM ADMIN
+	<resultMap type="kr.co.sist.admin.domain.MemberDomain" id="memberT">
+		<result column="M_ID" property="id"/>
+		<result column="M_NAME" property="name"/>
+		<result column="GENDER" property="gender"/>
+		<result column="BIRTH" property="birth"/>
+		<result column="EMAIL" property="email"/>
+		<result column="PHONE" property="phone"/>
+		<result column="INPUTDATE" property="inputdate"/>
+	</resultMap>
+	
+	<select id="selMember"  resultMap="memberT">
+		SELECT M_ID,M_NAME,GENDER,to_char(BIRTH,'yyyy-mm-dd') BIRTH,EMAIL,PHONE,to_char(M_INPUTDATE,'yyyy-mm-dd') INPUTDATE
+		FROM MEMBER
+		ORDER BY INPUTDATE DESC
 	</select>
 </mapper>
