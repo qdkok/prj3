@@ -43,6 +43,9 @@ public class HklandAdminDAO {
 		return ssf;
 	}// getSqlSessionFactory
 
+	
+/////kdy//////////////////////////////////////////////////////////////	
+//회원정보불러오기 : kdy
 	public List<MemberDomain> selectMember() throws SQLException, IOException {
 		List<MemberDomain> memList = null;
 		SqlSession ss = null;
@@ -61,7 +64,14 @@ public class HklandAdminDAO {
 
 		return  memList;
 	}// selectEname
-
+/////kdy//////////////////////////////////////////////////////////////	
+	
+///khe//////////////////////////////////////////////////////////////
+	
+///khe//////////////////////////////////////////////////////////////
+	
+	
+/////// 쿼리확인용
 	public static void main(String[] args) {
 		HklandAdminDAO dmbs=HklandAdminDAO.getInstance();
 		try {
