@@ -74,7 +74,15 @@
 		  			<div><input type="button" class="button2" value="랜드정보" id="info"></div>
 			    </form>
 	  		</div>
-			<div style=" width: 100%;  height: 800px; border: 1px dotted #EDEDED;"></div>
+			<div style=" width: 100%;  height: 800px; border: 1px dotted #EDEDED;">
+				<table>
+					<tr>
+						<td>꿈과 환상의 HK랜드로 초대합니다.</td>
+						<td>꿈과 환상의 HK랜드로 초대합니다.</td>
+						<td>꿈과 환상의 HK랜드로 초대합니다.</td>
+					</tr>
+				</table>
+			</div>
 		</div>
     </div>	
     
