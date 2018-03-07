@@ -14,4 +14,16 @@ public class MainController {
 	public String subMenu() {
 		return "sub/sub_menu";
 	}
+	@RequestMapping(value="/land_intro.do", method= {RequestMethod.POST, RequestMethod.GET})
+	public String intro() {
+		return "sub/land_intro";
+	}
+	@RequestMapping(value="/land_roller.do", method= {RequestMethod.POST, RequestMethod.GET})
+	public String roller() {
+		return "sub/land_roller";
+	}
+	@RequestMapping(value="/land_info.do", method= {RequestMethod.POST, RequestMethod.GET})
+	public String info() {
+		return "sub/land_info";
+	}
 }

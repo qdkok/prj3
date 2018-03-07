@@ -9,7 +9,13 @@
 				    <nav id="main-nav">
 						   <!-- Sample menu definition -->
 						   <ul id="main-menu" class="sm sm-simple">
-						        <li class="hongki"><a href="sub_menu.do" style="font-size: 20px; margin-top: 25px">HK랜드</a></li>
+						        <li class="hongki"><a href="#void" style="font-size: 20px; margin-top: 25px">HK랜드</a>
+						        	<ul>
+						        		<li><a href="sub_menu.do">HK랜드 소개</a></li>
+						        		<li><a href="">놀이기구 안내</a></li>
+						        		<li><a href="">랜드 정보</a></li>
+						        	</ul>
+						        </li>
 						        <li class="hongki"><a href="#void" style="font-size: 20px; margin-top: 25px">이벤트</a>
 						          <ul>
 						            <li><a href="#void">월간일정</a></li>

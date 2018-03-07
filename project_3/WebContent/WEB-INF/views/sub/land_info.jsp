@@ -74,7 +74,9 @@
 		  			<div><input type="button" class="button2" value="랜드정보" id="info"></div>
 			    </form>
 	  		</div>
-			<div style=" width: 100%;  height: 800px; border: 1px dotted #EDEDED;"></div>
+			<div style=" width: 100%;  height: 800px; border: 1px dotted #EDEDED;">
+				랜드 정보는!!!
+			</div>
 		</div>
     </div>	
     
