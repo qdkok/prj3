@@ -19,4 +19,30 @@
 		FROM MEMBER
 		ORDER BY INPUTDATE DESC
 	</select>
+	
+	<select id="searchMember"  resultMap="memberT" parameterType="String">
+		SELECT M_ID,M_NAME,GENDER,to_char(BIRTH,'yyyy-mm-dd') BIRTH,EMAIL,PHONE,to_char(M_INPUTDATE,'yyyy-mm-dd') INPUTDATE
+		FROM MEMBER
+		WHERE M_ID like '%'||#{id}||'%'
+		ORDER BY INPUTDATE DESC
+	</select>
+	
+	<delete id="delMember1" parameterType="String">
+		delete
+		from service
+		where M_id=#{id}
+	</delete>
+	
+	<delete id="delMember2" parameterType="String">
+		delete
+		from RESERVATION
+		where M_id=#{id}
+	</delete>
+	
+	<delete id="delMember3" parameterType="String">
+		delete
+		from member
+		where M_id=#{id}
+	</delete>
+	
 </mapper>

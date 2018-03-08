@@ -64,6 +64,48 @@ public class HklandAdminDAO {
 
 		return  memList;
 	}// selectEname
+	
+	public List<MemberDomain> seachMember(String id) throws SQLException, IOException {
+		List<MemberDomain> memList = null;
+		SqlSession ss = null;
+		
+		try {
+			ss = getSqlSessionFactory().openSession();
+			memList = ss.selectList("kr.co.sist.admin.searchMember",id);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (ss != null) {
+				ss.close();
+			} // end if
+		} // end finally
+		
+		return  memList;
+	}// selectEname
+	
+	//회원정보삭제
+	public void delMember(String id) throws SQLException, IOException {
+		SqlSession ss = null;
+
+		try {
+			ss = getSqlSessionFactory().openSession();
+			
+			ss.delete("kr.co.sist.admin.delMember1",id);
+			ss.delete("kr.co.sist.admin.delMember2",id);
+			ss.commit();
+			ss.delete("kr.co.sist.admin.delMember3",id);
+			ss.commit();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (ss != null) {
+				ss.close();
+			} // end if
+		} // end finally
+
+	}// delMember
 /////kdy//////////////////////////////////////////////////////////////	
 	
 ///khe//////////////////////////////////////////////////////////////

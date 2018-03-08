@@ -1,6 +1,7 @@
 package kr.co.sist.admin.controller;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,8 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ad_PageController {
 
-	@RequestMapping(value="mgr_customer.do",method=GET)
-	public String mgr_customer() {
+	
+	@RequestMapping(value="mgr_customer.do",method= {POST,GET})
+	public String mgr_customer(String selID,String searchID) {
+		System.out.println(selID);
 		return "/ad_content/ad_mgrCustomer";
 	}//include
 	
