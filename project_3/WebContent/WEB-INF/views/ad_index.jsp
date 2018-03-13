@@ -1,9 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" info=""%>
+<%@page import="kr.co.sist.admin.vo.ad_LoginVO"%>
+<%@page import="kr.co.sist.admin.dao.HklandAdminDAO"%>
+<%@page import="java.util.List"
+%><%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" info="관리자로그인페이지" 
+%><%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Insert title here</title>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
@@ -17,8 +20,41 @@
 </style>
 <script type="text/javascript">
 $(function(){
-	  $("#btnLogin").click(function() {
+	
+	/* Enter키 눌렀을 때 무조건 submit 막음 */
+	$(document).on('keydown',function(e){
+		if(e.keyCode==13) return false; //엔터키 = 13;
+	});
+	
+	$('#a_id').on('keydown', function(e){ // id -> pass
+		if(e.keyCode==13) $('#a_pw').focus();
+	});
+
+	$('#a_pw').on('keydown', function(e){ //ID -> 비밀번호
+		if(e.keyCode==13 && $("#a_id").val() != "" && $("#a_pw").val() != ""){
+				$("#frm").submit();
+		}
+	}); 
+	
+	/* 버튼클릭했을 경우 submit 동작 */
+	$("#btnLogin").click(function() {
+		  var a_id=$("#a_id").val();
+		  var a_pw=$("#a_pw").val();
+		  
+		  if(a_id==""){
+			  alert("아이디를 입력해주세요.");
+			  $("#a_id").focus();
+			  return;
+		  }//end if
+		  
+		  if(a_pw==""){
+			  alert("비밀번호를 입력해주세요.");
+			  $("#a_pw").focus();
+			  return;
+		  }//endif
+		  
 		  $("#frm").submit() ;
+		
 	  });//click
 });//ready
 
@@ -31,23 +67,24 @@ $(function(){
 		<div id="adminText"><h1><div style="width:680px; background-color: #CC493C;">HK Land</div> 관리자 페이지</h1></div>
 		<div id="loginBox">
 			<div style="margin-bottom: 20px;"><h2>Admin Login</h2></div>
-			<form id="frm" action="ad_home.do" method="post">
-		    <table>
+		
+			<form id="frm" action="ad_login.do" method="post">
+			<table>
 		      <tr>
 		      	<td><label>아이디</label></td>
-		         <td><input type="text" name="id" class="inputBox" id="id" style="width:195px; height:32px;" placeholder="아이디"/></td>
+		         <td><input type="text" name="a_id" class="inputBox" id="a_id" style="width:195px; height:32px;" placeholder="아이디" "/></td>
 		         <td rowspan="2">
 		        	<input type="button" value="로그인" class="btn" id="btnLogin" style="width:78px; height:82px; margin-left:5px;"/>
 		         </td>
 		      </tr>
 		      <tr>
 		      	 <td><label>비밀번호</label></td>
-		         <td><input type="password" name="passwd" id="passwd" class="inputBox" style="width:195px; height:32px; margin-top:2px;" placeholder="비밀번호"/></td>
+		         <td><input type="password" name="a_pw" id="a_pw" class="inputBox" style="width:195px; height:32px; margin-top:2px;" placeholder="비밀번호"/></td>
 		      </tr>
 		    </table>
 		    </form>
 		    <div id="findInfo">
-		    	<a href="">아이디찾기</a> / <a href="">비밀번호찾기</a>
+		    	<a href="">아이디찾기</a> / <a href="">비밀번호찾기</a> 
 		    </div>
 		</div>
 		

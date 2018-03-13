@@ -4,19 +4,75 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.sist.admin2">
 	<!-- 컬럼과 setter 매핑 -->
-	<resultMap type="kr.co.sist.admin.domain.MemberDomain" id="memberT">
-		<result column="M_ID" property="id"/>
-		<result column="M_NAME" property="name"/>
-		<result column="GENDER" property="gender"/>
-		<result column="BIRTH" property="birth"/>
-		<result column="EMAIL" property="email"/>
-		<result column="PHONE" property="phone"/>
-		<result column="INPUTDATE" property="inputdate"/>
+	<!-- admin 계정 로그인 -->
+	<resultMap type="kr.co.sist.admin.vo.ad_LoginVO" id="admins">
+		<result column="A_ID" property="a_id"/>
+		<result column="A_PW" property="a_pw"/>
+		<result column="A_NAME" property="a_name"/>
 	</resultMap>
 	
-	<select id="selMember"  resultMap="memberT">
-		SELECT M_ID,M_NAME,GENDER,to_char(BIRTH,'yyyy-mm-dd') BIRTH,EMAIL,PHONE,to_char(M_INPUTDATE,'yyyy-mm-dd') INPUTDATE
-		FROM MEMBER
-		ORDER BY INPUTDATE DESC
+	<!-- 공지사항 -->
+	<resultMap type="kr.co.sist.admin.domain.NoticeDomain" id="notices">
+		<result column="N_NO" property="n_no"/>
+		<result column="N_NAME" property="n_name"/>
+		<result column="N_INPUTDATE" property="n_inputdate"/>
+		<result column="N_INFO" property="n_info"/>
+		<result column="A_ID" property="a_id"/>
+	</resultMap>
+	
+	
+	
+<!-- 로그인체크 여부 -->	
+	<select id="totSelAdmin" resultType="integer">
+		SELECT COUNT(*) FROM ADMIN
 	</select>
+	<select id="selAdmin"  resultType="integer" parameterType="kr.co.sist.admin.vo.ad_LoginVO">
+		SELECT COUNT(*)
+		FROM ADMIN
+		WHERE A_ID = '${a_id}' AND A_PW = '${a_pw}'
+	</select>
+<!-- 로그인 사용자 이름 조회 -->	
+	<select id="AdminName"  resultType="String" parameterType="kr.co.sist.admin.vo.ad_LoginVO">
+		SELECT A_NAME
+		FROM ADMIN
+		WHERE A_ID = '${a_id}' AND A_PW = '${a_pw}'
+	</select>
+	
+<!-- 공지사항 전체조회 -->
+	<select id="AllNotice" resultMap="notices">
+		SELECT TRIM(N_NO) N_NO, N_NAME, TO_CHAR(N_INPUTDATE,'yyyy-mm-dd') N_INPUTDATE, N_INFO, A_ID
+		FROM NOTICE
+		ORDER BY CAST(N_NO as decimal) DESC
+	</select>
+<!-- 공지사항 검색조회 -->
+	<select id="selectNotice" resultMap="notices" parameterType="String">
+		SELECT N_NO, N_NAME, TO_CHAR(N_INPUTDATE,'yyyy-mm-dd') N_INPUTDATE, N_INFO, A_ID
+		FROM NOTICE
+		WHERE N_NAME LIKE '%'||#{ n_name }||'%'
+		ORDER BY CAST(N_NO as decimal) DESC
+	</select>
+<!-- 공지사항 등록 -->
+	<insert id="insertNotice" parameterType="kr.co.sist.admin.vo.ad_NoticeVO">
+	  	INSERT INTO NOTICE(N_NO, N_NAME, N_INFO, A_ID) 
+	  	VALUES (seq_notice.nextval,#{ n_name }, #{ n_info },#{ a_id }) 
+	</insert>
+<!-- 공지사항 글 읽기 -->
+	<select id="readNotice" resultMap="notices" parameterType="int">
+		SELECT TRIM(N_NO) N_NO, N_NAME, TO_CHAR(N_INPUTDATE,'yyyy-mm-dd') N_INPUTDATE, N_INFO, A_ID
+		FROM NOTICE
+		WHERE TRIM(N_NO)=#{ n_no }
+	</select>
+<!-- 공지사항 수정 -->
+	  <update id="updateNotice" parameterType="kr.co.sist.admin.vo.ad_NoticeVO">
+		UPDATE NOTICE
+		SET N_NAME=#{n_name}, N_INFO=#{n_info}
+		WHERE TRIM(N_NO)=#{n_no}
+	  </update>
+<!-- 공지사항 삭제 -->
+	  <delete id="removeNotice" parameterType="int">
+		DELETE
+		FROM NOTICE
+		WHERE TRIM(N_NO)=#{ n_no }
+	  </delete>
+	
 </mapper>

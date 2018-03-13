@@ -30,4 +30,5 @@ public class ad_MainController {
 		return "/ad_common/ad_leftArea";
 	}//include
 	
+	
 }
