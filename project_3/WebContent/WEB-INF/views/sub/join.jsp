@@ -23,28 +23,32 @@
     
     <!-- CSS 줄때 화면 -->
     <link href="commons/css/main.css" rel="stylesheet">
-    
-    
+	<style type="text/css">
+		.btn{background-color:#ededed;font-weight: bold;}
+		
+	</style>
+
     <script type="text/javascript">
-    $(function(){
+     $(function(){
     	var obj=document.frm;
-    	$("#intro").click(function(){
-    		obj.action="land_intro.do";
+    	var logint_obj=document.login_frm;
+    	
+    	$("#login").click(function(){
+    		obj.action="login.do";
     		obj.submit();
     	});
-    	var obj=document.frm;
-    	$("#roller").click(function(){
-    		obj.action="land_roller.do";
+    	$("#join").click(function(){
+    		obj.action="join.do";
     		obj.submit();
     	});
-    	var obj=document.frm;
-    	$("#info").click(function(){
-    		obj.action="land_info.do";
+    	$("#searchID").click(function(){
+    		obj.action="searchId.do";
     		obj.submit();
     	});
-    });
+    	
+		    	
+    }); 
     </script>
-    
     
   </head>
   <body>
@@ -57,24 +61,47 @@
 	  		<c:import url="../../../commons/menu/menu_btn.jsp"/>
 	  		
   	</header>
-	
     <!-- Page Content -->
 	
-   
     <div class="contain" >
     	<div id="test_top" style="max-width: 1300px; border: 3px dotted #EDEDED; margin: 0px auto;" >
-	  		<div style=" border: 1px dotted #EDEDED;width: 250px; height: 150px; float: left; font-size: 25px; padding: 50px">HK랜드 소개</div>
-			<div style=" width: 100%;  height: 150px; border: 1px dotted #EDEDED;">공백</div>
+	  		<div style=" border: 1px dotted #EDEDED;width: 250px; height: 150px; float: left; font-size: 25px; padding: 50px">회원가입</div>
+			<div style=" width: 100%;  height: 150px; border: 1px dotted #EDEDED;"></div>
 		</div>
 		<div id="test_center" style="max-width: 1300px; border: 3px dotted #EDEDED; margin: 0px auto;" >
 	  		<div style=" width: 250px; min-height: 800px; float: left; border: 1px dotted #EDEDED;">
 			    <form name="frm" method="post" id="frm">
-		  			<div><input type="button" class="button2" value="랜드소개" id="intro"></div>
-		  			<div><input type="button" class="button2" value="놀이기구" id="roller"></div>
-		  			<div><input type="button" class="button2" value="랜드정보" id="info"></div>
+		  			<div><input type="button" class="button2" value="로그인" id="login"></div>
+		  			<div><input type="button" class="button2" value="회원가입" id="join"></div>
+		  			<div><input type="button" class="button2" value="ID/PASS 찾기" id="searchID"></div>
 			    </form>
 	  		</div>
-			<div style=" width: 100%;  height: 800px; border: 1px dotted #EDEDED;"></div>
+			<div style=" width: 100%;  height: 800px; border: 1px dotted #EDEDED;">
+				<form name="login_frm" method="post">
+					<table style="margin: 0px auto; border: 2px solid #ededed; margin-top: 50px; padding: 10px;">
+						<tr>
+							<td colspan="3" style="text-align: center; font-size: 30px; font-weight: bold;">
+								<img src="http://localhost:8080/project_3/commons/images/HKlogo.png" width="250px;" onclick="#" />
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align: center;" width="80px;">ID</td>
+							<td colspan="2"><input type="text" name="id"  style="width:200px;"/></td>
+						</tr>
+						<tr>
+							<td style="text-align: center;" >PW</td>
+							<td colspan="2"><input type="password" name="pw"  style="width:200px;"/></td>
+						</tr>
+						<tr>
+							<td colspan="3" style="text-align: center; margin-top: 15px;">
+								<input type="button" class="btn" value="로그인"/>
+								<input type="button" class="btn" value="회원가입"/>
+								<input type="button" class="btn" value="ID/PW 찾기"/>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
 		</div>
     </div>	
     

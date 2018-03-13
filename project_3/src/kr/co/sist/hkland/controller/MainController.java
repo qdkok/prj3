@@ -26,4 +26,16 @@ public class MainController {
 	public String info() {
 		return "sub/land_info";
 	}
+	@RequestMapping(value="/login.do", method= {RequestMethod.POST, RequestMethod.GET})
+	public String login() {
+		return "sub/login";
+	}
+	@RequestMapping(value="/join.do", method= {RequestMethod.POST, RequestMethod.GET})
+	public String join() {
+		return "sub/join";
+	}
+	@RequestMapping(value="/searchId.do", method= {RequestMethod.POST, RequestMethod.GET})
+	public String searchId() {
+		return "sub/searchId";
+	}
 }

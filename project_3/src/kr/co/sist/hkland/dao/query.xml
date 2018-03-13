@@ -9,4 +9,10 @@
 	<select id="selAdim"  resultType="String">
 		SELECT A_ID FROM ADMIN
 	</select>
+	
+	<select id="login" resultType="String" parameterType="kr.co.sist.hkland.vo">
+		select m_name
+		from member
+		where m_id=#{id} and m_pass=#{pw}
+	</select>
 </mapper>

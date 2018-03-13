@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" info=""%>
-
     
 <div>
 	    <!-- Navigation -->
@@ -13,7 +12,7 @@
 	        <div class="collapse navbar-collapse" id="navbarResponsive">
 	          <ul class="navbar-nav ml-auto">
 	            <li class="nav-item active">
-	              <a class="nav-link" href="#">로그인
+	              <a class="nav-link" href="login.do">로그인
 	                <span class="sr-only">(current)</span>
 	              </a>
 	            </li>

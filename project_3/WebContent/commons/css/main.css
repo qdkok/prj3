@@ -3,7 +3,7 @@
     	#button{border:1px solid #EDEDED; background-color: #FFFFFF; width: 287px; height: 100px; margin-right: -3px; margin-left: -3px;}
     	.button2{border:1px solid #EDEDED; background-color: #FFFFFF; width: 250px; height: 100px; margin-right: -3px; margin-left: -3px;}
     	#back-header{background-color: #fff; }	
-    	#logo-button  { background-color: #00FF00; width: 1140px; margin: 0 auto;  }
+    	#logo-button  {width: 1140px; margin: 0 auto;  }
     	.main-img{height: 600px;  margin: 0 auto;}
     	.img_div{ border: 1px solid #EDEDED; width: 285px; height: 250px;}
     	.line{ border : 1px solid #EDEDED ; width: 1140px; height: 50px; margin: 0 auto;}
