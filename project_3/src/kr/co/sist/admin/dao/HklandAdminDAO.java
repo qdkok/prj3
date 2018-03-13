@@ -11,6 +11,11 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kr.co.sist.admin.domain.MemberDomain;
+import kr.co.sist.admin.domain.TicketDomain;
+import kr.co.sist.admin.domain.UtilizeDomain;
+import kr.co.sist.admin.domain.VoucherDomain;
+import kr.co.sist.admin.vo.UtilizeUpdateVO;
+import kr.co.sist.admin.vo.UtilizeVO;
 
 public class HklandAdminDAO {
 	private static HklandAdminDAO embd;
@@ -106,6 +111,116 @@ public class HklandAdminDAO {
 		} // end finally
 
 	}// delMember
+	
+	//이용권 불러오기
+	public List<VoucherDomain> selectVoucher() throws SQLException, IOException {
+		List<VoucherDomain> list = null;
+		SqlSession ss = null;
+		try {
+			ss = getSqlSessionFactory().openSession();
+			list = ss.selectList("kr.co.sist.admin.utilize");
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (ss != null) {
+				ss.close();
+			} // end if
+		} // end finally
+
+		return  list;
+	}// selectEname
+	//이용권 삭제
+	public void deleteVoucher(String id) throws SQLException, IOException {
+		SqlSession ss = null;
+		
+		try {
+			ss = getSqlSessionFactory().openSession();
+			System.out.println(ss.delete("kr.co.sist.admin.del_utilize",id));
+			ss.commit();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (ss != null) {
+				ss.close();
+			} // end if
+		} // end finally
+		
+	}// selectEname
+	
+	public List<TicketDomain> selectTicket() throws SQLException, IOException {
+		List<TicketDomain> list = null;
+		SqlSession ss = null;
+		try {
+			ss = getSqlSessionFactory().openSession();
+			list = ss.selectList("kr.co.sist.admin.selTicket");
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (ss != null) {
+				ss.close();
+			} // end if
+		} // end finally
+
+		return  list;
+	}// selectEname
+	
+	public int insertUtilize(UtilizeVO uv) throws SQLException, IOException {
+		int cnt=0;
+		SqlSession ss = null;
+		try {
+			ss = getSqlSessionFactory().openSession();
+			cnt = ss.insert("kr.co.sist.admin.insertUtilize",uv);
+			ss.commit();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (ss != null) {
+				ss.close();
+			} // end if
+		} // end finally
+		
+		return  cnt;
+	}// selectEname
+	
+	public int updateUtilize(UtilizeUpdateVO uuv) throws SQLException, IOException {
+		int cnt=0;
+		SqlSession ss = null;
+		try {
+			ss = getSqlSessionFactory().openSession();
+			cnt = ss.insert("kr.co.sist.admin.upUtilize",uuv);
+			ss.commit();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (ss != null) {
+				ss.close();
+			} // end if
+		} // end finally
+		
+		return  cnt;
+	}// selectEname
+	
+	public UtilizeDomain selectUtilize(String u_no) throws SQLException, IOException {
+		UtilizeDomain data= null;
+		SqlSession ss = null;
+		try {
+			ss = getSqlSessionFactory().openSession();
+			data = ss.selectOne("kr.co.sist.admin.selUtilize",u_no);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (ss != null) {
+				ss.close();
+			} // end if
+		} // end finally
+
+		return  data;
+	}// selectEname
+	
 /////kdy//////////////////////////////////////////////////////////////	
 	
 ///khe//////////////////////////////////////////////////////////////

@@ -14,7 +14,43 @@
 		<result column="INPUTDATE" property="inputdate"/>
 	</resultMap>
 	
+	<resultMap type="kr.co.sist.admin.domain.VoucherDomain" id="voucher">
+		<result column="T_NO" property="t_no"/>
+		<result column="U_NAME" property="u_name"/>
+		<result column="SALE_FLAG" property="sale_flag"/>
+		<result column="INFO" property="info"/>
+		<result column="U_IMAGE" property="u_image"/>
+		<result column="PRICE" property="price"/>
+		<result column="START_YEAR" property="start_year"/>
+		<result column="START_MONTH" property="start_month"/>
+		<result column="START_DAY" property="start_day"/>
+		<result column="END_YEAR" property="end_year"/>
+		<result column="END_MONTH" property="end_month"/>
+		<result column="END_DAY" property="end_day"/>
+	</resultMap>
+	
+	<resultMap type="kr.co.sist.admin.domain.TicketDomain" id="ticket">
+		<result column="T_NO" property="t_no"/>
+		<result column="T_NAME" property="t_name"/>
+	</resultMap>
+	
+	<resultMap type="kr.co.sist.admin.domain.UtilizeDomain" id="Utilize">
+		<result column="T_NO" property="t_no"/>
+		<result column="U_NAME" property="u_name"/>
+		<result column="PRICE" property="price"/>
+		<result column="SALE_FLAG" property="sale_flag"/>
+		<result column="INFO" property="info"/>
+		<result column="START_YEAR" property="start_year"/>
+		<result column="START_MONTH" property="start_month"/>
+		<result column="START_DAY" property="start_day"/>
+		<result column="END_YEAR" property="end_year"/>
+		<result column="END_MONTH" property="end_month"/>
+		<result column="END_DAY" property="end_day"/>
+		<result column="U_IMAGE" property="u_image"/>
+	</resultMap>
+	
 	<select id="selMember"  resultMap="memberT">
+	
 		SELECT M_ID,M_NAME,GENDER,to_char(BIRTH,'yyyy-mm-dd') BIRTH,EMAIL,PHONE,to_char(M_INPUTDATE,'yyyy-mm-dd') INPUTDATE
 		FROM MEMBER
 		ORDER BY INPUTDATE DESC
@@ -40,9 +76,44 @@
 	</delete>
 	
 	<delete id="delMember3" parameterType="String">
-		delete
-		from member
-		where M_id=#{id}
+		DELETE
+		FROM MEMBER
+		WHERE M_id=#{id}
 	</delete>
+	
+	<select id="utilize" resultMap="voucher">
+		SELECT U_NO,U_NAME,SALE_FLAG,INFO,U_IMAGE,PRICE,START_YEAR,START_MONTH,START_DAY,END_YEAR,END_MONTH,END_DAY 
+		FROM UTILIZE
+		ORDER BY U_NO DESC
+	</select>
+	
+	<delete id="del_utilize" parameterType="String">
+		DELETE 
+		FROM UTILIZE
+		WHERE U_NO=#{no}
+	</delete>
+	
+	<select id="selTicket" resultMap="ticket">
+		SELECT T_NO,T_NAME
+		FROM TICKET
+	</select>
+	
+	<insert id="insertUtilize" parameterType="kr.co.sist.admin.vo.UtilizeVO">
+		INSERT INTO UTILIZE(U_NO,T_NO,U_NAME,PRICE,SALE_FLAG,INFO,START_YEAR,START_MONTH,START_DAY,END_YEAR,END_MONTH,END_DAY,U_IMAGE,A_ID)
+		VALUES(utilize_num(),#{t_no},#{u_name},#{price},#{sale_flag},#{info},#{start_year},#{start_month},#{start_day},#{end_year},#{end_month},#{end_day},#{u_image},#{a_id})
+	</insert>
+	
+	<select id="selUtilize" resultMap="Utilize"  parameterType="String">
+		SELECT T_NO,U_NAME,PRICE,SALE_FLAG,INFO,START_YEAR,START_MONTH,START_DAY,END_YEAR,END_MONTH,END_DAY,U_IMAGE 
+		FROM UTILIZE
+		WHERE U_NO=#{u_no}
+	</select>
+	
+	<select id="upUtilize"  parameterType="kr.co.sist.admin.vo.UtilizeUpdateVO">
+		update UTILIZE 
+		set T_NO=#{t_no},U_NAME=#{u_name},PRICE=#{price},SALE_FLAG=#{sale_flag},INFO=#{info},START_YEAR=#{start_year},START_MONTH=#{start_month},START_DAY=#{start_day},END_YEAR=#{end_year},END_MONTH=#{end_month},END_DAY=#{end_day},U_IMAGE=#{u_image},A_ID=#{a_id}
+		where U_NO=#{u_no}
+	</select>
+	
 	
 </mapper>
