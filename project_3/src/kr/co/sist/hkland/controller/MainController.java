@@ -26,6 +26,10 @@ public class MainController {
 	public String info() {
 		return "sub/land_info";
 	}
+	@RequestMapping(value="/map.do", method= {RequestMethod.POST, RequestMethod.GET})
+	public String map() {
+		return "sub/map";
+	}
 	@RequestMapping(value="/login.do", method= {RequestMethod.POST, RequestMethod.GET})
 	public String login() {
 		return "sub/login";
