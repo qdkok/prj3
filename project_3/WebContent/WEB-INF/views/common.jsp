@@ -2,7 +2,6 @@
     pageEncoding="UTF-8" info=""%>
 
 <link rel="stylesheet" type="text/css" href="http://localhost:8080/project_3/commons/css/sm-simple/sm-simple.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <!-- SmartMenus core CSS (required) -->

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.sist.Ride">
+
+	<!-- ride mapping -->
+	<resultMap type="kr.co.sist.hkland.domain.RideDomain" id="rdResult">
+	
+		<result column="R_NO" property="r_no"/>
+		<result column="R_NAME" property="r_name"/>
+		<result column="R_POSITION" property="r_position"/>
+		<result column="R_PRICE" property="r_price"/>
+		<result column="R_CNT" property="r_cnt"/>
+		<result column="R_HEIGHT" property="r_height"/>
+		<result column="R_AGE" property="r_age"/>
+		<result column="R_INFO" property="r_info"/>
+		<result column="R_IMAGE1" property="r_image1"/>
+		<result column="R_IMAGE2" property="r_image2"/>
+		<result column="R_IMAGE3" property="r_image3"/>
+		<result column="R_IMAGE4" property="r_image4"/>
+		<result column="A_ID" property="a_id"/>
+	
+	</resultMap>
+
+	
+	<select id="select" resultMap="rdResult" parameterType="kr.co.sist.hkland.vo.RideVO">
+		SELECT R_NO, R_NAME, R_POSITION, R_PRICE, R_CNT, R_HEIGHT, R_AGE, R_INFO, R_IMAGE1, R_IMAGE2, R_IMAGE3, R_IMAGE4		
+		FROM RIDE
+		<where>
+			<if test="loc !='----지역별 위치----'">
+					R_POSITION= #{loc}
+			</if>
+		</where>
+	</select>
+
+</mapper>

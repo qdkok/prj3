@@ -24,6 +24,8 @@
     <!-- CSS 줄때 화면 -->
     <link href="commons/css/main.css" rel="stylesheet">
     
+    <link rel="stylesheet" href="commons/css/info.css">
+    <script src="commons/css/js/jquery/info.js"></script>
     
     <script type="text/javascript">
     $(function(){
@@ -42,8 +44,49 @@
     		obj.action="land_info.do";
     		obj.submit();
     	});
+    	
+    	$( function() {
+    		  $( "#tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
+    		  $( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
+    	 } );
+    	
+    	/* $(function(){
+    		$("#info"+i).click(function(){
+    			$("#img").attr("src","commons/images/img"+i+".PNG")
+    		});
+    		$("#info2").click(function(){
+    			$("#img").attr("src","commons/images/img2.PNG")
+    		});
+    		$("#info3").click(function(){
+    			$("#img").attr("src","commons/images/img3.PNG")
+    		}); 
+    	});*/
+    	  
+    	
     });
+    
+    /////// 코드 간소화 ///////
+    function chgImg( type, sec){
+    	var types=new Array();
+    	types[0]=['img1.PNG','img2.PNG','img3.PNG'];//안내
+    	types[1]=['img1.PNG','img2.PNG','img2.PNG'];//의무
+    	types[1]=['img1.PNG','img2.PNG','img2.PNG'];//의무
+    	types[1]=['img1.PNG','img2.PNG','img2.PNG'];//의무
+    	types[1]=['img1.PNG','img2.PNG','img2.PNG'];//의무
+    	
+    	$("#img").attr("src","commons/images/"+types[type][sec]);
+    }
+    
     </script>
+    
+  <style>
+	  .ui-tabs-vertical { width: 55em; }
+	  .ui-tabs-vertical .ui-tabs-nav { padding: .2em .1em .2em .2em; float: left; width: 12em; }
+	  .ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border-bottom-width: 1px !important; border-right-width: 0 !important; margin: 0 -1px .2em 0; }
+	  .ui-tabs-vertical .ui-tabs-nav li a { display:block; }
+	  .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; }
+	  .ui-tabs-vertical .ui-tabs-panel { padding: 1em; float: right; width: 40em;}
+  </style>
     
     
   </head>
@@ -74,8 +117,81 @@
 		  			<div><input type="button" class="button2" value="랜드정보" id="info"></div>
 			    </form>
 	  		</div>
-			<div style=" width: 100%;  height: 800px; border: 1px dotted #EDEDED;">
-				랜드 정보는!!!
+			<div style=" width: 100%;  height: 800px; ">
+			<div style=" height: 800px; padding-left: 300px ">
+				
+				
+				<div id="tabs">
+			  <ul>
+			    <li><a href="#tabs-1">1. 안내데스크</a></li>
+			    <li><a href="#tabs-2">2. 의무실</a></li>
+			    <li><a href="#tabs-3">3. 유모차 대여소</a></li>
+			    <li><a href="#tabs-4">4. 기저기 교환실</a></li>
+			    <li><a href="#tabs-5">5. 유아휴게실</a></li>
+			    <li><a href="#tabs-6">6. 휠체어 대여소</a></li>
+			    <li><a href="#tabs-7">7. 현금지급기</a></li>
+			    <li><a href="#tabs-8">8. 고객상담실</a></li>
+			    <li><a href="#tabs-9">9. 미아보호소</a></li>
+			  </ul>
+			  <div id="tabs-1">
+			    <h2>안내데스크</h2>
+			    	<img id="img" style="width: 600px; height: 400px"; src="commons/images/car.png"/>
+			    	<input type="button" value="1" id="info1" onclick="chgImg(0,0)"/>
+			    	<input type="button" value="2" id="info2" onclick="chgImg(0,1)"/>
+			    	<input type="button" value="3" id="info3" onclick="chgImg(0,2)"/>
+			    	
+			    	<p style="padding-top: 50px">
+						<strong>전화번호<br/></strong>
+						▶ 02-411-3502<br/>
+						<strong>위치정보<br/></strong>
+						▶ 중앙 안내데스크(만남의 장소 옆)<br/>
+						<strong>세부정보<br/></strong>
+						▶ 놀이시설, 공연안내, 분실물 신고, 미아신고 등 불편한 사항이나 궁금한 점을 친절하게 안내해 드립니다.
+						<br/>
+						▶ 각종 행사안내 및 가이드맵 배부 서비스 // 
+						분실물 신고/접수 서비스 // 
+						미아신고 서비스 // 
+						미아방지용 어린이 팔찌 배부 서비스 // 
+						무료주차 확인 서비스</p>
+			    	
+
+			  </div>
+			  <div id="tabs-2">
+			    <h2>의무실</h2>
+			        <p>dddd</p>
+			  </div>
+			  <div id="tabs-3">
+			    <h2>유모차 대여소</h2>
+			        <p>dddd</p>
+			  </div>
+			  <div id="tabs-4">
+			    <h2>기저기 교환실</h2>
+			        <p>dddd</p>
+			  </div>
+			  <div id="tabs-5">
+			    <h2>유아휴게실</h2>
+			        <p>dddd</p>
+			  </div>
+			  <div id="tabs-6">
+			    <h2>휠체어 대여소</h2>
+			        <p>dddd</p>
+			  </div>
+			  <div id="tabs-7">
+			    <h2>현금지급기</h2>
+			        <p>dddd</p>
+			  </div>
+			  <div id="tabs-8">
+			    <h2>고객상담실</h2>
+			        <p>dddd</p>
+			  </div>
+			  <div id="tabs-9">
+			    <h2>미아보호소</h2>
+			    	<p>dddd</p>
+			  </div>
+			</div>
+		
+
+			</div>
 			</div>
 		</div>
     </div>	

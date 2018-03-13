@@ -36,7 +36,6 @@
   <body>
   <div id="wrap">
   
-  	<header>
 	  		<!-- nav바 -->
 	  		<c:import url="../../commons/menu/menu_nav.jsp"/>
 	  		<!-- 메뉴버튼바 -->
@@ -44,12 +43,11 @@
   			<div class="line">
 			
 	  		</div>
-  	</header>
+	    <!-- Page Content -->
+	    <div class="main-img">
+			<c:import url="main_img.jsp"/>
+		</div>
 	
-    <!-- Page Content -->
-	<div class="main-img">
-		<c:import url="main_img.jsp"/>
-	</div>
 	<div class="line"></div>
     <div class="container">
     

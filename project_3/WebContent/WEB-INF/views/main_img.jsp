@@ -16,7 +16,7 @@
 </script>
 
 <div id='coin-slider'>    
-	<img src="commons/images/1.jpg" style="width: 1903px ; height: 600px; margin: 0 auto;">
-	<img src="commons/images/2.jpg" style="width: 1903px ; height: 600px;  margin: 0 auto">
-	<img src="commons/images/3.jpg" style="width: 1903px ; height: 600px;  margin: 0 auto">
+	<img src="commons/images/img1.PNG" style="width: 1903px ; height: 600px; margin: 0 auto;">
+	<img src="commons/images/img2.PNG" style="width: 1903px ; height: 600px;  margin: 0 auto">
+	<img src="commons/images/img3.PNG" style="width: 1903px ; height: 600px;  margin: 0 auto">
 </div>	

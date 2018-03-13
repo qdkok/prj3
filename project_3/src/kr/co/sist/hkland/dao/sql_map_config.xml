@@ -16,5 +16,6 @@
   </environments>
  <mappers>
     <mapper resource="kr/co/sist/hkland/dao/query.xml"/>
+    <mapper resource="kr/co/sist/hkland/dao/Ride.xml"/>
   </mappers>  
 </configuration>
