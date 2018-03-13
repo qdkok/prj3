@@ -21,19 +21,21 @@ a:HOVER { color:#A0A0A0; text-decoration: underline; }
 #container{ width: 100%; margin: 0px; position: absolute; top:55px; left: 0px; right:0px; margin:0px; min-height:0px; bottom: 0px; float: none; overflow: hidden;}
 
 /* leftArea */
-#leftArea{ width: 300px; height: 864px; background-color: #464854; top: 0px; bottom: 0px; left: 0px; float: left;}
-#loginBox{ width: 280px; height:115px; margin: 50px 8px 0px;}
+#leftArea{ width: 300px; height: 864px; background-color: #464854; top: 0px; bottom: 0px; left: 0px; float: left; color:#FFFFFF;}
+#loginBox{ width: 220px; height:130px; margin: 50px 30px 0px; font-size:20px; }
+#logoutBox{ width:220px; height:40px; margin:20px 0px;	}
 #findInfo{ color:#FFFFFF; width:278px; text-align: right; margin-top: 2px; text-shadow: 1px 1px 1px #000;}
 #menu_list{ display: block; height: 530px; border-top:1px solid #EEEEEE; border-bottom: 1px solid #EEEEEE; width:280px; margin-left:10px; padding-top: 20px; margin-top:15px;}
 .menu_title{ width: 270px; height:50px; margin-top: 10px; border-bottom: 1px solid #3F414B; color:#FFFFFF; padding-left:10px; line-height: 40px; font-weight: bold; font-size: 15px; text-shadow: 1px 1px 1px #000;}
 
 /* rightArea */
 #rightArea{ width: auto; height: 864px; float: left; }
-#r_content{ margin: 50px 50px 0px 50px;}
+#r_content{ margin: 93px 20px 20px 10px; padding-left: 120px; }
 #r_content_title{ width: 1000px; height: 70px; border: 1px solid #d9534f; border-radius: 10px;}
 #r_content_title h2{ margin-top: 17px; margin-left: 15px; }
 h2 #smallText{ font-size: 15px; }
 #r_content_view{ margin-top: 30px; }
+#r_content_view td { color: #333;}
 
 /* footer */
 #footer{ width:100%; height:30px; position: absolute; bottom: 0px; display: block; background-color: #EEEEEE; }

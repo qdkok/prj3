@@ -1,22 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" info=""%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="loginBox">
-	<form id="frm" action="" method="post">
-    <table>
-      <tr>
-         <td><input type="text" name="id" class="inputBox" id="id" style="width:195px; height:32px;" placeholder="아이디"/></td>
-         <td rowspan="2">
-        	<input type="button" value="로그인" class="btn" id="btnLogin" style="width:78px; height:66px; margin-left:5px;"/>
-         </td>
-      </tr>
-      <tr>
-         <td><input type="password" name="passwd" id="passwd" class="inputBox" style="width:195px; height:32px; margin-top:2px;" placeholder="비밀번호"/></td>
-      </tr>
-    </table>
-    </form>
-    <div id="findInfo">
-    	<a href="">아이디찾기</a> / <a href="">비밀번호찾기</a>
-    </div>
+	<c:if test="${ sessionScope.a_id ne null }">
+		<strong>${ sessionScope.a_id } ( ${ sessionScope.a_name } ) </strong><br>관리자님 환영합니다!<br>
+		<div id="logoutBox"><input type="button" class="btn" id="btnLogout" value="로그아웃" onClick="location.href='ad_logout.do';"></div>
+	</c:if>
 </div>
     <!-- 회원관리, 공지사항관리, 이벤트관리, 쿠폰관리, 분실물관리, 고객서비스관리, 이용권관리, 매출현황 -->
     <div id="menu_list">

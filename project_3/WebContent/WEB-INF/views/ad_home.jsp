@@ -1,6 +1,7 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="true" %>
+<%@page import="java.util.List"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -15,7 +16,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 <!-- JS -->
-	<!-- <script type="text/javascript" src=""></script> -->
+	
 <!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="http://localhost:8080/project_3/ad_common/css/main.css"/>
 <!-- Title -->
@@ -24,7 +25,7 @@
 <body>
 <div id="wrap">
 	<div id="header">
-		<span id="main_title"><a href="ad_index.do">HK LAND 관리자 페이지</a></span>
+		<span id="main_title"><a href="ad_home.do">HK LAND 관리자 페이지</a></span>
 	</div>
 	<div id="container">
 		<!-- LeftArea -->
