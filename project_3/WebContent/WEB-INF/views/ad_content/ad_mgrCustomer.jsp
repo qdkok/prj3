@@ -35,8 +35,8 @@
 				var id=$("[name=selID]").val();
 				if(id!=""){
 					if(confirm(id+"회원님을 삭제하시겠습니까?")){
-						$("[name=searchID]").val("");
 						document.frm.submit();
+						$("[name=searchID]").val("");
 					}//end if
 				}else{
 					alert("삭제할 회원을 선택해 주세요.");
@@ -84,7 +84,7 @@
 							</div>
 						</form>
 					</div>
-						<div style="overflow:scroll; width: 1200px;">
+						<div style="overflow:scroll; width: 1000px;">
 						<table id="test" class="table table-striped table-bordered">
 						 	<thead>
 						 		<tr>
