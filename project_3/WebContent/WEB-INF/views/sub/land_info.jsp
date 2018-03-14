@@ -68,7 +68,7 @@
     /////// 코드 간소화 ///////
     function chgImg( type, sec){
     	var types=new Array();
-    	types[0]=['img1.PNG','img2.PNG','img3.PNG'];//안내
+    	types[0]=['info1.PNG','info2.PNG','info3.PNG'];//안내
     	types[1]=['img1.PNG','img2.PNG','img2.PNG'];//의무
     	types[1]=['img1.PNG','img2.PNG','img2.PNG'];//의무
     	types[1]=['img1.PNG','img2.PNG','img2.PNG'];//의무
@@ -122,7 +122,7 @@
 			    </form>
 	  		</div>
 			<div style=" width: 100%;  height: 800px; ">
-			<div style=" height: 800px; padding-left: 300px ">
+			<div style=" height: 800px; padding-left: 300px ; ">
 				
 				
 				<div id="tabs">
@@ -139,11 +139,11 @@
 			  </ul>
 			  <div id="tabs-1">
 			    <h2>안내데스크</h2>
-			    	<img id="img" style="width: 600px; height: 400px"; src="commons/images/car.png"/>
-			    	<input type="button" value="1" id="info1" onclick="chgImg(0,0)"/>
-			    	<input type="button" value="2" id="info2" onclick="chgImg(0,1)"/>
-			    	<input type="button" value="3" id="info3" onclick="chgImg(0,2)"/>
-			    	<input type="button" value="지도로 보기" style="margin-left: 400px" onclick="map()"/>
+			    	<img id="img" style="width: 600px; height: 400px"; src="commons/images/info1.PNG"/>
+			    	<input type="button" value="1" id="info1" onclick="chgImg(0,0)" class="btn"/>
+			    	<input type="button" value="2" id="info2" onclick="chgImg(0,1)" class="btn"/>
+			    	<input type="button" value="3" id="info3" onclick="chgImg(0,2)" class="btn"/>
+			    	<input type="button" value="지도로 보기" style="margin-left: 400px" onclick="map()" class="btn"/>
 			    	
 			    	<p style="padding-top: 50px">
 						<strong>전화번호<br/></strong>

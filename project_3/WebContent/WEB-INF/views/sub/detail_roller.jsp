@@ -51,24 +51,15 @@
     		obj.action="land_info.do";
     		obj.submit();
     	});
+    	
     });
     
-    $(function(){
-    	
-    	$("#loc_btn").click(function(){
-    		var rand = $("[name='loc']").val();
-    		
-    		if(rand == "----지역별 위치----"){
-    			$("[name='loc_frm']").action ="land_roller.do";
-    			$("[name='loc_frm']").submit();
-    		}
-    		if(rand != "----지역별 위치----"){
-    			$("[name='loc_frm']").action ="land_roller.do?loc="+rand;
-    			$("[name='loc_frm']").submit();
-    		}
-    	})
+   	function chgimg(name){
+    	$("#bigimg").attr("src","http://localhost:8080/project_3/commons/rides/"+name); 
+    };
+    
+    
 
-    });//ready
     </script>
     
     
@@ -104,58 +95,38 @@
 				<div style="border: 1px sold #333">
 				<hr/>
 				
-					<%
-						String loc = request.getParameter("loc");
-						if(loc == null){
-							loc = "----지역별 위치----";
-						}
-						RideVO rvo = new RideVO(loc);
-						RideDAO r_dao=RideDAO.getInstance();
-						List<RideDomain> list=r_dao.selectquery(rvo);
-						request.setAttribute("list", list);
-					%>
+				
+				<div style=" height: 800px; padding-left: 300px ; padding-right: 50px">
+					
+					<c:catch var="e">
+								
+								<table >
+									<tr>
+										<td><img src="commons/rides/${details.r_image1}" style="width: 498px; height: 450px" id="bigimg" /></td>
+										<td width="500px">
+											<div style="margin-left: 70px"><font size="7"><strong>${details.r_name }</strong><hr/></font><p>${details.r_info }</p><br/>▶ 이용요금  ${details.r_price }원<br/>▶ 탑승인원  ${details.r_cnt }<br/>▶ 탑승제한<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  키 : ${details.r_height }cm 이상<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  나이 : ${details.r_age }세 이상 ~ 65세 미만</div>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<img src="commons/rides/${details.r_image1}" style="width: 121px; height: 80px" name="${details.r_image1}" onclick="chgimg(name)"/>
+											<img src="commons/rides/${details.r_image2}" style="width: 121px; height: 80px" name="${details.r_image2}" onclick="chgimg(name)"/>
+											<img src="commons/rides/${details.r_image3}" style="width: 121px; height: 80px" name="${details.r_image3}" onclick="chgimg(name)"/>
+											<img src="commons/rides/${details.r_image4}" style="width: 121px; height: 80px" name="${details.r_image4}" onclick="chgimg(name)"/>
+										</td>
+										<td><div style="margin-left: 100px"><img src="commons/images/caution.PNG" style="width:250px; height:70px"/></div></td>
+									</tr>
+								</table>
+							
+							<c:if test="${ e ne null }">
+									${ e }
+							<span style="color:#FF0000">조회시 문제가 발생했습니다.</span>
+							</c:if>
+							
+					</c:catch>
 					
 					
-					<form method="get" name="loc_frm">
-					<select name="loc">
-					
-					<option value="----지역별 위치----" >----지역별 위치----</option>
-						<option value="유러피안어드벤처" ${param.loc=="유러피안어드벤처"?"selected":""}>유러피안어드벤처</option>
-						<option value="아시안어드벤처" ${param.loc=="아시안어드벤처"?"selected":""}>아시안어드벤처</option>
-						<option value="매직랜드" ${param.loc=="매직랜드"?"selected":""}>매직랜드</option>
-						<option value="아메리칸빌리지" ${param.loc=="아메리칸빌리지"?"selected":""}>아메리칸빌리지</option>
-						<option value="주토피아" ${param.loc=="주토피아"?"selected":""}>주토피아</option>
-					</select>
-					<input type="button" value="검색" class="btn" id="loc_btn"/>
-					</form>
 				</div>
-				<div style="border: 1px sold #333">
-				<hr/>
-				
-				
-				<c:catch var="e">
-				
-				
-						<c:forEach var="rd" items="${ list }">
-						<div class="rideBox" style="float: left; border: 1px solid #EEEEEE; margin-right:5px">
-						<table>
-							<tr>
- 								<td><a href="detail_roller.do?number=${rd.r_no}"><img src="commons/rides/${ rd.r_image1 }" style="width:220px; height:120px"/></a></td>
-							</tr>
-							<tr>
-								<td>${ rd.r_name }</td>
-							</tr>
-						</table>
-						</div>
-						</c:forEach>
-						
-						<c:if test="${ e ne null }">
-								${ e }
-						<span style="color:#FF0000">조회시 문제가 발생했습니다.</span>
-						</c:if>
-						
-				</c:catch>
-				
 				
 				</div>
 				

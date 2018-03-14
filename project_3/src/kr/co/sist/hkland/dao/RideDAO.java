@@ -59,4 +59,20 @@ public class RideDAO {
 	}
 	
 	
+	public RideDomain detail(String number) throws SQLException{
+		RideDomain rd=null;
+		SqlSession ss=null;
+		
+		try {
+			ss=getSqlSessionFactory().openSession();
+			rd=ss.selectOne("kr.co.sist.Ride.detail",number);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if(ss!=null) {ss.close();}//end if
+		}//end finally
+		
+		return rd;
+	}
+	
 }

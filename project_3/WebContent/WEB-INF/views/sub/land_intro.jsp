@@ -99,7 +99,7 @@
 				<div style="font-size: 30px; padding-left: 600px;" >환상의 나라 HK 랜드로<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;당신을 초대합니다!</div>
 				<div style="padding-left: 300px">
 				<hr width="800px">
-					<table border="1">
+					<table >
 						<tr>
 							<td><img src="commons/images/roller.png" width="300px" height="150px"/></td>
 							<td style="padding-left: 30px; padding-right: 30px">HK랜드에만 있는 심장을 뛰게 하는 26종의 아찔한 놀이기구!<br/>다양한 놀이기구를 타보며 연인, 가족과 함께 즐거운 시간을 보내세요!</td>
@@ -108,7 +108,7 @@
 				</div>
 				<div style="padding-left: 350px; padding-right: 50px">
 				<hr width="800px">
-					<table border="1" >
+					<table >
 						<tr>
 							<td style="padding-left: 30px; padding-right: 30px">HK랜드만의 특별함 ! HK랜드 환상의 숲으로 여러분을 초대합니다.<br/> 
 							프레리도그, 설가타 육지거북, 레오파드 육지거북, 고슴도치 등 새로운 친구들이 찾아왔어요 ~</td>

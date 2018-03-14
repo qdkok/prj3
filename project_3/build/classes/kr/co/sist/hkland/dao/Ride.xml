@@ -33,5 +33,12 @@
 			</if>
 		</where>
 	</select>
+	
+	
+	<select id="detail" resultMap="rdResult" parameterType="String">
+		SELECT R_NO, R_NAME, R_POSITION, R_PRICE, R_CNT, R_HEIGHT, R_AGE, R_INFO, R_IMAGE1, R_IMAGE2, R_IMAGE3, R_IMAGE4, A_ID		
+		FROM RIDE
+		WHERE TRIM(R_NO) =#{number}
+	</select>
 
 </mapper>
