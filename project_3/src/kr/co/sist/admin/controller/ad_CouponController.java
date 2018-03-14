@@ -32,15 +32,15 @@ public class ad_CouponController {
 	@RequestMapping(value="mgr_coupon.do",method=GET)
 	public String mgr_coupon(Model model, String searchBox) {
 		
-		List<CouponDomain> AllCouponList = null;
-		
-		if(searchBox == null) {
-			AllCouponList = c_service.selectAllCoupon();
-		}else {
-//			AllCouponList = c_service.searchEvent(searchBox);
-		}
-		
-		model.addAttribute("AllCouponList", AllCouponList);
+//		List<CouponDomain> AllCouponList = null;
+//		
+//		if(searchBox == null) {
+//			AllCouponList = c_service.selectAllCoupon();
+//		}else {
+////			AllCouponList = c_service.searchEvent(searchBox);
+//		}
+//		
+//		model.addAttribute("AllCouponList", AllCouponList);
 		
 		return "/ad_content/ad_mgrCoupon";
 	}//include

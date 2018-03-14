@@ -110,13 +110,7 @@ public class ad_EventController {
 	
 	
 	
-	
-	
-	
-	@RequestMapping(value="mgr_coupon.do",method=GET)
-	public String mgr_coupon() {
-		return "/ad_content/ad_mgrCoupon";
-	}//include
+
 	
 	@RequestMapping(value="mgr_lostArticle.do",method=GET)
 	public String mgr_lostArticle() {
