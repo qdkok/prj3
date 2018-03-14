@@ -20,6 +20,7 @@ import kr.co.sist.admin.domain.EventDomain;
 import kr.co.sist.admin.domain.NoticeDomain;
 import kr.co.sist.admin.service.CouponService;
 import kr.co.sist.admin.service.EventService;
+import kr.co.sist.admin.vo.CouponVO;
 import kr.co.sist.admin.vo.EventVO;
 import kr.co.sist.admin.vo.ad_NoticeVO;
 
@@ -32,44 +33,44 @@ public class ad_CouponController {
 	@RequestMapping(value="mgr_coupon.do",method=GET)
 	public String mgr_coupon(Model model, String searchBox) {
 		
-//		List<CouponDomain> AllCouponList = null;
-//		
-//		if(searchBox == null) {
-//			AllCouponList = c_service.selectAllCoupon();
-//		}else {
-////			AllCouponList = c_service.searchEvent(searchBox);
-//		}
-//		
-//		model.addAttribute("AllCouponList", AllCouponList);
+		List<CouponDomain> AllCouponList = null;
+		
+		if(searchBox == null) {
+			AllCouponList = c_service.selectAllCoupon();
+		}else {
+			AllCouponList = c_service.searchCoupon(searchBox);
+		}
+		
+		model.addAttribute("AllCouponList", AllCouponList);
 		
 		return "/ad_content/ad_mgrCoupon";
 	}//include
 	
-//	//이벤트 등록
-//	@RequestMapping(value="mgr_event_writeFrm.do",method=GET)
-//	public String mgr_event_writeFrm(HttpServletResponse response, Model model, EventVO ev, String cmd) throws IOException {
-//		response.setCharacterEncoding("UTF-8");
-//		response.setContentType("text/html; charset=UTF-8");
-//			PrintWriter out = response.getWriter();
-//			
-//			if( cmd.equals("w")) {
-//				return "/ad_content/ad_mgrEvent_writeFrm";
-//			}
-//			
-//			int cnt = e_service.insertEvent(ev);
-//			
-//			if(cnt != 0) {
-//				out.println("<script>alert('이벤트 등록완료'); location.href='mgr_event.do';</script>");
-//			}else {
-//				out.println("<script>alert('이벤트 등록실패'); location.href='history.back()';</script>");
-//			}
-//
-//			out.flush();
-//			out.close();
-//				
-//		return "/ad_content/ad_mgrEvent_writeFrm";
-//	}//include
-//	
+	//이벤트 등록
+	@RequestMapping(value="mgr_coupon_writeFrm.do",method=GET)
+	public String mgr_event_writeFrm(HttpServletResponse response, Model model, CouponVO cv, String cmd) throws IOException {
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			
+			if( cmd.equals("w")) {
+				return "/ad_content/ad_mgrCoupon_writeFrm";
+			}
+			
+			int cnt = c_service.insertCoupon(cv);
+			
+			if(cnt != 0) {
+				out.println("<script>alert('쿠폰 등록완료'); location.href='mgr_coupon.do';</script>");
+			}else {
+				out.println("<script>alert('쿠폰 등록실패'); location.href='history.back()';</script>");
+			}
+
+			out.flush();
+			out.close();
+				
+		return "/ad_content/ad_mgrCoupon_writeFrm";
+	}//include
+	
 //	/*이벤트 삭제 페이지*/
 //	@RequestMapping(value="mgrEvent_remove.do",method=GET)
 //	public String mgrEvent_remove(Model model, String selID, HttpServletResponse response, HttpServletRequest request){

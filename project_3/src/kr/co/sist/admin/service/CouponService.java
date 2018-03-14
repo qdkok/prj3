@@ -9,13 +9,14 @@ import org.springframework.stereotype.Component;
 import kr.co.sist.admin.dao.HklandAdminDAO;
 import kr.co.sist.admin.domain.CouponDomain;
 import kr.co.sist.admin.domain.EventDomain;
+import kr.co.sist.admin.vo.CouponVO;
 import kr.co.sist.admin.vo.EventVO;
 
 @Component
 public class CouponService {
 	private HklandAdminDAO hk_dao = HklandAdminDAO.getInstance();
 	
-	/*이벤트 전체 조회*/
+	/*쿠폰 전체 조회*/
 	public List<CouponDomain> selectAllCoupon(){
 		List<CouponDomain> AllCouponList=null;
 		try {
@@ -28,32 +29,32 @@ public class CouponService {
 		return AllCouponList;
 	}//selectAllEvent
 	
-//	/*이벤트 검색 조회*/
-//	public List<EventDomain> searchEvent(String searchBox){
-//		List<EventDomain> searchEventList=null;
-//		try {
-//			searchEventList=hk_dao.searchEvent(searchBox);
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		return searchEventList;
-//	}//searchEvent
-//	
-//	/*이벤트 등록*/
-//	public int insertEvent(EventVO ev) {
-//		int cnt = 0;
-//		try {
-//			cnt = hk_dao.insertEvent(ev);
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//		return cnt;
-//	}//insertEvent
-//	
+	/*쿠폰 검색 조회*/
+	public List<CouponDomain> searchCoupon(String searchBox){
+		List<CouponDomain> searchCouponList=null;
+		try {
+			searchCouponList=hk_dao.searchCoupon(searchBox);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return searchCouponList;
+	}//searchEvent
+
+	/*쿠폰 등록*/
+	public int insertCoupon(CouponVO cv) {
+		int cnt = 0;
+		try {
+			cnt = hk_dao.insertCoupon(cv);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}//insertEvent
+	
 //	/*이벤트 삭제*/
 //	public int removeEvent(int e_no) {
 //		int cnt = 0;

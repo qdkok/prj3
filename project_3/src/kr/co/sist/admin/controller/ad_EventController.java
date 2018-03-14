@@ -14,12 +14,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import kr.co.sist.admin.dao.HklandAdminDAO;
 import kr.co.sist.admin.domain.EventDomain;
-import kr.co.sist.admin.domain.NoticeDomain;
 import kr.co.sist.admin.service.EventService;
 import kr.co.sist.admin.vo.EventVO;
-import kr.co.sist.admin.vo.ad_NoticeVO;
 
 @Controller
 public class ad_EventController {

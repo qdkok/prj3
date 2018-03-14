@@ -29,22 +29,21 @@
 		ORDER BY CAST(C_NO as decimal) DESC	
 	</select>
 	
-	<!-- 이벤트 검색
-	<select id="searchEvent" resultMap="events" parameterType="String">
-		SELECT TRIM(E_NO) E_NO, E_NAME, E_INFO, START_YEAR, START_MONTH, START_DAY, 
-			END_YEAR, END_MONTH, END_DAY, R_POSITION, R_IMAGE, R_FILE, TRIM(A_ID) A_ID
-		FROM EVENT
-		WHERE E_NAME LIKE '%'||#{ e_name }||'%'
-		ORDER BY CAST(E_NO as decimal) DESC
+	<!-- 쿠폰 검색 -->
+	<select id="searchCoupon" resultMap="coupons" parameterType="String">
+		SELECT TRIM(C_NO) C_NO, C_IMAGE, C_NAME, C_INFO, START_YEAR, START_MONTH, START_DAY, END_YEAR, END_MONTH, END_DAY, DISCOUNT, TRIM(A_ID) A_ID
+		FROM COUPON
+		WHERE C_NAME LIKE '%'||#{ c_name }||'%'
+		ORDER BY CAST(C_NO as decimal) DESC
 	</select>
 	
-	이벤트 등록
-	<insert id="insertEvent" parameterType="kr.co.sist.admin.vo.EventVO">
-	  	INSERT INTO EVENT(E_NO, E_NAME, E_INFO, START_YEAR, START_MONTH, START_DAY, END_YEAR, END_MONTH, END_DAY, R_POSITION, R_IMAGE, R_FILE, A_ID) 
-	  	VALUES (seq_event.nextval, #{e_name}, #{e_info}, #{start_year}, #{start_month}, #{start_day}, #{end_year}, #{end_month}, #{end_day}, #{r_position}, #{r_image}, #{r_file}, #{a_id})
+	 <!-- 쿠폰 등록 -->
+	<insert id="insertCoupon" parameterType="kr.co.sist.admin.vo.CouponVO">
+	  	INSERT INTO COUPON(C_NO, C_IMAGE, C_NAME, C_INFO, START_YEAR, START_MONTH, START_DAY, END_YEAR, END_MONTH, END_DAY, DISCOUNT, A_ID) 
+	  	VALUES (seq_coupon.nextval,#{c_image},#{c_name},#{c_info},#{start_year},#{start_month},#{start_day},#{end_year},#{end_month},#{end_day},#{discount},#{a_id})
 	</insert>
 	
-	이벤트 삭제
+	<!--이벤트 삭제
 	  <delete id="removeEvent" parameterType="int">
 		DELETE
 		FROM EVENT

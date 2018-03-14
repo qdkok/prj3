@@ -494,6 +494,79 @@ public class HklandAdminDAO {
 		return selectAllCoupon;
 	}//selectAllCoupon
 	
+	/*쿠폰 검색 조회*/
+	public List<CouponDomain> searchCoupon(String searchBox) throws SQLException, IOException{
+		List<CouponDomain> searchCouponList = null;
+		SqlSession ss = null;
+
+		try {
+			ss = getSqlSessionFactory().openSession();
+			searchCouponList = ss.selectList("kr.co.sist.admin4.searchCoupon",searchBox);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (ss != null) {
+				ss.close();
+			} // end if
+		} // end finally
+
+		return searchCouponList;
+	}//searchEvent
+	
+	/*이벤트 등록*/
+	public int insertCoupon(CouponVO cv) throws SQLException, IOException{
+		int cnt =0; 
+		SqlSession ss = null;
+		try {
+			ss = getSqlSessionFactory().openSession();
+			cnt = ss.insert("kr.co.sist.admin4.insertCoupon",cv);
+			if(cnt == 1) {
+				ss.commit();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (ss != null) {
+				ss.close();
+			} // end if
+		} // end finally
+		
+		return cnt;
+	}//insertEvent
+//	
+//	/*이벤트 삭제*/
+//	public int removeEvent(int e_no) throws IOException {
+//		SqlSession ss=null;
+//		int cnt = 0;
+//		try {
+//			ss=getSqlSessionFactory().openSession();
+//			//추가 
+//			cnt = ss.delete("kr.co.sist.admin3.removeEvent", e_no);
+//			if(cnt == 1) {
+//				ss.commit();
+//			}
+//		}finally {
+//			if(ss != null ) { ss.close(); }//end if
+//		}//end finally
+//		
+//		return cnt;
+//	}//removeEvent
+//	
+//	/*이벤트 글 읽기*/
+//	public EventDomain readEvent(int e_no) throws IOException {
+//		EventDomain readList = null;
+//		SqlSession ss=null;
+//		try {
+//			ss=getSqlSessionFactory().openSession();
+//			//추가 
+//			readList = ss.selectOne("kr.co.sist.admin3.readEvent", e_no);
+//		}finally {
+//			if(ss != null ) { ss.close(); }//end if
+//		}//end finally
+//		
+//		return readList;
+//	}//readNotice
+	
 ///khe//////////////////////////////////////////////////////////////
 	
 	
