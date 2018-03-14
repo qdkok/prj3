@@ -10,12 +10,14 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import kr.co.sist.admin.domain.CouponDomain;
 import kr.co.sist.admin.domain.EventDomain;
 import kr.co.sist.admin.domain.MemberDomain;
 import kr.co.sist.admin.domain.NoticeDomain;
 import kr.co.sist.admin.domain.TicketDomain;
 import kr.co.sist.admin.domain.UtilizeDomain;
 import kr.co.sist.admin.domain.VoucherDomain;
+import kr.co.sist.admin.vo.CouponVO;
 import kr.co.sist.admin.vo.EventVO;
 import kr.co.sist.admin.vo.UtilizeUpdateVO;
 import kr.co.sist.admin.vo.UtilizeVO;
@@ -470,13 +472,28 @@ public class HklandAdminDAO {
 			ss=getSqlSessionFactory().openSession();
 			//추가 
 			readList = ss.selectOne("kr.co.sist.admin3.readEvent", e_no);
-			
 		}finally {
 			if(ss != null ) { ss.close(); }//end if
 		}//end finally
 		
 		return readList;
 	}//readNotice
+	
+	/*쿠폰전체조회*/
+	public List<CouponDomain> selectAllCoupon() throws SQLException, IOException{
+		List<CouponDomain> selectAllCoupon = null;
+		SqlSession ss=null;
+		
+		try {
+			ss=getSqlSessionFactory().openSession();
+			selectAllCoupon = ss.selectList("kr.co.sist.admin4.Allcoupon");
+		}finally {
+			if(ss != null ) { ss.close(); }//end if
+		}//end finally
+		
+		return selectAllCoupon;
+	}//selectAllCoupon
+	
 ///khe//////////////////////////////////////////////////////////////
 	
 	

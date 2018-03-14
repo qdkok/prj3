@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.sist.admin4">
+	<!-- 컬럼과 setter 매핑 -->
+	
+	<!-- 이벤트 -->
+	<resultMap type="kr.co.sist.admin.domain.CouponDomain" id="coupons">
+		<result column="C_NO" property="c_no"/>
+		<result column="C_IMAGE" property="c_image"/>
+		<result column="C_NAME" property="c_name"/>
+		<result column="C_INFO" property="c_info"/>
+		<result column="A_ID" property="a_id"/>
+		<result column="START_YEAR" property="start_year"/>
+		<result column="START_MONTH" property="start_month"/>
+		<result column="START_DAY" property="start_day"/>
+		<result column="END_YEAR" property="end_year"/>
+		<result column="END_MONTH" property="end_month"/>
+		<result column="END_DAY" property="end_day"/>
+		<result column="DISCOUNT" property="discount"/>
+	</resultMap>
+		
+	
+	<!-- 쿠폰 전체 조회 -->
+	<select id="Allcoupon" resultMap="coupons">
+		SELECT TRIM(C_NO) C_NO, C_IMAGE, C_NAME, C_INFO, START_YEAR, START_MONTH, START_DAY, END_YEAR, END_MONTH, END_DAY, DISCOUNT, TRIM(A_ID) A_ID
+		FROM COUPON
+		ORDER BY CAST(C_NO as decimal) DESC	
+	</select>
+	
+	<!-- 이벤트 검색
+	<select id="searchEvent" resultMap="events" parameterType="String">
+		SELECT TRIM(E_NO) E_NO, E_NAME, E_INFO, START_YEAR, START_MONTH, START_DAY, 
+			END_YEAR, END_MONTH, END_DAY, R_POSITION, R_IMAGE, R_FILE, TRIM(A_ID) A_ID
+		FROM EVENT
+		WHERE E_NAME LIKE '%'||#{ e_name }||'%'
+		ORDER BY CAST(E_NO as decimal) DESC
+	</select>
+	
+	이벤트 등록
+	<insert id="insertEvent" parameterType="kr.co.sist.admin.vo.EventVO">
+	  	INSERT INTO EVENT(E_NO, E_NAME, E_INFO, START_YEAR, START_MONTH, START_DAY, END_YEAR, END_MONTH, END_DAY, R_POSITION, R_IMAGE, R_FILE, A_ID) 
+	  	VALUES (seq_event.nextval, #{e_name}, #{e_info}, #{start_year}, #{start_month}, #{start_day}, #{end_year}, #{end_month}, #{end_day}, #{r_position}, #{r_image}, #{r_file}, #{a_id})
+	</insert>
+	
+	이벤트 삭제
+	  <delete id="removeEvent" parameterType="int">
+		DELETE
+		FROM EVENT
+		WHERE TRIM(E_NO)=#{ e_no }
+	  </delete>
+	  
+	  이벤트 글 읽기
+	<select id="readEvent" resultMap="events" parameterType="int">
+		SELECT TRIM(E_NO) E_NO, E_NAME, E_INFO, START_YEAR, START_MONTH, START_DAY, END_YEAR, END_MONTH, END_DAY, R_POSITION, R_IMAGE, R_FILE, TRIM(A_ID) A_ID
+		FROM EVENT
+		WHERE TRIM(E_NO)=#{ e_no }
+	</select> -->
+
+</mapper>

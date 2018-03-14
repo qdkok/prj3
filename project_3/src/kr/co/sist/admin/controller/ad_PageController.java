@@ -124,12 +124,17 @@ public class ad_PageController {
 		HklandAdminDAO ha_dao = HklandAdminDAO.getInstance();
 		try {
 			PrintWriter out = response.getWriter();
-			int cnt = ha_dao.removeNotice(Integer.parseInt(selID.trim()));
-			if(cnt == 1) {
-				out.println("<script>alert('공지사항 삭제완료'); location.href='mgr_notice.do';</script>");
+			if(selID != "") {
+				int cnt = ha_dao.removeNotice(Integer.parseInt(selID.trim()));
+				if(cnt == 1) {
+					out.println("<script>alert('공지사항 삭제완료'); location.href='mgr_notice.do';</script>");
+				}else {
+					out.println("<script>alert('공지사항 삭제실패'); history.back();</script>");
+				}
 			}else {
-				out.println("<script>alert('공지사항 삭제실패'); history.back();</script>");
+				out.println("<script>alert('삭제할 공지사항을 체크해주세요.'); location.href='mgr_notice.do';</script>");
 			}
+			
 			out.flush();
 			out.close();
 		} catch (NumberFormatException e) {
