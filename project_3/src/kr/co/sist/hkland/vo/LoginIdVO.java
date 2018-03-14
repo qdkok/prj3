@@ -1,12 +1,12 @@
 package kr.co.sist.hkland.vo;
 
-public class LoginId {
+public class LoginIdVO {
 	String id,pw;
 
-	public LoginId() {
+	public LoginIdVO() {
 	}
 
-	public LoginId(String id, String pw) {
+	public LoginIdVO(String id, String pw) {
 		this.id = id;
 		this.pw = pw;
 	}

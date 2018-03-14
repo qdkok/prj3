@@ -5,7 +5,7 @@
 <!-- Header with Background Image -->
     <div id="back-header">
 	    	<div align="center" id="logo-button">
-				<a href="#"><img src="http://localhost:8080/project_3/commons/images/HKlogo.png" width="300px;" onclick="#" /></a>
+				<a href="#"><img src="http://localhost:8080/project_3/commons/images/HKlogo.png" width="300px;" onclick="index.do" /></a>
 				<div>
 	 				<!-- <input type="button" value="HK랜드 소개" id="button">
 					<input type="button" value="이벤트" id="button" />

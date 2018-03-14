@@ -29,25 +29,15 @@
 	</style>
 
     <script type="text/javascript">
-     $(function(){
-    	var obj=document.frm;
-    	var logint_obj=document.login_frm;
-    	
-    	$("#login").click(function(){
-    		obj.action="login.do";
-    		obj.submit();
-    	});
-    	$("#join").click(function(){
-    		obj.action="join.do";
-    		obj.submit();
-    	});
-    	$("#searchID").click(function(){
-    		obj.action="searchId.do";
-    		obj.submit();
-    	});
-    	
-		    	
-    }); 
+	    function loginAccess(){
+	    	location.href='login.do';
+	    }
+	    function joinAccess(){
+	    	location.href='join_terms.do';
+	    }
+	    function searchIDAccess(){
+	    	location.href='searchId.do';
+	    }
     </script>
     
   </head>
@@ -71,9 +61,9 @@
 		<div id="test_center" style="max-width: 1300px; border: 3px dotted #EDEDED; margin: 0px auto;" >
 	  		<div style=" width: 250px; min-height: 800px; float: left; border: 1px dotted #EDEDED;">
 			    <form name="frm" method="post" id="frm">
-		  			<div><input type="button" class="button2" value="로그인" id="login"></div>
-		  			<div><input type="button" class="button2" value="회원가입" id="join"></div>
-		  			<div><input type="button" class="button2" value="ID/PASS 찾기" id="searchID"></div>
+		  			<div><input type="button" class="button2" value="로그인" onclick="loginAccess()"></div>
+		  			<div><input type="button" class="button2" value="회원가입" onclick="joinAccess()"></div>
+		  			<div><input type="button" class="button2" value="ID/PASS 찾기" onclick="searchIDAccess()"></div>
 			    </form>
 	  		</div>
 			<div style=" width: 100%;  height: 800px; border: 1px dotted #EDEDED;">

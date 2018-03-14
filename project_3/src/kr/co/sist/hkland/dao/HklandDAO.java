@@ -10,6 +10,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import kr.co.sist.hkland.vo.LoginIdVO;
+import kr.co.sist.hkland.vo.JoinVO;
+
 public class HklandDAO {
 	private static HklandDAO embd;
 	private static SqlSessionFactory ssf;
@@ -47,7 +50,7 @@ public class HklandDAO {
 
 		try {
 			ss = getSqlSessionFactory().openSession();
-			 id = ss.selectList("kr.co.sist.exam3.selAdim");
+			id = ss.selectList("kr.co.sist.exam3.selAdim");
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -60,7 +63,60 @@ public class HklandDAO {
 		return  id;
 	}// selectEname
 
-	public static void main(String[] args) {
+	
+	public String login(LoginIdVO li) throws IOException {
+		String name="";
+		SqlSession ss = null;
+		
+		try {
+			ss = getSqlSessionFactory().openSession();
+			name = ss.selectOne("kr.co.sist.exam3.login",li);
+
+		} finally {
+			if (ss != null) {
+				ss.close();
+			} // end if
+		} // end finally
+		
+		return name;
+	}
+	
+	public String idChk(String id) throws IOException {
+		String cnt=null;
+		SqlSession ss = null;
+		
+		try {
+			ss = getSqlSessionFactory().openSession();
+			cnt = ss.selectOne("kr.co.sist.exam3.idchk",id);
+			
+		} finally {
+			if (ss != null) {
+				ss.close();
+			} // end if
+		} // end finally
+		
+		return cnt;
+	}
+	
+	public int join(JoinVO mv) throws IOException {
+		int cnt=0;
+		SqlSession ss = null;
+		
+		try {
+			ss = getSqlSessionFactory().openSession();
+			cnt = ss.insert("kr.co.sist.exam3.insertMember",mv);
+			ss.commit();
+		} finally {
+			if (ss != null) {
+				ss.close();
+			} // end if
+		} // end finally
+		
+		return cnt;
+	}
+	
+	
+	/*public static void main(String[] args) {
 		HklandDAO dmbs=HklandDAO.getInstance();
 		try {
 			List<String> test=dmbs.selectEname();
@@ -72,6 +128,6 @@ public class HklandDAO {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
+	}*/
 
 }// class

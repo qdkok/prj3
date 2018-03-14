@@ -37,11 +37,12 @@
   <div id="wrap">
   
 	  		<!-- nav바 -->
+	  		
 	  		<c:import url="../../commons/menu/menu_nav.jsp"/>
 	  		<!-- 메뉴버튼바 -->
 	  		<c:import url="../../commons/menu/menu_btn.jsp"/>
   			<div class="line">
-			
+						
 	  		</div>
 	    <!-- Page Content -->
 	    <div class="main-img">
@@ -50,7 +51,6 @@
 	
 	<div class="line"></div>
     <div class="container">
-    
     <div class="row">
     	<div class=img_div align="center">
     		<a href="#"><img src="commons/images/img.PNG"  width="220px" height="200px" onclick=""/></a>

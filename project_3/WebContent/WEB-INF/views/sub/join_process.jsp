@@ -1,3 +1,4 @@
+<%@page import="kr.co.sist.hkland.dao.HklandDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -25,21 +26,17 @@
     <link href="commons/css/main.css" rel="stylesheet">
 	<style type="text/css">
 		.btn{background-color:#ededed;font-weight: bold;}
-		
+		.red{color: red;}
+		.title{font-weight: bold; font-size: 15px;}
+		table{/* border: 2px solid #ededed; */ min-width: 400px; }
+		.inputBox{width: 500px; height: 45px;}
+		.inputBox2{height: 45px;}
+		.box{background-color: #ededed;}
+		td{padding: 5px;}
 	</style>
-
     <script type="text/javascript">
-     $(function(){
-    	var obj=document.frm;
-    	var logint_obj=document.login_frm;
-    	  	
-    	$("#loginBtn").click(function(){
-    		logint_obj.action="login.do";
-    		logint_obj.submit();
-    	});
-    }); 
-     
-     function loginAccess(){
+		    	
+	   function loginAccess(){
 	    	location.href='login.do';
 	    }
 	    function joinAccess(){
@@ -49,18 +46,11 @@
 	    	location.href='searchId.do';
 	    }
     </script>
+    
   </head>
   <body>
   <div id="wrap">
-	<%
-		String name=(String)session.getAttribute("name");
-		if(!"".equals(name)&&name!=null){
-			out.print("<script>location.href='http://localhost:8080/project_3/index.do'</script>");
-		}else if("".equals(name)){
-			out.print("<script>alert('로그인에 실패하셨습니다.')</script>");
-			session.invalidate();
-		}
-	%>  
+  
   	<header>
 	  		<!-- nav바 -->
 	  		<c:import url="../../../commons/menu/menu_nav.jsp"/>
@@ -69,44 +59,31 @@
 	  		
   	</header>
     <!-- Page Content -->
+	
     <div class="contain" >
-    	<div id="test_top" style="max-width: 1300px; border: 3px dotted #EDEDED; margin: 0px auto;" >
-	  		<div style=" border: 1px dotted #EDEDED;width: 250px; height: 150px; float: left; font-size: 25px; padding: 50px">로그인</div>
-			<div style=" width: 100%;  height: 150px; border: 1px dotted #EDEDED;"></div>
+    	<div id="test_top" style="max-width: 1300px;  margin: 0px auto;" >
+	  		<div style=" width: 250px; height: 150px; float: left; font-size: 25px; padding: 50px; background-color: #cd493c; color: #fff ">회원가입</div>
+			<div style=" width: 100%;  height: 150px; background-color: #cd493c;"></div>
 		</div>
-		<div id="test_center" style="max-width: 1300px; border: 3px dotted #EDEDED; margin: 0px auto;" >
-	  		<div style=" width: 250px; min-height: 800px; float: left; border: 1px dotted #EDEDED;">
+		<div id="test_center" style="max-width: 1300px; margin: 0px auto;" >
+	  		<div style=" width: 250px; min-height: 800px; float: left; ">
 			    <form name="frm" method="post" id="frm">
 		  			<div><input type="button" class="button2" value="로그인" onclick="loginAccess()"></div>
 		  			<div><input type="button" class="button2" value="회원가입" onclick="joinAccess()"></div>
 		  			<div><input type="button" class="button2" value="ID/PASS 찾기" onclick="searchIDAccess()"></div>
 			    </form>
 	  		</div>
-			<div style=" width: 100%;  height: 800px; border: 1px dotted #EDEDED;">
-				<form name="login_frm" method="post">
-					<table style="margin: 0px auto; border: 2px solid #ededed; margin-top: 50px; padding: 10px;">
-						<tr>
-							<td colspan="3" style="text-align: center; font-size: 30px; font-weight: bold;">
-								<img src="http://localhost:8080/project_3/commons/images/HKlogo.png" width="250px;" onclick="#" />
-							</td>
-						</tr>
-						<tr>
-							<td style="text-align: center;" width="80px;">ID</td>
-							<td colspan="2"><input type="text" name="id"  style="width:200px;"/></td>
-						</tr>
-						<tr>
-							<td style="text-align: center;" >PW</td>
-							<td colspan="2"><input type="password" name="pw"  style="width:200px;"/></td>
-						</tr>
-						<tr>
-							<td colspan="3" style="text-align: center; margin-top: 15px;">
-								<input type="button" class="btn" value="로그인" id="loginBtn"/>
-								<input type="button" class="btn" value="회원가입" onclick="location.replace('join_terms.do')"/>
-								<input type="button" class="btn" value="ID/PW 찾기" onclick="location.replace('searchId.do')"/>
-							</td>
-						</tr>
-					</table>
-				</form>
+			<div style=" width: 100%;  height: 800px; " align="center" >
+					<c:choose>
+						<c:when test="${join_flag}">
+							회원가입을 축하드립니다.
+							<input type="button" value="로그인" onclick="loginAccess()"/>
+						</c:when>
+						<c:otherwise>
+							회원가입중 문제가 발생했습니다 잠시 후 다시 시도해 주세요
+							<input type="button" value="돌아가기" onclick="history.back()"/>
+						</c:otherwise>
+					</c:choose>
 			</div>
 		</div>
     </div>	
