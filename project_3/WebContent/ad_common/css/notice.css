@@ -14,4 +14,6 @@
 #btnBox1 { margin:0px; padding:0px; width:1000px;}
 #listBtn{ float:left; }
 #resetBtn, #writeBtn{ float:right; margin-left:5px; }
-#writeTable .inputBox { width:850px;}
+/* #writeTable .inputBox { width:285px; } */
+#titleInput { width:800px; border-color: #c9c9c9;}
+

@@ -50,14 +50,13 @@
 	</resultMap>
 	
 	<select id="selMember"  resultMap="memberT">
-	
-		SELECT M_ID,M_NAME,GENDER,to_char(BIRTH,'yyyy-mm-dd') BIRTH,EMAIL,PHONE,to_char(M_INPUTDATE,'yyyy-mm-dd') INPUTDATE
+		SELECT M_ID,M_NAME,GENDER,BIRTH,EMAIL,PHONE,to_char(M_INPUTDATE,'yyyy-mm-dd') INPUTDATE
 		FROM MEMBER
 		ORDER BY INPUTDATE DESC
 	</select>
 	
 	<select id="searchMember"  resultMap="memberT" parameterType="String">
-		SELECT M_ID,M_NAME,GENDER,to_char(BIRTH,'yyyy-mm-dd') BIRTH,EMAIL,PHONE,to_char(M_INPUTDATE,'yyyy-mm-dd') INPUTDATE
+		SELECT M_ID,M_NAME,GENDER,BIRTH,EMAIL,PHONE,to_char(M_INPUTDATE,'yyyy-mm-dd') INPUTDATE
 		FROM MEMBER
 		WHERE M_ID like '%'||#{id}||'%'
 		ORDER BY INPUTDATE DESC

@@ -21,12 +21,6 @@
 			obj.submit();
 		}//end search
 		
-		function key(e){
-			if(e.keyCode==13){
-				search();
-			}//end if
-		}//end key
-		
 		function noticeWrite(){
 			location.href="mgrNotice_writeFrm.do";
 		}//noticeWrite
@@ -45,7 +39,7 @@
 <body>
 <div id="wrap">
 	<div id="header">
-		<span id="main_title"><a href="ad_index.do">HK LAND 관리자 페이지</a></span>
+		<span id="main_title"><a href="ad_home.do">HK LAND 관리자 페이지</a></span>
 	</div>
 	<div id="container">
 		<!-- LeftArea -->
@@ -72,6 +66,7 @@
 						<td width="115px">작성일</td>
 						</tr>
 					</thead>
+					<tbody>
 					<c:if test="${ empty AllNoticeList }">
 						<tr>
 							<td colspan="6">${ param.searchBox }이 포함된 제목은 없습니다.</td>
@@ -80,8 +75,7 @@
 					<c:set var="cnt" value="${ AllNoticeList.size() +1 }"/>
 				<c:forEach var="AllNoticeList" items="${ AllNoticeList }">
 					<c:set var="cnt" value="${cnt-1}"/>
-					<tbody>
-						<tr class="cnt${AllNoticeList.n_no}">
+						<tr>
 							<td>
 								<input type="radio" name="notice_radio" onchange="chk('${AllNoticeList.n_no}')"/>
 							</td>
@@ -92,8 +86,8 @@
 							<td>${ AllNoticeList.a_id }</td>
 							<td>${ AllNoticeList.n_inputdate }</td>
 						</tr>
-					</tbody>
 				</c:forEach>
+					</tbody>
 				</table>
 				</div>
 				</c:catch>

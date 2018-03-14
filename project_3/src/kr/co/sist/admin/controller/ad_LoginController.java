@@ -39,7 +39,7 @@ public class ad_LoginController {
 				session.setAttribute("a_name", name);
 				out.println("<script>location.href='ad_home.do';</script>");
 			}else {
-				out.println("<script>alert('로그인 정보를 확인해주세요!'); history.back(); </script>");
+				out.println("<script>alert('로그인 정보를 다시 확인해주세요!!'); history.back(); </script>");
 			}
 			out.flush();
 			out.close();

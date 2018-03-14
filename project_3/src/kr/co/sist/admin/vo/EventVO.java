@@ -135,5 +135,5 @@ public class EventVO {
 				+ ", start_month=" + start_month + ", start_day=" + start_day + ", end_year=" + end_year
 				+ ", end_month=" + end_month + ", end_day=" + end_day + "]";
 	}
-	
+
 }

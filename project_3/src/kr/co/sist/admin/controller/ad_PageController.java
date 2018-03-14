@@ -47,6 +47,8 @@ public class ad_PageController {
 			model.addAttribute("AllNoticeList", AllNoticeList);
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 		
 		return "/ad_content/ad_mgrNotice";
