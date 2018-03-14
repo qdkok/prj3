@@ -77,6 +77,10 @@
     	$("#img").attr("src","commons/images/"+types[type][sec]);
     }
     
+    function map(){
+    	window.open("map.do","child","width=800, height=750, top="+(window.screenY+120)+",left="+(window.screenX+220));
+    }
+    
     </script>
     
   <style>
@@ -139,6 +143,7 @@
 			    	<input type="button" value="1" id="info1" onclick="chgImg(0,0)"/>
 			    	<input type="button" value="2" id="info2" onclick="chgImg(0,1)"/>
 			    	<input type="button" value="3" id="info3" onclick="chgImg(0,2)"/>
+			    	<input type="button" value="지도로 보기" style="margin-left: 400px" onclick="map()"/>
 			    	
 			    	<p style="padding-top: 50px">
 						<strong>전화번호<br/></strong>
