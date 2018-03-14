@@ -273,7 +273,7 @@
 							</tr>		
 							<tr>
 								<td align="center" style="font-weight: bold;">
-									<input type="radio" name="gender" value="m" checked="checked"/>MEN
+									<input type="radio" name="gender" value="m" checked/>MEN
 									<input type="radio" name="gender" value="g" />GIRL
 								</td>
 							</tr>

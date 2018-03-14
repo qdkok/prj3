@@ -86,4 +86,12 @@ public class MainController {
 	public String searchId() {
 		return "sub/searchId";
 	}
+	@RequestMapping(value="/sub_menu_ticket_value.do", method= {RequestMethod.POST, RequestMethod.GET})
+	public String ticket() {
+		return "sub/sub_menu_ticket_value";
+	}
+	@RequestMapping(value="/sub_menu_ticket_reservation.do", method= {RequestMethod.POST, RequestMethod.GET})
+	public String ticketDetail() {
+		return "sub/sub_menu_ticket_reservation";
+	}
 }

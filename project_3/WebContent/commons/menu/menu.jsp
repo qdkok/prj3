@@ -22,7 +22,7 @@
 						        </li>
 						        <li class="hongki" ><a href="#void" style="font-size: 20px; margin-top: 25px">온라인예매</a>
 						        	<ul>
-						        		<li><a href="#void">이용권예매</a>
+						        		<li><a href="sub_menu_ticket_value.do">이용권예매</a>
 						        		<li><a href="#void">예매내역확인</a>
 						        	</ul>
 						        </li>

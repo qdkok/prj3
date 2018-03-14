@@ -54,19 +54,19 @@
     <!-- Page Content -->
 	
     <div class="contain" >
-    	<div id="test_top" style="max-width: 1300px; border: 3px dotted #EDEDED; margin: 0px auto;" >
-	  		<div style=" border: 1px dotted #EDEDED;width: 250px; height: 150px; float: left; font-size: 25px; padding: 50px">ID/PW 찾기</div>
-			<div style=" width: 100%;  height: 150px; border: 1px dotted #EDEDED;"></div>
+    	<div id="test_top" style="max-width: 1300px; margin: 0px auto;" >
+	  		<div style="background-color: #cd493c; width: 250px; height: 150px; float: left; font-size: 25px; padding: 50px; color: #fff">ID/PW 찾기</div>
+			<div style="background-color: #cd493c; width: 100%;  height: 150px; "></div>
 		</div>
-		<div id="test_center" style="max-width: 1300px; border: 3px dotted #EDEDED; margin: 0px auto;" >
-	  		<div style=" width: 250px; min-height: 800px; float: left; border: 1px dotted #EDEDED;">
+		<div id="test_center" style="max-width: 1300px;  margin: 0px auto;" >
+	  		<div style=" width: 250px; min-height: 800px; float: left; ">
 			    <form name="frm" method="post" id="frm">
 		  			<div><input type="button" class="button2" value="로그인" onclick="loginAccess()"></div>
 		  			<div><input type="button" class="button2" value="회원가입" onclick="joinAccess()"></div>
 		  			<div><input type="button" class="button2" value="ID/PASS 찾기" onclick="searchIDAccess()"></div>
 			    </form>
 	  		</div>
-			<div style=" width: 100%;  height: 800px; border: 1px dotted #EDEDED;">
+			<div style=" width: 100%;  height: 800px; ">
 				<form name="login_frm" method="post">
 					<table style="margin: 0px auto; border: 2px solid #ededed; margin-top: 50px; padding: 10px;">
 						<tr>

@@ -83,19 +83,19 @@
 	
    
     <div class="contain" >
-    	<div id="test_top" style="max-width: 1300px; border: 3px dotted #EDEDED; margin: 0px auto;" >
-	  		<div style=" border: 1px dotted #EDEDED;width: 250px; height: 150px; float: left; font-size: 25px; padding: 50px">HK랜드 소개</div>
-			<div style=" width: 100%;  height: 150px; border: 1px dotted #EDEDED;">공백</div>
+    	<div id="test_top" style="max-width: 1300px;  margin: 0px auto;" >
+	  		<div style=" background-color: #cd493c; width: 250px; height: 150px; float: left; font-size: 25px; padding: 50px; color: #fff">HK랜드 소개</div>
+			<div style=" width: 100%;  height: 150px; background-color: #cd493c;"></div>
 		</div>
-		<div id="test_center" style="max-width: 1300px; border: 3px dotted #EDEDED; margin: 0px auto;" >
-	  		<div style=" width: 250px; min-height: 800px; float: left; border: 1px dotted #EDEDED;">
+		<div id="test_center" style="max-width: 1300px;  margin: 0px auto;" >
+	  		<div style=" width: 250px; min-height: 800px; float: left; ">
 			    <form name="frm" method="post" id="frm">
 		  			<div><input type="button" class="button2" value="랜드소개" id="intro"></div>
 		  			<div><input type="button" class="button2" value="놀이기구" id="roller"></div>
 		  			<div><input type="button" class="button2" value="랜드정보" id="info"></div>
 			    </form>
 	  		</div>
-			<div style=" width: 100%;  height: 800px; border: 1px dotted #EDEDED;">
+			<div style=" width: 100%;  height: 800px; ">
 				<div style="font-size: 30px; padding-left: 600px;" >환상의 나라 HK 랜드로<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;당신을 초대합니다!</div>
 				<div style="padding-left: 300px">
 				<hr width="800px">
