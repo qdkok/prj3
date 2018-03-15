@@ -64,13 +64,14 @@ if(session.getAttribute("delvoucher")!=null&&!"".equals(session.getAttribute("de
 	</script>
 <!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="http://localhost:8080/project_3/ad_common/css/main.css"/>
+	<link rel="stylesheet" type="text/css" href="http://localhost:8080/project_3/ad_common/css/voucher.css"/>
 <!-- Title -->
 	<title>HK LAND에 오신걸 환영합니다!</title>
 </head>
 <body>
 <div id="wrap">
 	<div id="header">
-		<span id="main_title"><a href="ad_index.do">HK LAND 관리자 페이지</a></span>
+		<span id="main_title"><a href="ad_home.do">HK LAND 관리자 페이지</a></span>
 	</div>
 	<div id="container">
 		<!-- LeftArea -->
@@ -83,50 +84,66 @@ if(session.getAttribute("delvoucher")!=null&&!"".equals(session.getAttribute("de
 				<div id="r_content_title">
 					<h2>이용권관리<small><span style="font-size: 15px;">HK Land 이용권 목록</span></small></h2>
 				</div>
-				<div id="r_content_view" style="width: 1000px; height: 600px; overflow: scroll; ">
-					<div style=" margin-left: 100px; overflow: auto;">
-						<div style="margin-left: 550px;margin-bottom: 10px;" >
-							<form name="frm" method="get">
-								<input type="hidden" name="selVoucher" />
-								<input type="button" value="이용권 등록" onclick="insert_Voucher()"/>
-								<input type="button" value="수정" onclick="update_Voucher()"/>
-								<input type="button" value="삭제" onclick="delVoucher()"/>
-							</form>
-						</div>
-						<table class="table table-striped table-bordered" style="width: 750px;">
-							<c:forEach var="vou"  items="${voucher}">
-							
+				<div id="r_content_view">
+					<c:catch var="e">
+			<div id="mainContent">
+				<table class="table table-striped table-bordered">
+							<thead>
+								<tr>
+									<td>No</td>
+									<td>이용권 이미지</td>
+									<td>이용권 정보</td>
+								</tr>
+							</thead>
+				<c:forEach var="vou"  items="${voucher}">
 							<tr>
-								<td class="c_t">
+								<td class="c_t" style="vertical-align: middle;">
 									<input type="radio" name="voucher"  onclick="chkVoucher('${vou.u_no}')" />
 								</td>
 								<td class="c_t" style="width: 250px;">
 									<img src="http://localhost:8080/project_3/uplioad/voucher/${vou.u_image}" style="width: 200px;height: 200px;"/>
 								</td>
-								<td style="width: 500px;">
-									<table class="intro_table">
+								<td style="vertical-align: middle; width: 867px;">
+									<table class="intro_table" style="margin-left: 215px;">
 										<tr>
-											<td width="150px;">이용권 명 </td>
+											<td width="150px;">이용권 명 :</td>
 											<td>${vou.u_name}</td>
 										</tr>
 										<tr>
-											<td>가격정보 </td>
+											<td>가격정보 : </td>
 											<td>${vou.price} 원</td>
 										</tr>
 										<tr>
-											<td>쿠폰할인 </td>
+											<td>쿠폰할인 : </td>
 											<td>${vou.sale_flag}</td>
 										</tr>
 										<tr>
-											<td>판매 일자 </td>
+											<td>판매 일자 : </td>
 											<td>${vou.start_year}년${vou.start_month}월${vou.start_day}일~${vou.end_year}년-${vou.end_month}월-${vou.end_day}일</td>
 										</tr>
 									</table>
 								</td>
 							</tr>
 							</c:forEach>
-						</table>
-					</div>
+							</table>
+				</div>
+				</c:catch>
+				
+				<c:if test="${ e ne null }">
+					${ e }
+					페이지 로딩 중 문제가 발생했습니다. 다시 시도해 주세요.
+				</c:if>
+				</div>
+				<div style="margin-bottom: 10px;">
+					<form name="frm" method="get">
+						<input type="hidden" name="selID" id="selID"/>
+						<div id="btnBox">
+								<input type="hidden" name="selVoucher" />
+								<input type="button" value="이용권 등록" onclick="insert_Voucher()"/>
+								<input type="button" value="수정" onclick="update_Voucher()"/>
+								<input type="button" value="삭제" onclick="delVoucher()"/>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div><!-- rightArea End -->

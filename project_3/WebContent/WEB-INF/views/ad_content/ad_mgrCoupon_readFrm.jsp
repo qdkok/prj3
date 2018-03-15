@@ -91,7 +91,7 @@ function formchk(obj){
 		<div id="rightArea">
 			<div id="r_content">
 				<div id="r_content_title">
-					<h2>이벤트관리<small><span style="font-size: 15px;">등록된 이벤트 목록 확인</span></small></h2>
+					<h2>쿠폰관리<small><span style="font-size: 15px;">할인쿠폰 목록</span></small></h2>
 				</div>
 				<div id="r_content_view">
 					<div id="mainContent">

@@ -41,15 +41,11 @@
 			}
 		}
 		
-		function statusChg(num){
-				/* var status_o = $("[name=statSelBox_o]").val();
-				var status_x = $("[name=statSelBox_x]").val();
-				 */
-			if(num==1){
-				alert($("[name=statSelBox_o]").val());
-			}else{
-				alert($("[name=statSelBox_x]").val());
-			}
+		function statusChg(flag,l_no){
+			document.getElementById("l_no").value = l_no;
+			document.getElementById("l_result").value = flag=='x'?'o':flag;
+			
+			document.frm.submit();
 		}
 	</script>
 <!-- CSS -->
@@ -113,23 +109,12 @@
 								<c:if test="${ 'o' eq AllLostList.l_result}">
 									방문수령
 								</c:if>
-								<c:if test="${ 'X' eq AllLostList.l_result}">
+								<c:if test="${ 'x' eq AllLostList.l_result}">
 									보관중
 								</c:if>
 							</td>
 							<td>
-								<c:if test="${ 'o' eq AllLostList.l_result}">
-									<select name="statSelBox_o">
-										<option value="X">보관중</option>
-									</select>
-									<input type="button" name="chgStatus" value="상태변경" onclick="statusChg(1)">
-								</c:if>
-								<c:if test="${ 'X' eq AllLostList.l_result}">
-									<select name="statSelBox_x">
-										<option value="O">방문수령</option>
-									</select>
-									<input type="button" name="chgStatus" value="상태변경" onclick="statusChg(2)">
-								</c:if>
+									<input type="button" name="chgStatus" value="상태변경" onclick="statusChg('${AllLostList.l_result}',${AllLostList.l_no})">
 							</td>
 							<td>${ AllLostList.a_id }</td>
 						</tr>
@@ -147,6 +132,8 @@
 				<div style="margin-bottom: 10px;">
 					<form action="mgr_lostArticle.do" method="get" name="frm">
 					<input type="hidden" name="selID" id="selID"/>
+					<input type="hidden" name="l_no" id="l_no"/>
+					<input type="hidden" name="l_result" id="l_result"/>
 						<div id="btnBox">
 							<input type="hidden" name="cmd" value="w">
 							<input type="text" name="searchBox" id="searchBox" class="inputBox" placeholder="제목검색" style="width: 200px;"/>

@@ -2,9 +2,9 @@
 
 /* ad_mgrNotice.jsp */
 #mainContent { width:1150px; height: 532px; border-top:1px solid #333; border-bottom: 1px solid #333; overflow: auto; }
-#noticeList { text-align: center; }
+#customerList { text-align: center; }
 #btnBox { float: right; margin-top: 15px; }
-#allNoteList { margin-right:300px; }
+#allNoteList { margin-right:420px; }
 
 /* ad_mgrNotice_writeFrm.jsp */
 #noteFrm{ height: 532px;  }

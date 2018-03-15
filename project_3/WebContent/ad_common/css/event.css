@@ -1,10 +1,10 @@
 @charset "UTF-8";
 
 /* ad_mgrNotice.jsp */
-#mainContent { width:1000px; height: 532px; border-top:1px solid #333; border-bottom: 1px solid #333;}
+#mainContent { width:1150px; height: 532px; border-top:1px solid #333; border-bottom: 1px solid #333; overflow: auto;}
 #eventList { text-align: center; }
 #btnBox { float: right; margin-top: 15px; }
-#allEventList { margin-right:245px; }
+#allEventList { margin-right:300px; }
 
 /* ad_mgrNotice_writeFrm.jsp */
 #noteFrm{ height: 532px; }

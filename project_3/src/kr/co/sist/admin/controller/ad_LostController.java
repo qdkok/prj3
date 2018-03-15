@@ -20,6 +20,7 @@ import kr.co.sist.admin.service.CouponService;
 import kr.co.sist.admin.service.LostService;
 import kr.co.sist.admin.vo.CouponVO;
 import kr.co.sist.admin.vo.LostVO;
+import kr.co.sist.admin.vo.modifyLostVO;
 
 @Controller
 public class ad_LostController {
@@ -28,9 +29,13 @@ public class ad_LostController {
 	
 	//분실물 관리
 	@RequestMapping(value="mgr_lostArticle.do",method=GET)
-	public String mgr_lostArticle(Model model, String searchBox) {
+	public String mgr_lostArticle(Model model, String searchBox, String l_result, modifyLostVO mlv) {
 		
 		List<LostDomain> AllLostList = null;
+		
+		if( l_result != null ) {
+			a_service.updateLost(mlv);
+		}
 		
 		if(searchBox == null) {
 			AllLostList = a_service.selectAllLost();
@@ -93,6 +98,15 @@ public class ad_LostController {
 		return "/ad_content/ad_mgrLostArticle";
 	}//include
 
+	
+//	mgr_lostArticle
+	
+	
+	
+	
+	
+	
+	
 //	/*이벤트 읽기 페이지*/
 //	@RequestMapping(value="mgrCoupon_readFrm.do",method=GET)
 //	public String mgrCoupon_readFrm(Model model, String CouponNo){

@@ -67,7 +67,7 @@
 						<table id="writeTable">
 							<tr> 
 								<td>작성자</td>
-									<td>${ readNotice.a_id }</td>
+								<td>${ readNotice.a_id }</td>
 							</tr>
 							<tr>
 								<td>제목</td>

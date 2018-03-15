@@ -11,9 +11,11 @@ import kr.co.sist.admin.domain.CouponDomain;
 import kr.co.sist.admin.domain.EventDomain;
 import kr.co.sist.admin.domain.LostDomain;
 import kr.co.sist.admin.domain.TicketDomain;
+import kr.co.sist.admin.vo.ClientVO;
 import kr.co.sist.admin.vo.CouponVO;
 import kr.co.sist.admin.vo.EventVO;
 import kr.co.sist.admin.vo.LostVO;
+import kr.co.sist.admin.vo.modifyLostVO;
 
 @Component
 public class LostService {
@@ -68,6 +70,18 @@ public class LostService {
 		}
 		return cnt;
 	}//removeLost
+	
+
+	/*분실물 상태변경*/
+	public int updateLost(modifyLostVO mlv) {
+		int cnt = 0;
+		try {
+			cnt = hk_dao.updateLost(mlv);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}//updateLost
 	
 //	/*이벤트 읽기*/
 //	public CouponDomain readCoupon(int c_no) {

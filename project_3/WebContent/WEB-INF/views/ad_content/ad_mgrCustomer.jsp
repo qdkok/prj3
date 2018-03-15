@@ -18,6 +18,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="http://localhost:8080/project_3/ad_common/css/main.css"/>
+	<link rel="stylesheet" type="text/css" href="http://localhost:8080/project_3/ad_common/css/customer.css"/>
 <!-- JS -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	<script type="text/javascript" >
@@ -75,17 +76,9 @@
 					<h2>회원관리<small><span style="font-size: 15px;">가입된 회원의 정보 목록</span></small></h2>
 				</div>
 				<div id="r_content_view">
-					<div>
-						<form action="mgr_customer.do" method="get"  name="frm">
-							<input type="hidden" name="selID" />
-							<div style="float: right; margin: 10px;">
-								<input type="text" name="searchID"/>
-								<input type="button" onclick="searchId()" onkeydown="return Key(event)" value="검색"/>
-							</div>
-						</form>
-					</div>
-						<div style="overflow:scroll; width: 1200px;">
-						<table id="test" class="table table-striped table-bordered">
+				<c:catch var="e">
+					<div id="mainContent">
+						<table id="eventList" class="table table-striped table-bordered">
 						 	<thead>
 						 		<tr>
 							 		<td>선택</td>
@@ -145,9 +138,22 @@
 						 	</tbody>
 						</table>
 						</div>
+				</c:catch>
+				
+				<c:if test="${ e ne null }">
+					${e }
+					페이지 로딩 중 문제가 발생했습니다. 다시 시도해 주세요.
+				</c:if>
 				</div>
-				<div style="float: right;">
-					<input type="button" value="회원 강제탈퇴" onclick="delMember()">
+				<div style="margin-bottom: 10px;">
+					<form action="mgr_customer.do" method="get"  name="frm">
+							<input type="hidden" name="selID" />
+							<div id="btnBox">
+								<input type="text" name="searchID" placeholder="아이디 검색"/>
+								<input type="button" id="allNoteList" onclick="searchId()" onkeydown="return Key(event)" value="검색" />
+								<input type="button" value="회원 강제탈퇴" onclick="delMember()">
+							</div>
+						</form>
 				</div>
 			</div>
 		</div><!-- rightArea End -->

@@ -20,9 +20,12 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-	
+	<context:annotation-config/>
 	<context:component-scan base-package="kr.co.sist" />
-	<context:component-scan base-package="kr.co.sist.admin" />
+	<context:component-scan base-package="kr.co.sist.admin.dao.*" />
+	<context:component-scan base-package="kr.co.sist.admin.dao" />
+	<context:component-scan base-package="kr.co.sist.admin.service.*" />
+	<context:component-scan base-package="kr.co.sist.admin.service" />
 	
 	
 	

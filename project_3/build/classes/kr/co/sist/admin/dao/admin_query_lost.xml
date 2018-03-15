@@ -46,6 +46,12 @@
 		WHERE TRIM(L_NO)=#{ l_no }
 	  </delete>
 	  
+	  <!-- 분실물 상태변경 -->
+	  <update id="modifyLost" parameterType="kr.co.sist.admin.vo.modifyLostVO">
+		UPDATE LOST
+		SET L_RESULT=#{l_result}
+		WHERE TRIM(L_NO)=#{l_no}
+	  </update>
 	 <!--쿠폰 글 읽기
 	<select id="readCoupon" resultMap="coupons" parameterType="int">
 		SELECT TRIM(C_NO) C_NO, C_IMAGE, C_NAME, C_INFO, START_YEAR, START_MONTH, START_DAY, END_YEAR, END_MONTH, END_DAY, DISCOUNT, TRIM(A_ID) A_ID

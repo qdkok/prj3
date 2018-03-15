@@ -27,6 +27,7 @@ import kr.co.sist.admin.vo.UtilizeUpdateVO;
 import kr.co.sist.admin.vo.UtilizeVO;
 import kr.co.sist.admin.vo.ad_LoginVO;
 import kr.co.sist.admin.vo.ad_NoticeVO;
+import kr.co.sist.admin.vo.modifyLostVO;
 
 public class HklandAdminDAO {
 	private static HklandAdminDAO embd;
@@ -643,6 +644,24 @@ public class HklandAdminDAO {
 		
 		return cnt;
 	}//removeLost
+	
+	/*분실물 상태변경 답변*/
+	public int updateLost(modifyLostVO mlv) throws IOException {
+		SqlSession ss=null;
+		int cnt = 0;
+		try {
+			ss=getSqlSessionFactory().openSession();
+			//추가 
+			cnt = ss.update("kr.co.sist.admin5.modifyLost", mlv);
+			if(cnt == 1) {
+				ss.commit();
+			}
+		}finally {
+			if(ss != null ) { ss.close(); }//end if
+		}//end finally
+		
+		return cnt;
+	}//updateLost
 	
 //	/*쿠폰 글 읽기*/
 //	public CouponDomain readCoupon(int c_no) throws IOException {
