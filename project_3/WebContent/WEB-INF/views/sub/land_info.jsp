@@ -121,9 +121,8 @@
 		  			<div><input type="button" class="button2" value="랜드정보" id="info"></div>
 			    </form>
 	  		</div>
-			<div style=" width: 100%;  height: 800px; ">
-			<div style=" height: 800px; padding-left: 300px ; ">
-				
+			<div style=" width: 100%;  height: 1000px; ">
+			<div style=" height: 800px; padding-left: 300px ; padding-top: 50px; ">
 				
 				<div id="tabs">
 			  <ul>

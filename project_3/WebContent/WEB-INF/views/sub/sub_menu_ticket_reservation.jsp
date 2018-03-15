@@ -47,6 +47,13 @@
     		}
     		
     	}
+    	
+    	function reservation(){
+	    	location.href='sub_menu_ticket_value.do';
+	    }
+	    function reservation_process(){
+	    	location.href='reservation_process.do';
+	    }
     </script>
     
     <!-- CDN -->    
@@ -80,8 +87,8 @@
 		<div id="test_center" style="max-width: 1300px;  margin: 0px auto;" >
 	  		<div style=" width: 250px; min-height: 800px; float: left; ">
 			    <form name="frm" method="post" id="frm">
-		  			<div><input type="button" class="button2" value="온라인 예매" onclick="loginAccess()"></div>
-		  			<div><input type="button" class="button2" value="예매내역 확인" onclick="joinAccess()"></div>
+		  			<div><input type="button" class="button2" value="온라인 예매" onclick="reservation()"></div>
+		  			<div><input type="button" class="button2" value="예매내역 확인" onclick="reservation_process()"></div>
 			    </form>
 	  		</div>
 			<div class="ticket_value" style=" width: 100%;  min-height: 700px; ">

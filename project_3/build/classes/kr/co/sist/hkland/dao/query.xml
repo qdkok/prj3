@@ -21,6 +21,15 @@
 		<result column="U_IMAGE" property="u_image"/>
 	</resultMap>
 	
+	<resultMap type="kr.co.sist.hkland.domain.ReservationDomain" id="showReservationDomain">
+		<result column="U_IMAGE" property="u_image"/>
+		<result column="U_NAME" property="u_name"/>
+		<result column="PRICE" property="price"/>
+		<result column="COUNT" property="count"/>
+		<result column="INPUT_DATE" property="input_date"/>
+		<result column="R_NO" property="r_no"/>
+	</resultMap>
+	
 	
 	<!-- procedure 호출 : select -->
 	<select id="selAdim"  resultType="String">
@@ -58,4 +67,11 @@
 		insert into reservation(R_NO, M_ID, COUNT, R_YEAR, R_MONTH, R_DAY, U_NO, T_NO, C_NO)
 		values(r_num,#{id},#{count},to_char(sysdate,'yyyy'),to_char(sysdate,'mm'),to_char(sysdate,'dd'),#{u_no},(select t_no from utilize where u_no=#{u_no}),'')
 	</insert>
+	
+	<select id="showReservationOne" resultMap="showReservationDomain" parameterType="String">
+		SELECT u.u_image,u.u_name,u.price,r.count,(r_year||'-'||r_month||'-'||r_day) input_date,r.r_no	
+		FROM reservation r, utilize u
+		WHERE (r.u_no=u.u_no) and r.m_id=#{id} order by input_date desc
+	</select>
+	
 </mapper>

@@ -25,7 +25,7 @@
     <link href="commons/css/main.css" rel="stylesheet">
 	<style type="text/css">
 		.btn{background-color:#ededed;font-weight: bold;}
-		
+		.tt tr td{border: 15px solid #fff; }
 	</style>
 
     <script type="text/javascript">
@@ -82,10 +82,10 @@
 		  			<div><input type="button" class="button2" value="ID/PASS 찾기" onclick="searchIDAccess()"></div>
 			    </form>
 	  		</div>
-			<div style=" width: 100%;  height: 800px; ">
+			<div style=" width: 100%;  height: 800px; padding-top: 50px;">
 				<form name="login_frm" method="post">
-					<table style="margin: 0px auto; border: 2px solid #ededed; margin-top: 50px; padding: 10px;">
-						<tr>
+					<table class="tt" style="margin: 0px auto; border: 2px solid #ededed;">
+						<tr >
 							<td colspan="3" style="text-align: center; font-size: 30px; font-weight: bold;">
 								<img src="http://localhost:8080/project_3/commons/images/HKlogo.png" width="250px;" onclick="#" />
 							</td>

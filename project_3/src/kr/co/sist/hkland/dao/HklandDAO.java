@@ -12,6 +12,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kr.co.sist.hkland.vo.LoginIdVO;
 import kr.co.sist.hkland.vo.ReservationVO;
+import kr.co.sist.hkland.domain.ReservationDomain;
 import kr.co.sist.hkland.domain.UtilizeDomain;
 import kr.co.sist.hkland.vo.JoinVO;
 
@@ -166,4 +167,20 @@ public class HklandDAO {
 		return cnt;
 	}
 
+	public List<ReservationDomain> resultReservation(String id) throws IOException {
+		List<ReservationDomain> list=null;
+		SqlSession ss = null;
+		
+		try {
+			ss = getSqlSessionFactory().openSession();
+			list = ss.selectList("kr.co.sist.exam3.showReservationOne",id);
+		} finally {
+			if (ss != null) {
+				ss.close();
+			} // end if
+		} // end finally
+		
+		return list;
+	}
+	
 }// class

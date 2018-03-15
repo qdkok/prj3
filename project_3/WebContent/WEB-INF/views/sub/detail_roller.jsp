@@ -92,7 +92,7 @@
 			    </form>
 	  		</div>
 			<div style=" width: 100%;  height: 800px; ">
-				<div style="border: 1px sold #333">
+				<div style="border: 1px sold #333; padding-top: 50px;">
 				<hr/>
 				
 				

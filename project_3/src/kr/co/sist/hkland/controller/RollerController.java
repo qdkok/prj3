@@ -1,7 +1,5 @@
 package kr.co.sist.hkland.controller;
 
-import java.util.List;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,4 +18,15 @@ public class RollerController {
 		model.addAttribute("details",rd);
 		return "sub/detail_roller";
 	}
+	
+	@RequestMapping(value="/preference_coupon.do", method= {RequestMethod.POST, RequestMethod.GET})
+	   public String preference() {
+	      return "sub/preference_coupon";
+	   }
+	   
+	   @RequestMapping(value="/coupon_download.do", method= {RequestMethod.POST, RequestMethod.GET})
+	   public String coupon() {
+	      return "sub/coupon_download";
+	   }
+	
 }

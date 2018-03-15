@@ -37,6 +37,13 @@
     		
     		document.ticketFrm.submit();
     	}
+    	
+    	function reservation(){
+	    	location.href='sub_menu_ticket_value.do';
+	    }
+	    function reservation_process(){
+	    	location.href='reservation_process.do';
+	    }
     </script>
      <!-- Bootstrap core JavaScript -->
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -68,16 +75,16 @@
 		<div id="test_center" style="max-width: 1300px; min-height:800px; margin: 0px auto;" >
 	  		<div style="width: 250px; min-height: 800px; float: left;">
 			    <form name="frm" method="post" id="frm">
-		  			<div><input type="button" class="button2" value="온라인 예매" onclick="location.href='index.do'"></div>
-		  			<div><input type="button" class="button2" value="예매내역 확인" onclick="joinAccess()"></div>
+		  			<div><input type="button" class="button2" value="온라인 예매" onclick="reservation()"></div>
+		  			<div><input type="button" class="button2" value="예매내역 확인" onclick="reservation_process()"></div>
 			    </form>
 	  		</div>
-	  		<div style="width: 1000px; min-height: 800px; border: 2px solid #ededed; float: left;">
+	  		<div style="width: 1000px; min-height: 800px; border: 2px solid #ededed; float: left; padding-top: 50px;">
 	  			<form name="ticketFrm"  method="get" action="sub_menu_ticket_reservation.do">
 	  				<input name="u_no" type="hidden"/> 
 	  			</form>
 	  			<c:forEach var="ticket" items="${ticket }">
-					<div id="ticket" class="ticket_value" style="min-width:450px; min-height:200px; float: left;margin: 10px; border: 2px solid #ededed;">
+					<div id="ticket" class="ticket_value" style="min-width:450px; min-height:200px; float: left;margin: 10px; border: 2px solid #ededed; padding-top: 20px;">
 							<h3 style="width:180px; text-align:center; ">${ticket.u_name }</h3>
 							<table style="width:450px; margin: 10px;">
 								<tr>
@@ -88,8 +95,8 @@
 									<td>설명 : ${ticket.info}</td>
 								</tr>
 								<tr>
-									<td align="right" style="margin: 10px;">
-										<input type="button" value="예매하기" onclick="detailUtilize('${ticket.u_no}')"/>
+									<td align="right" style="margin: 20px;">
+										<input type="button" class="btn" value="예매하기" onclick="detailUtilize('${ticket.u_no}')"/>
 									</td>
 								</tr>
 							</table>

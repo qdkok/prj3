@@ -96,9 +96,10 @@ public class MainController {
 		model.addAttribute("ticket", service.showDetailUtilize(u_no));
 		return "sub/sub_menu_ticket_reservation";
 	}
+	
 	@RequestMapping(value="/reservation_process.do", method= {RequestMethod.POST, RequestMethod.GET})
-	public String reservation(Model model, HttpServletRequest request) {
-		model.addAttribute("flag", service.insertReservation(request));
+	public String reservation(Model model, HttpServletRequest request,HttpSession session) {
+		model.addAttribute("list", service.insertReservation(request,session));
 		return "sub/reservation_process";
 	}
 	

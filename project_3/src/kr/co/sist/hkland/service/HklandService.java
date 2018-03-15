@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Component;
 
 import kr.co.sist.hkland.dao.HklandDAO;
+import kr.co.sist.hkland.domain.ReservationDomain;
 import kr.co.sist.hkland.domain.UtilizeDomain;
 import kr.co.sist.hkland.vo.LoginIdVO;
 import kr.co.sist.hkland.vo.ReservationVO;
@@ -87,16 +88,21 @@ public class HklandService {
 		return list;
 	}//showDetailUtilize
 	
-	public boolean insertReservation(HttpServletRequest request) {
-		boolean flag=false;
+	public List<ReservationDomain> insertReservation(HttpServletRequest request, HttpSession session) {
+		List<ReservationDomain> flag=null;
 		try {
-			ReservationVO rvo=new ReservationVO(request.getParameter("id"), request.getParameter("u_no"), Integer.parseInt(request.getParameter("ticket_cnt")));
-			if(hk_dao.insertReservation(rvo)==1) {
-				flag=true;
+			if(request.getParameter("u_no")!=null) {
+				ReservationVO rvo=new ReservationVO(request.getParameter("id"), request.getParameter("u_no"), Integer.parseInt(request.getParameter("ticket_cnt")));
+				hk_dao.insertReservation(rvo);
 			}//end if
+			String id=(String)session.getAttribute("id");
+			if(id!=null) {
+				flag=hk_dao.resultReservation((String)session.getAttribute("id"));
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return flag;
 	}
+	
 }

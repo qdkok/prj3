@@ -93,7 +93,7 @@
 			<div style=" width: 100%;  height: 150px; "></div>
 		</div>
 		<div id="test_center" style="max-width: 1300px;  margin: 0px auto;" >
-	  		<div style=" width: 250px; min-height: 800px; float: left;">
+	  		<div style=" width: 250px; min-height: 1000px; float: left;">
 			    <form name="frm" method="post" id="frm">
 		  			<div><input type="button" class="button2" value="랜드소개" id="intro"></div>
 		  			<div><input type="button" class="button2" value="놀이기구" id="roller"></div>
@@ -101,7 +101,7 @@
 			    </form>
 	  		</div>
 			<div style=" width: 100%;  height: 800px; ">
-				<div style="border: 1px sold #333">
+				<div style="border: 1px sold #333; padding-top: 50px;">
 				<hr/>
 				
 					<%

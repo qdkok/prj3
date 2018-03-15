@@ -66,7 +66,7 @@
 		  			<div><input type="button" class="button2" value="ID/PASS 찾기" onclick="searchIDAccess()"></div>
 			    </form>
 	  		</div>
-			<div style=" width: 100%;  height: 800px; ">
+			<div style=" width: 100%;  height: 800px; padding-top: 50px;" align="center">
 				<form name="login_frm" method="post">
 							<h2>이용 약관</h2>
 		<textarea rows="20" cols="80" name="agree">
@@ -92,8 +92,8 @@
 
 		</textarea>
 			<br/>
-			<input type="button" value="동의합니다." onclick="location.href='join.do'"/>
-			<input type="button" value="동의하지않습니다." onclick="history.back()"/>
+				<input type="button" value="동의" class="btn" style="background-color: green; width:250px; color:#fff; height: 50px;" id="join_btn" onclick="location.href='join.do'"/> 
+				<input type="reset"  value="취소" class="btn" style="background-color: red; width:250px; color:#fff; height: 50px;" onclick="history.back()"/><br />
 				</form>
 			</div>
 		</div>

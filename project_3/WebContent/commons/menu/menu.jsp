@@ -2,6 +2,7 @@
     pageEncoding="UTF-8" info="공통제공메뉴"%>
      <style type="text/css">
      	.hongki{ height: 100px; width: 280px }
+     	.hongki li{width: 278px}
      </style>
 				<div id="navi_bar" >
 				    <nav id="main-nav">
@@ -17,13 +18,13 @@
 						        <li class="hongki"><a href="#void" style="font-size: 20px; margin-top: 25px">이벤트</a>
 						          <ul>
 						            <li><a href="#void">이벤트상세보기</a></li>
-						            <li><a href="#void">쿠폰다운로드</a></li>
+						            <li><a href="preference_coupon.do">우대사항&쿠폰다운로드</a></li>
 						          </ul>
 						        </li>
 						        <li class="hongki" ><a href="sub_menu_ticket_value.do" style="font-size: 20px; margin-top: 25px">온라인예매</a>
 						        	<ul>
 						        		<li><a href="sub_menu_ticket_value.do">이용권예매</a>
-						        		<li><a href="#void">예매내역확인</a>
+						        		<li><a href="reservation_process.do">예매내역확인</a>
 						        	</ul>
 						        </li>
 						        <li class="hongki" ><a href="#void" style="font-size: 20px; margin-top: 25px">고객서비스</a>

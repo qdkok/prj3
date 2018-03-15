@@ -16,13 +16,13 @@
     
     <!-- CSS 줄때 화면 -->
     <style type="text/css">
-    	#button{border:1px solid #EDEDED; background-color: #FFFFFF; width: 287px; height: 100px; margin-right: -3px; margin-left: -3px;}
+    	#button{ background-color: #FFFFFF; width: 287px; height: 100px; margin-right: -3px; margin-left: -3px;}
     	#back-header{background-color: #fff; }	
     	#logo-button  { width: 1140px; margin: 0 auto;  }
     	.main-img{height: 600px;  margin: 0 auto;}
-    	.img_div{ border: 1px solid #EDEDED; width: 285px; height: 250px;}
-    	.line{ border : 1px solid #EDEDED ; width: 1140px; height: 50px; margin: 0 auto;}
-    	.notice{border : 1px solid #EDEDED ; width: 570px; height: 250px }
+    	.img_div{ width: 285px; height: 250px;}
+    	.line{  width: 1140px; height: 50px; margin: 0 auto;}
+    	.notice{ width: 570px; height: 250px }
     </style>
     
     <!-- CDN -->    
@@ -52,40 +52,57 @@
 	<div class="line"></div>
     <div class="container">
     <div class="row">
-    	<div class=img_div align="center">
-    		<a href="#"><img src="commons/images/img.PNG"  width="220px" height="200px" onclick=""/></a>
-    	</div>
-    	<div class=img_div align="center">
-    		<a href="#"><img src="commons/images/img.PNG"  width="220px" height="200px" onclick=""/></a>
-    	</div>
-    	<div class=img_div align="center">
-    		<a href="#"><img src="commons/images/img.PNG"  width="220px" height="200px" onclick=""/></a>
-    	</div>
-    	<div class=img_div align="center">
-    		<a href="#"><img src="commons/images/img.PNG"  width="220px" height="200px" onclick=""/></a>
+    	<div>
+	    	<div class=img_div align="center" style="float: left;">
+	    		<a href="sub_menu_ticket_value.do"><img src="commons/images/g1.JPG"  width="250px" height="250px" onclick=""/></a>
+	    	</div>
+	    	<div class=img_div align="center" style="float: left;">
+	    		<a href="sub_menu_ticket_value.do"><img src="commons/images/g2.JPG"  width="250px" height="250px" onclick=""/></a>
+	    	</div>
+	    	<div class=img_div align="center" style="float: left;">
+	    		<a href="sub_menu_ticket_value.do"><img src="commons/images/g3.JPG"  width="250px" height="250px" onclick=""/></a>
+	    	</div>
+	    	<div class=img_div align="center" style="float: left;">
+	    		<a href="sub_menu_ticket_value.do"><img src="commons/images/g4.JPG"  width="250px" height="250px" onclick=""/></a>
+	    	</div>
     	</div>
 	      <div class="line"></div>
 	      
-		      <div class=img_div>
-		      	<a href="#"><img src="commons/images/logo.png" width="250px" height="250px"onclick="" /></a>
+		      <div class=img_div align="center">
+		      	<a href="preference_coupon.do"><img src="commons/images/discount.png" width="250px" height="250px"onclick="" /></a>
 		      </div>
 		      <div class=img_div align="center">
-			      <table border="1" >
-			      	<tr height="80px" align="center">
-			      		<td width="250px" valign="middle" ><a class="btn btn-primary btn-lg" href="#">Call to Action &raquo;</a></td>
+			      <table style="border:2px solid #fff; height: 246px;" >
+			      	<tr align="center">
+			      		<td width="246px" valign="middle" >
+			      			<img src="commons/images/location.png"/>
+			      		</td>
+			      		
 			      	</tr>
-			      	<tr height="80px" align="center">
-			      		<td width="250px" valign="middle"><a class="btn btn-primary btn-lg" href="#">Call to Action &raquo;</a></td>
+			      	<tr align="center">
+			      		<td width="246px" valign="middle" >
+			      			<img src="commons/images/information.png"/>
+			      		</td>
 			      	</tr>
-			      	<tr height="80px" align="center">
-			      		<td width="250px" valign="middle"><a class="btn btn-primary btn-lg" href="#">Call to Action &raquo;</a></td>
+			      	<tr align="center">
+			      		<td width="246px" valign="middle" >
+			      			<img src="commons/images/attraction.png"/>
+			      		</td>
 			      	</tr>
 			      </table>
 		      </div>
 		      <div class=notice>
-		      	공지사항<br/>
-		      	<br/><br/><br/><br/>
-		      	분실물 센터
+		      	<table style="width: 536px; height: 246px; border: 2px solid #ededed; margin-left: 15px;">
+		      		<tr>
+		      			<td style="margin: 10px;">● 공지사항</td>
+		      			<td style="margin: 10px;">● 분실물 센터</td>
+		      		</tr>
+		      		<tr>
+		      			<td></td>
+		      			<td></td>
+		      		</tr>
+		      	</table>
+		      	
 		      </div>
 		   <div class="line"></div>
 	      </div>

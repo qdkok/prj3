@@ -96,7 +96,7 @@
 			    </form>
 	  		</div>
 			<div style=" width: 100%;  height: 800px; ">
-				<div style="font-size: 30px; padding-left: 600px;" >환상의 나라 HK 랜드로<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;당신을 초대합니다!</div>
+				<div style="font-size: 30px; padding-left: 600px; padding-top: 50px;">환상의 나라 HK 랜드로<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;당신을 초대합니다!</div>
 				<div style="padding-left: 300px">
 				<hr width="800px">
 					<table >

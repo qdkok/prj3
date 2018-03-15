@@ -36,14 +36,11 @@
 	</style>
     <script type="text/javascript">
 		    	
-	   function loginAccess(){
-	    	location.href='login.do';
+	   function reservation(){
+	    	location.href='sub_menu_ticket_value.do';
 	    }
-	    function joinAccess(){
-	    	location.href='join_terms.do';
-	    }
-	    function searchIDAccess(){
-	    	location.href='searchId.do';
+	    function reservation_process(){
+	    	location.href='reservation_process.do';
 	    }
     </script>
     
@@ -59,42 +56,52 @@
 	  		
   	</header>
     <!-- Page Content -->
-	
+	<%
+		String name=(String)session.getAttribute("id");
+		if(name==null){
+			out.print("<script>alert('로그인이필요합니다!')</script>");
+			out.print("<script>location.href='login.do'</script>");
+			session.invalidate();
+		}
+	%>  
     <div class="contain" >
-    	<div id="test_top" style="max-width: 1300px;  margin: 0px auto;" >
-	  		<div style=" width: 250px; height: 150px; float: left; font-size: 25px; padding: 50px; background-color: #cd493c; color: #fff ">회원가입</div>
-			<div style=" width: 100%;  height: 150px; background-color: #cd493c;"></div>
+    	<div id="test_top" style="max-width: 1300px; margin: 0px auto; " >
+	  		<div style="background-color: #cd493c; width: 250px; height: 150px; float: left; font-size: 25px; padding: 50px; color: #fff">온라인 예매</div>
+			<div style="background-color: #cd493c; width: 100%;  height: 150px; "></div>
 		</div>
-		<div id="test_center" style="max-width: 1300px; margin: 0px auto;" >
+		<div id="test_center" style="max-width: 1300px; min-height:800px; margin: 0px auto;" >
 	  		<div style=" width: 250px; min-height: 800px; float: left; ">
 			    <form name="frm" method="post" id="frm">
-		  			<div><input type="button" class="button2" value="로그인" onclick="loginAccess()"></div>
-		  			<div><input type="button" class="button2" value="회원가입" onclick="joinAccess()"></div>
-		  			<div><input type="button" class="button2" value="ID/PASS 찾기" onclick="searchIDAccess()"></div>
+		  			<div><input type="button" class="button2" value="온라인 예매" onclick="reservation()"></div>
+		  			<div><input type="button" class="button2" value="예매내역 확인" onclick="reservation_process()"></div>
 			    </form>
 	  		</div>
-			<div style=" width: 100%;  height: 800px; float: left; " align="center" >
-					<c:choose>
-						<c:when test="${flag}">
-							<table>
-								<tr>
-									<td colspan="5">감사합니다! 예매를 완료했습니다</td>
-								</tr>
-								<tr>
-									<td>예매번호</td>
-									<td>이용권명</td>
-									<td>매수</td>
-									<td>총 결재 가격</td>
-									<td>예매일</td>
-								</tr>
-							</table>
-							<input type="button" value="확인" onclick="loginAccess()"/>
-						</c:when>
-						<c:otherwise>
-							예매 실패!
-							<input type="button" value="돌아가기" onclick="history.back()"/>
-						</c:otherwise>
-					</c:choose>
+			<span style="font-size: 30px; font-weight: bold;">예매내역</span>
+			<div  style="width: 1000px; height: 800px; border: 2px solid #ededed; float: left; overflow: scroll;">
+				<table style="width: 992px; height: 600px; border:2px solid #ededed; ">
+				<c:if test="${sessionScope.id ne ''}">
+					<tr style="border: 2px solid #ededed;">
+						<td>예매번호</td>
+						<td>이용권이미지</td>
+						<td>이용권명</td>
+						<td>매수</td>
+						<td>총 결재 가격</td>
+						<td>예매일</td>
+					</tr>
+					<c:forEach var="list" items="${list}">
+						<tr>
+							<td>${list.r_no}</td>
+							<td><img src="http://localhost:8080/project_3/uplioad/voucher/${list.u_image}" style="width: 50px; height: 50px;"/></td>
+							<td>${list.u_name}</td>
+							<td>${list.count}</td>
+							<td>${list.count*list.price}</td>
+							<td>${list.input_date}</td>
+						</tr>
+					
+					</c:forEach>
+					</c:if>
+				</table>
+				<input type="button" value="확인" onclick="loginAccess()"/>
 			</div>
 		</div>
     </div>	
