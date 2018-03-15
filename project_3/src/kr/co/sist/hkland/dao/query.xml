@@ -4,7 +4,24 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.sist.exam3">
 	<!-- 컬럼과 setter 매핑 -->
-
+	
+	<resultMap type="kr.co.sist.hkland.domain.UtilizeDomain" id="showUtilize">
+		<result column="U_NO" property="u_no"/>
+		<result column="T_NO" property="t_no"/>
+		<result column="U_NAME" property="u_name"/>
+		<result column="PRICE" property="price"/>
+		<result column="SALE_FLAG" property="sale_flag"/>
+		<result column="INFO" property="info"/>
+		<result column="START_YEAR" property="start_year"/>
+		<result column="START_MONTH" property="start_month"/>
+		<result column="START_DAY" property="start_day"/>
+		<result column="END_YEAR" property="end_year"/>
+		<result column="END_MONTH" property="end_month"/>
+		<result column="END_DAY" property="end_day"/>
+		<result column="U_IMAGE" property="u_image"/>
+	</resultMap>
+	
+	
 	<!-- procedure 호출 : select -->
 	<select id="selAdim"  resultType="String">
 		SELECT A_ID FROM ADMIN
@@ -17,12 +34,28 @@
 	</select>
 	
 	<select id="idchk" resultType="String" parameterType="String">
-		select m_id
-		from member
-		where m_id=#{id}
+		SELECT M_ID
+		FROM MEMBER
+		WHERE M_ID=#{id}
 	</select>
 	<insert id="insertMember" parameterType="kr.co.sist.hkland.vo.JoinVO">
-		insert into member(M_ID, M_PASS, M_NAME, GENDER, BIRTH, EMAIL, PHONE)
-		values(#{id},#{pw},#{name},#{gender},#{birth},#{email},#{phone})
+		INSERT INTO MEMBER(M_ID, M_PASS, M_NAME, GENDER, BIRTH, EMAIL, PHONE)
+		VALUES(#{id},#{pw},#{name},#{gender},#{birth},#{email},#{phone})
+	</insert>
+	
+	<select id="showTicket" resultMap="showUtilize" >
+		SELECT U_NO,T_NO,U_NAME,PRICE,SALE_FLAG,INFO,START_YEAR,START_MONTH,START_DAY,END_YEAR,END_MONTH,END_DAY,U_IMAGE	
+		FROM UTILIZE
+	</select>
+	
+	<select id="showDetailTicket" resultMap="showUtilize" parameterType="String">
+		SELECT U_NO,T_NO,U_NAME,PRICE,SALE_FLAG,INFO,START_YEAR,START_MONTH,START_DAY,END_YEAR,END_MONTH,END_DAY,U_IMAGE	
+		FROM UTILIZE
+		WHERE U_NO=#{u_no}
+	</select>
+	
+	<insert id="insertReservation" parameterType="kr.co.sist.hkland.vo.ReservationVO">
+		insert into reservation(R_NO, M_ID, COUNT, R_YEAR, R_MONTH, R_DAY, U_NO, T_NO, C_NO)
+		values(r_num,#{id},#{count},to_char(sysdate,'yyyy'),to_char(sysdate,'mm'),to_char(sysdate,'dd'),#{u_no},(select t_no from utilize where u_no=#{u_no}),'')
 	</insert>
 </mapper>

@@ -11,6 +11,8 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kr.co.sist.hkland.vo.LoginIdVO;
+import kr.co.sist.hkland.vo.ReservationVO;
+import kr.co.sist.hkland.domain.UtilizeDomain;
 import kr.co.sist.hkland.vo.JoinVO;
 
 public class HklandDAO {
@@ -115,19 +117,53 @@ public class HklandDAO {
 		return cnt;
 	}
 	
-	
-	/*public static void main(String[] args) {
-		HklandDAO dmbs=HklandDAO.getInstance();
+	public List<UtilizeDomain> showUtilize() throws IOException {
+		List<UtilizeDomain> list=null;
+		SqlSession ss = null;
+		
 		try {
-			List<String> test=dmbs.selectEname();
-			for(String tt:test) {
-				System.out.println(tt);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}*/
+			ss = getSqlSessionFactory().openSession();
+			list = ss.selectList("kr.co.sist.exam3.showTicket");
+		} finally {
+			if (ss != null) {
+				ss.close();
+			} // end if
+		} // end finally
+		
+		return list;
+	}
+	
+	public UtilizeDomain showDetailUtilize(String u_no) throws IOException {
+		UtilizeDomain list=null;
+		SqlSession ss = null;
+		
+		try {
+			ss = getSqlSessionFactory().openSession();
+			list = ss.selectOne("kr.co.sist.exam3.showDetailTicket",u_no);
+		} finally {
+			if (ss != null) {
+				ss.close();
+			} // end if
+		} // end finally
+		
+		return list;
+	}
+	
+	public int insertReservation(ReservationVO rvo) throws IOException {
+		int cnt=0;
+		SqlSession ss = null;
+		
+		try {
+			ss = getSqlSessionFactory().openSession();
+			cnt = ss.insert("kr.co.sist.exam3.insertReservation",rvo);
+			ss.commit();
+		} finally {
+			if (ss != null) {
+				ss.close();
+			} // end if
+		} // end finally
+		
+		return cnt;
+	}
 
 }// class

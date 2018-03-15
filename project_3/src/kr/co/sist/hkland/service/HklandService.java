@@ -1,6 +1,7 @@
 package kr.co.sist.hkland.service;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -8,7 +9,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Component;
 
 import kr.co.sist.hkland.dao.HklandDAO;
+import kr.co.sist.hkland.domain.UtilizeDomain;
 import kr.co.sist.hkland.vo.LoginIdVO;
+import kr.co.sist.hkland.vo.ReservationVO;
 import kr.co.sist.hkland.vo.JoinVO;
 
 @Component
@@ -24,8 +27,10 @@ public class HklandService {
 				name=hk_dao.login(lv);
 				if(name==null) {
 					name="";
+					id="";
 				}
 				session.setAttribute("name", name);
+				session.setAttribute("id", id);
 			}//end if
 			
 		} catch (IOException e) {
@@ -61,4 +66,37 @@ public class HklandService {
 		
 		return flag;
 	}//memberInsert
+	
+	public List<UtilizeDomain> showUtilize(){
+		List<UtilizeDomain> list=null;
+		try {
+			list=hk_dao.showUtilize();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}//showUtilize
+	
+	public UtilizeDomain showDetailUtilize(String u_no){
+		UtilizeDomain list=null;
+		try {
+			list=hk_dao.showDetailUtilize(u_no);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}//showDetailUtilize
+	
+	public boolean insertReservation(HttpServletRequest request) {
+		boolean flag=false;
+		try {
+			ReservationVO rvo=new ReservationVO(request.getParameter("id"), request.getParameter("u_no"), Integer.parseInt(request.getParameter("ticket_cnt")));
+			if(hk_dao.insertReservation(rvo)==1) {
+				flag=true;
+			}//end if
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return flag;
+	}
 }

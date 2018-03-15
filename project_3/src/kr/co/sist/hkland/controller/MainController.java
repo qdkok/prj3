@@ -87,11 +87,19 @@ public class MainController {
 		return "sub/searchId";
 	}
 	@RequestMapping(value="/sub_menu_ticket_value.do", method= {RequestMethod.POST, RequestMethod.GET})
-	public String ticket() {
+	public String ticket(Model model) {
+		model.addAttribute("ticket", service.showUtilize());
 		return "sub/sub_menu_ticket_value";
 	}
 	@RequestMapping(value="/sub_menu_ticket_reservation.do", method= {RequestMethod.POST, RequestMethod.GET})
-	public String ticketDetail() {
+	public String ticketDetail(Model model,String u_no) {
+		model.addAttribute("ticket", service.showDetailUtilize(u_no));
 		return "sub/sub_menu_ticket_reservation";
 	}
+	@RequestMapping(value="/reservation_process.do", method= {RequestMethod.POST, RequestMethod.GET})
+	public String reservation(Model model, HttpServletRequest request) {
+		model.addAttribute("flag", service.insertReservation(request));
+		return "sub/reservation_process";
+	}
+	
 }
