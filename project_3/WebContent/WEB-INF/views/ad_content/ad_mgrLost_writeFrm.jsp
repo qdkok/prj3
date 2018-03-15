@@ -17,42 +17,35 @@
   
 <!-- CSS -->
 <link rel="stylesheet" type="text/css" href="http://localhost:8080/project_3/ad_common/css/main.css"/>
-<link rel="stylesheet" type="text/css" href="http://localhost:8080/project_3/ad_common/css/coupon.css"/>
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/project_3/ad_common/css/lost.css"/>
 
 <script type="text/javascript">
 	function formchk(obj){
-		if(obj.start_year.value == ""){
-			alert("쿠폰 적용 시작년도를 입력해주세요.");
+		if(obj.l_name.value == ""){
+			alert("분실물명을 입력해주세요.");
 			return ;
 		}
-		if(obj.start_month.value == ""){
-			alert("쿠폰 적용 시작월을 입력해주세요.");
+		if(obj.l_kate.value == ""){
+			alert("분실물 습득 장소를 입력해주세요.");
 			return ;
 		}
-		if(obj.start_day.value == ""){
-			alert("쿠폰 적용 시작일을 입력해주세요.");
+		if(obj.l_year.value == ""){
+			alert("습득년도를 입력해주세요.");
 			return ;
 		}
-		if(obj.end_year.value == ""){
-			alert("쿠폰 적용 종료년도를 입력해주세요.");
+		if(obj.l_month.value == ""){
+			alert("습득월을 입력해주세요.");
 			return ;
 		}
-		if(obj.end_month.value == ""){
-			alert("쿠폰 적용 종료월을 입력해주세요.");
+		if(obj.l_day.value == ""){
+			alert("습득일을 입력해주세요.");
 			return ;
 		}
-		if(obj.end_day.value == ""){
-			alert("쿠폰 적용 종료일을 입력해주세요.");
+		if(obj.l_image.value == ""){
+			alert("습득물 이미지를 등록해주세요.");
 			return ;
 		}
-		if(obj.c_name.value == ""){
-			alert("쿠폰명을 입력해주세요.");
-			return ;
-		}
-		if(obj.c_info.value == ""){
-			alert("쿠폰 내용을 입력해주세요.");
-			return ;
-		}
+		
 		obj.submit();
 	}
 
@@ -91,49 +84,50 @@
 		<div id="rightArea">
 			<div id="r_content">
 				<div id="r_content_title">
-					<h2>쿠폰관리<small><span style="font-size: 15px;">할인쿠폰 목록</span></small></h2>
+					<h2>분실물관리<small><span style="font-size: 15px;">분실물 목록 확인</span></small></h2>
 				</div>
 				<div id="r_content_view">
 					<div id="mainContent">
 						<!-- form안의 Textarea를 GET 방식으로 넘기면 255자가 넘어간다고 Error가 난다. -->
-						<form method="get" name="frm1" action="mgr_coupon_writeFrm.do" id="noteFrm">
+						<form method="get" name="frm1" action="mgr_lost_writeFrm.do" id="noteFrm">
 						<input type="hidden" name="cmd" value="wc">
 						<input type="hidden" name="a_id" value="${ sessionScope.a_id }">
 						
 						<table id="writeTable">
 							<tr>
 								<td>등록자</td>
-								<td width="370px;" colspan="3">${ sessionScope.a_id }( ${ sessionScope.a_name } )</td>
+								<td width="370px;">${ sessionScope.a_id }( ${ sessionScope.a_name } )</td>
+							</tr>
+                            <tr>
+								<td>분실물명</td>
+								<td><input type="text" name="l_name" class="inputBox" style="width:650px;"></td>
+							</tr>
+                            <tr>
+								<td>습득장소</td>
+								<td><input type="text" name="l_kate" class="inputBox" style="width:650px;"></td>
 							</tr>
 							<tr>
-								<td>쿠폰이미지</td>
-								<td colspan="3" style="padding-left: 10px;"><input type="file" name="c_image"></td>
-							</tr>
-                            <tr>
-								<td>쿠폰시작일자</td>
-								<td><input type="text" name="start_year" class="dateBox" maxlength="4" size="5">년 
-								<input type="text" name="start_month" class="dateBox" maxlength="2" size="3">월 
-								<input type="text" name="start_day" class="dateBox" maxlength="2" size="3">일</td>
-   								<td>쿠폰종료일자</td>
-								<td><input type="text" name="end_year" class="dateBox" maxlength="4" size="5">년 
-								<input type="text" name="end_month" class="dateBox" maxlength="2" size="3">월 
-								<input type="text" name="end_day" class="dateBox" maxlength="2" size="3">일</td>
-							</tr>
-                            <tr>
-								<td>쿠폰명</td>
-								<td><input type="text" name="c_name" class="inputBox" style="width: 200px;"></td>
-								<td>할인율</td>
-								<td><input type="number" min="0" max="100" step="5" name="discount"></td>
+								<td>습득일</td>
+								<td><input type="text" name="l_year" class="dateBox" maxlength="4" size="15">년&nbsp;&nbsp;&nbsp;
+								<input type="text" name="l_month" class="dateBox" maxlength="2" size="13">월&nbsp;&nbsp;&nbsp;
+								<input type="text" name="l_day" class="dateBox" maxlength="2" size="13">일</td>
 							</tr>
 							<tr>
-								<td colspan="4">쿠폰내용 작성</td>
+								<td>처리결과</td>
+								<td>
+									<select name="l_result">
+										<option value="O">방문수령</option>
+										<option value="X">보관중</option>
+									</select>
+								</td>
 							</tr>
-                            <tr>
-                            	<td colspan="4"><textarea id="summernote" name="c_info"></textarea></td>
-                            </tr>
+							<tr>
+								<td>이미지</td>
+								<td style="padding-left: 10px;"><input type="file" name="l_image"></td>
+							</tr>
 						</table>
 							<div id="btnBox1">
-								<input type="button" value="목록" class="btn" id="listBtn" onclick="javascript:location.href='mgr_coupon.do'">
+								<input type="button" value="목록" class="btn" id="listBtn" onclick="javascript:location.href='mgr_lostArticle.do'">
 								<input type="reset" value="초기화" class="btn" id="resetBtn">
 								<input type="button" value="등록" class="btn" id="writeBtn" onclick="formchk( document.frm1 )">
 							</div>

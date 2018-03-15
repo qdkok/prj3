@@ -19,5 +19,7 @@
     <mapper resource="kr/co/sist/admin/dao/admin_query2.xml"/>
     <mapper resource="kr/co/sist/admin/dao/admin_query_event.xml"/>
     <mapper resource="kr/co/sist/admin/dao/admin_query_coupon.xml"/>
+    <mapper resource="kr/co/sist/admin/dao/admin_query_lost.xml"/>
+    <mapper resource="kr/co/sist/admin/dao/admin_query_client.xml"/>
   </mappers>  
 </configuration>

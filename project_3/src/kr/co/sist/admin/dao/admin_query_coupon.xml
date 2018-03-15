@@ -5,7 +5,7 @@
 <mapper namespace="kr.co.sist.admin4">
 	<!-- 컬럼과 setter 매핑 -->
 	
-	<!-- 이벤트 -->
+	<!-- 쿠폰 -->
 	<resultMap type="kr.co.sist.admin.domain.CouponDomain" id="coupons">
 		<result column="C_NO" property="c_no"/>
 		<result column="C_IMAGE" property="c_image"/>
@@ -43,18 +43,18 @@
 	  	VALUES (seq_coupon.nextval,#{c_image},#{c_name},#{c_info},#{start_year},#{start_month},#{start_day},#{end_year},#{end_month},#{end_day},#{discount},#{a_id})
 	</insert>
 	
-	<!--이벤트 삭제
-	  <delete id="removeEvent" parameterType="int">
+	<!-- 쿠폰 삭제 -->
+	  <delete id="removeCoupon" parameterType="int">
 		DELETE
-		FROM EVENT
-		WHERE TRIM(E_NO)=#{ e_no }
+		FROM COUPON
+		WHERE TRIM(C_NO)=#{ c_no }
 	  </delete>
 	  
-	  이벤트 글 읽기
-	<select id="readEvent" resultMap="events" parameterType="int">
-		SELECT TRIM(E_NO) E_NO, E_NAME, E_INFO, START_YEAR, START_MONTH, START_DAY, END_YEAR, END_MONTH, END_DAY, R_POSITION, R_IMAGE, R_FILE, TRIM(A_ID) A_ID
-		FROM EVENT
-		WHERE TRIM(E_NO)=#{ e_no }
-	</select> -->
+	 <!-- 쿠폰 글 읽기 -->
+	<select id="readCoupon" resultMap="coupons" parameterType="int">
+		SELECT TRIM(C_NO) C_NO, C_IMAGE, C_NAME, C_INFO, START_YEAR, START_MONTH, START_DAY, END_YEAR, END_MONTH, END_DAY, DISCOUNT, TRIM(A_ID) A_ID
+		FROM COUPON
+		WHERE TRIM(C_NO)=#{ c_no }
+	</select> 
 
 </mapper>

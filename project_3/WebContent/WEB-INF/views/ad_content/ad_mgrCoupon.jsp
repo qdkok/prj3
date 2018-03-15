@@ -31,8 +31,9 @@
 		}//chk
 		
 		function remove(){
-			if(confirm("정말 삭제 하시겠습니까?")){
-				var obj=document.frm;
+			var obj=document.frm;
+				
+			if(confirm("선택하신 쿠폰을 삭제 하시겠습니까?")){
 				obj.action="mgrCoupon_remove.do";
 				obj.submit();
 			}
@@ -88,12 +89,12 @@
 					<c:set var="cnt" value="${ cnt-1 }"/>
 						<tr>
 							<td>
-								<input type="radio" name="event_radio" onchange="chk('${AllCouponList.c_no}')"/>
+								<input type="radio" name="coupon_radio" onchange="chk('${AllCouponList.c_no}')"/>
 							</td>
 							<td>${cnt}</td>
 							<td>${ AllCouponList.c_image}</td>
-							<td>${ AllCouponList.c_name }</td>
-							<td><a href="mgrCoupon_readFrm.do?CouponNo=${AllCouponList.c_no}" style="color:#000;">${ AllCouponList.c_info }</a></td>
+							<td><a href="mgrCoupon_readFrm.do?CouponNo=${AllCouponList.c_no}" style="color:#000;">${ AllCouponList.c_name_sub }</a></td>
+							<td>${ AllCouponList.c_info_sub }</td>
 							<td>${ AllCouponList.start_year }-${ AllCouponList.start_month }-${ AllCouponList.start_day }</td>
 							<td>${ AllCouponList.end_year }-${ AllCouponList.end_month }-${ AllCouponList.end_day }</td>
 							<td>${ AllCouponList.discount}</td>
@@ -106,7 +107,7 @@
 				</c:catch>
 				
 				<c:if test="${ e ne null }">
-					${e }
+					${ e }
 					페이지 로딩 중 문제가 발생했습니다. 다시 시도해 주세요.
 				</c:if>
 				</div>

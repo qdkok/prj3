@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.sist.admin6">
+	<!-- 컬럼과 setter 매핑 -->
+	
+	<!-- 고객서비스 -->
+	<resultMap type="kr.co.sist.admin.domain.ClientDomain" id="clients">
+		<result column="S_NO" property="s_no"/>
+		<result column="S_NAME" property="s_name"/>
+		<result column="S_INPUTDATE" property="s_inputdate"/>
+		<result column="S_INFO" property="s_info"/>
+		<result column="M_ID" property="m_id"/>
+		<result column="A_NO" property="a_no"/>
+	</resultMap>
+		
+	<!-- 고객서비스 전체 조회 -->
+	<select id="AllClient" resultMap="clients">
+		SELECT TRIM(S_NO) S_NO, S_NAME, S_INPUTDATE, S_INFO, M_ID, A_NO
+		FROM SERVICE
+		ORDER BY CAST(S_NO AS DECIMAL) DESC	
+	</select>
+	
+	<!-- 고객서비스 검색 -->
+	<select id="searchClient" resultMap="clients" parameterType="String">
+		SELECT TRIM(S_NO) S_NO, S_NAME, S_INPUTDATE, S_INFO, M_ID, A_NO
+		FROM SERVICE
+		WHERE S_NAME LIKE '%'||#{ s_name }||'%'
+		ORDER BY CAST(S_NO as decimal) DESC
+	</select>
+	
+	<!-- 고객서비스 삭제 -->
+	  <delete id="removeClient" parameterType="int">
+		DELETE
+		FROM SERVICE
+		WHERE TRIM(S_NO)=#{ s_no }
+	  </delete>
+
+	<!-- 고객서비스 글 읽기 -->
+	<select id="readClient" resultMap="clients" parameterType="int">
+		SELECT TRIM(S_NO) S_NO, S_NAME, S_INPUTDATE, S_INFO, M_ID, A_NO
+		FROM SERVICE
+		WHERE TRIM(S_NO)=#{ s_no }
+	</select>
+	
+	<!-- 고객서비스 답변 -->
+	  <update id="updateClient" parameterType="kr.co.sist.admin.vo.ClientVO">
+		UPDATE SERVICE
+		SET S_NAME=#{s_name}, S_INFO=#{s_info}, s_inputdate = sysdate
+		WHERE TRIM(S_NO)=#{s_no}
+	  </update>
+	
+	<!--분실물 등록
+	<insert id="insertLost" parameterType="kr.co.sist.admin.vo.LostVO">
+	  	INSERT INTO LOST(L_NO, L_KATE, L_IMAGE, L_NAME, L_YEAR, L_MONTH, L_DAY, L_RESULT, A_ID) 
+	  	VALUES (seq_lost.nextval,#{l_kate},#{l_image},#{l_name},#{l_year},#{l_month},#{l_day},#{l_result},#{a_id})
+	</insert>
+	   -->
+
+</mapper>

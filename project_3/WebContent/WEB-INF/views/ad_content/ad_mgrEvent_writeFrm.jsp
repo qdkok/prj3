@@ -104,21 +104,6 @@
 						<input type="hidden" name="cmd" value="wc">
 						<input type="hidden" name="a_id" value="${ sessionScope.a_id }">
 						
-						<!-- test -->
-							<!-- <input type="hidden" name="e_no" value="test">
-							<input type="hidden" name="e_name" value="test">
-							<input type="hidden" name="e_info" value="test">
-							<input type="hidden" name="start_year" value="test">
-							<input type="hidden" name="start_month" value="test">
-							<input type="hidden" name="start_day" value="test">
-							<input type="hidden" name="end_year" value="test">
-							<input type="hidden" name="end_month" value="test">
-							<input type="hidden" name="end_day" value="test">
-							<input type="hidden" name="r_position" value="test">
-							<input type="hidden" name="r_image" value="test">
-							<input type="hidden" name="r_file" value="test">
-							<input type="hidden" name="a_id" value="test"> -->
-						<!-- test end -->
 						<table id="writeTable">
 							<tr>
 								<td>작성자</td>

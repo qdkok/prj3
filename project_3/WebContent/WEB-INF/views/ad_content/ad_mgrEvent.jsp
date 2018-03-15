@@ -30,7 +30,13 @@
 			document.getElementById("selID").value = cnt;
 		}//chk
 		
-		
+		function remove(){
+			var obj=document.frm;
+			if(confirm("선택하신 이벤트를 삭제 하시겠습니까?")){
+				obj.action="mgrEvent_remove.do";
+				obj.submit();
+			}
+		}
 	</script>
 <!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="http://localhost:8080/project_3/ad_common/css/main.css"/>
@@ -86,8 +92,8 @@
 								<input type="radio" name="event_radio" onchange="chk('${AllEventList.e_no}')"/>
 							</td>
 							<td>${cnt}</td>
-							<td>${ AllEventList.e_name }</td>
-							<td><a href="mgrEvent_readFrm.do?EventNo=${AllEventList.e_no}" style="color:#000;">${ AllEventList.e_info }</a></td>
+							<td>${ AllEventList.e_name_sub }</td>
+							<td><a href="mgrEvent_readFrm.do?EventNo=${AllEventList.e_no}" style="color:#000;">${ AllEventList.e_info_sub }</a></td>
 							<td>${ AllEventList.r_position}</td>
 							<td>${ AllEventList.start_year }-${ AllEventList.start_month }-${ AllEventList.start_day }</td>
 							<td>${ AllEventList.end_year }-${ AllEventList.end_month }-${ AllEventList.end_day }</td>
@@ -115,7 +121,7 @@
 							<input type="button" onclick="search()" value="검색" style="width: 80px;"/>
 							<input type="button" value="전체목록" id="allEventList" onclick="search()">
 							<input type="button" onclick="eventWrite()" value="이벤트 등록">
-							<input type="submit" value="이벤트 삭제" id="eventRemove" onclick="javascript:form.action='mgrEvent_remove.do';">
+							<input type="button" value="이벤트 삭제" id="eventRemove" onclick="remove()">
 						</div>
 					</form>
 				</div>

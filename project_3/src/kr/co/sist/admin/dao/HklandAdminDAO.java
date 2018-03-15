@@ -10,15 +10,19 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import kr.co.sist.admin.domain.ClientDomain;
 import kr.co.sist.admin.domain.CouponDomain;
 import kr.co.sist.admin.domain.EventDomain;
+import kr.co.sist.admin.domain.LostDomain;
 import kr.co.sist.admin.domain.MemberDomain;
 import kr.co.sist.admin.domain.NoticeDomain;
 import kr.co.sist.admin.domain.TicketDomain;
 import kr.co.sist.admin.domain.UtilizeDomain;
 import kr.co.sist.admin.domain.VoucherDomain;
+import kr.co.sist.admin.vo.ClientVO;
 import kr.co.sist.admin.vo.CouponVO;
 import kr.co.sist.admin.vo.EventVO;
+import kr.co.sist.admin.vo.LostVO;
 import kr.co.sist.admin.vo.UtilizeUpdateVO;
 import kr.co.sist.admin.vo.UtilizeVO;
 import kr.co.sist.admin.vo.ad_LoginVO;
@@ -239,7 +243,6 @@ public class HklandAdminDAO {
 			try {
 				ss = getSqlSessionFactory().openSession();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
@@ -271,7 +274,7 @@ public class HklandAdminDAO {
 		
 		return name;
 	}// LoginAdmin
-	
+/**********************************************************************************************************공지사항*/		
 	/*공지사항 전체 조회*/
 	public List<NoticeDomain> selectAllNotice() throws SQLException{
 		List<NoticeDomain> allNoticeList = null;
@@ -386,7 +389,7 @@ public class HklandAdminDAO {
 		
 		return cnt;
 	}//readNotice
-	
+/**********************************************************************************************************이벤트*/	
 	/*이벤트 전체 조회*/
 	public List<EventDomain> selectAllEvent() throws SQLException, IOException{
 		List<EventDomain> allEventList = null;
@@ -477,8 +480,8 @@ public class HklandAdminDAO {
 		}//end finally
 		
 		return readList;
-	}//readNotice
-	
+	}//readEvent
+/**********************************************************************************************************쿠폰*/	
 	/*쿠폰전체조회*/
 	public List<CouponDomain> selectAllCoupon() throws SQLException, IOException{
 		List<CouponDomain> selectAllCoupon = null;
@@ -511,9 +514,9 @@ public class HklandAdminDAO {
 		} // end finally
 
 		return searchCouponList;
-	}//searchEvent
+	}//searchCoupon
 	
-	/*이벤트 등록*/
+	/*쿠폰 등록*/
 	public int insertCoupon(CouponVO cv) throws SQLException, IOException{
 		int cnt =0; 
 		SqlSession ss = null;
@@ -532,34 +535,123 @@ public class HklandAdminDAO {
 		} // end finally
 		
 		return cnt;
-	}//insertEvent
-//	
-//	/*이벤트 삭제*/
-//	public int removeEvent(int e_no) throws IOException {
+	}//insertCoupon
+	
+	/*쿠폰 삭제*/
+	public int removeCoupon(int c_no) throws IOException {
+		SqlSession ss=null;
+		int cnt = 0;
+		try {
+			ss=getSqlSessionFactory().openSession();
+			//추가 
+			cnt = ss.delete("kr.co.sist.admin4.removeCoupon", c_no);
+			if(cnt == 1) {
+				ss.commit();
+			}
+		}finally {
+			if(ss != null ) { ss.close(); }//end if
+		}//end finally
+		
+		return cnt;
+	}//removeCoupon
+	
+	/*쿠폰 글 읽기*/
+	public CouponDomain readCoupon(int c_no) throws IOException {
+		CouponDomain readList = null;
+		SqlSession ss=null;
+		try {
+			ss=getSqlSessionFactory().openSession();
+			//추가 
+			readList = ss.selectOne("kr.co.sist.admin4.readCoupon", c_no);
+		}finally {
+			if(ss != null ) { ss.close(); }//end if
+		}//end finally
+		
+		return readList;
+	}//readCoupon
+	
+/**********************************************************************************************************분실물*/	
+	/*분실물전체조회*/
+	public List<LostDomain> selectAllLost() throws SQLException, IOException{
+		List<LostDomain> selectAllLost = null;
+		SqlSession ss=null;
+		
+		try {
+			ss=getSqlSessionFactory().openSession();
+			selectAllLost = ss.selectList("kr.co.sist.admin5.AllLost");
+		}finally {
+			if(ss != null ) { ss.close(); }//end if
+		}//end finally
+		
+		return selectAllLost;
+	}//selectAllTicket
+	
+	/*분실물 검색 조회*/
+	public List<LostDomain> searchLost(String searchBox) throws SQLException, IOException{
+		List<LostDomain> searchLostList = null;
+		SqlSession ss = null;
+		
+		try {
+			ss = getSqlSessionFactory().openSession();
+			searchLostList = ss.selectList("kr.co.sist.admin5.searchLost",searchBox);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (ss != null) {
+				ss.close();
+			} // end if
+		} // end finally
+		
+		return searchLostList;
+	}//searchLost
+	
+	/*분실물 등록*/
+	public int insertLost(LostVO lv) throws SQLException, IOException{
+		int cnt =0; 
+		SqlSession ss = null;
+		try {
+			ss = getSqlSessionFactory().openSession();
+			cnt = ss.insert("kr.co.sist.admin5.insertLost",lv);
+			if(cnt == 1) {
+				ss.commit();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (ss != null) {
+				ss.close();
+			} // end if
+		} // end finally
+		
+		return cnt;
+	}//insertLost
+	
+	/*분실물 삭제*/
+	public int removeLost(int l_no) throws IOException {
+		SqlSession ss=null;
+		int cnt = 0;
+		try {
+			ss=getSqlSessionFactory().openSession();
+			//추가 
+			cnt = ss.delete("kr.co.sist.admin5.removeLost", l_no);
+			if(cnt == 1) {
+				ss.commit();
+			}
+		}finally {
+			if(ss != null ) { ss.close(); }//end if
+		}//end finally
+		
+		return cnt;
+	}//removeLost
+	
+//	/*쿠폰 글 읽기*/
+//	public CouponDomain readCoupon(int c_no) throws IOException {
+//		CouponDomain readList = null;
 //		SqlSession ss=null;
-//		int cnt = 0;
 //		try {
 //			ss=getSqlSessionFactory().openSession();
 //			//추가 
-//			cnt = ss.delete("kr.co.sist.admin3.removeEvent", e_no);
-//			if(cnt == 1) {
-//				ss.commit();
-//			}
-//		}finally {
-//			if(ss != null ) { ss.close(); }//end if
-//		}//end finally
-//		
-//		return cnt;
-//	}//removeEvent
-//	
-//	/*이벤트 글 읽기*/
-//	public EventDomain readEvent(int e_no) throws IOException {
-//		EventDomain readList = null;
-//		SqlSession ss=null;
-//		try {
-//			ss=getSqlSessionFactory().openSession();
-//			//추가 
-//			readList = ss.selectOne("kr.co.sist.admin3.readEvent", e_no);
+//			readList = ss.selectOne("kr.co.sist.admin4.readCoupon", c_no);
 //		}finally {
 //			if(ss != null ) { ss.close(); }//end if
 //		}//end finally
@@ -567,6 +659,114 @@ public class HklandAdminDAO {
 //		return readList;
 //	}//readNotice
 	
+	/**********************************************************************************************************고객서비스*/	
+	/*고객서비스전체조회*/
+	public List<ClientDomain> selectAllClient() throws SQLException, IOException{
+		List<ClientDomain> selectAllClient = null;
+		SqlSession ss=null;
+		
+		try {
+			ss=getSqlSessionFactory().openSession();
+			selectAllClient = ss.selectList("kr.co.sist.admin6.AllClient");
+		}finally {
+			if(ss != null ) { ss.close(); }//end if
+		}//end finally
+		
+		return selectAllClient;
+	}//selectAllClient
+	
+	/*고객서비스 검색 조회*/
+	public List<ClientDomain> searchClient(String searchBox) throws SQLException, IOException{
+		List<ClientDomain> searchClientList = null;
+		SqlSession ss = null;
+		
+		try {
+			ss = getSqlSessionFactory().openSession();
+			searchClientList = ss.selectList("kr.co.sist.admin6.searchClient",searchBox);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (ss != null) {
+				ss.close();
+			} // end if
+		} // end finally
+		
+		return searchClientList;
+	}//searchClientList
+	
+	/*고객서비스 삭제*/
+	public int removeClient(int s_no) throws IOException {
+		SqlSession ss=null;
+		int cnt = 0;
+		try {
+			ss=getSqlSessionFactory().openSession();
+			//추가 
+			cnt = ss.delete("kr.co.sist.admin6.removeClient", s_no);
+			if(cnt == 1) {
+				ss.commit();
+			}
+		}finally {
+			if(ss != null ) { ss.close(); }//end if
+		}//end finally
+		
+		return cnt;
+	}//removeClient
+	
+	/*고객서비스 글 읽기*/
+	public ClientDomain readClient(int s_no) throws IOException {
+		ClientDomain readList = null;
+		SqlSession ss=null;
+		try {
+			ss=getSqlSessionFactory().openSession();
+			//추가 
+			readList = ss.selectOne("kr.co.sist.admin6.readClient", s_no);
+		}finally {
+			if(ss != null ) { ss.close(); }//end if
+		}//end finally
+		
+		return readList;
+	}//readClient
+	
+	/*고객서비스 답변*/
+	public int updateClient(ClientVO cv) throws IOException {
+		SqlSession ss=null;
+		int cnt = 0;
+		try {
+			ss=getSqlSessionFactory().openSession();
+			//추가 
+			cnt = ss.update("kr.co.sist.admin6.updateClient", cv);
+			if(cnt == 1) {
+				ss.commit();
+			}
+		}finally {
+			if(ss != null ) { ss.close(); }//end if
+		}//end finally
+		
+		return cnt;
+	}//updateClient
+	
+//	/*분실물 등록*/
+//	public int insertLost(LostVO lv) throws SQLException, IOException{
+//		int cnt =0; 
+//		SqlSession ss = null;
+//		try {
+//			ss = getSqlSessionFactory().openSession();
+//			cnt = ss.insert("kr.co.sist.admin5.insertLost",lv);
+//			if(cnt == 1) {
+//				ss.commit();
+//			}
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		} finally {
+//			if (ss != null) {
+//				ss.close();
+//			} // end if
+//		} // end finally
+//		
+//		return cnt;
+//	}//insertLost
+//	
+
 ///khe//////////////////////////////////////////////////////////////
 	
 	

@@ -21,38 +21,6 @@
 
 <script type="text/javascript">
 function formchk(obj){
-	if(obj.start_year.value == ""){
-		alert("쿠폰 적용 시작년도를 입력해주세요.");
-		return ;
-	}
-	if(obj.start_month.value == ""){
-		alert("쿠폰 적용 시작월을 입력해주세요.");
-		return ;
-	}
-	if(obj.start_day.value == ""){
-		alert("쿠폰 적용 시작일을 입력해주세요.");
-		return ;
-	}
-	if(obj.end_year.value == ""){
-		alert("쿠폰 적용 종료년도를 입력해주세요.");
-		return ;
-	}
-	if(obj.end_month.value == ""){
-		alert("쿠폰 적용 종료월을 입력해주세요.");
-		return ;
-	}
-	if(obj.end_day.value == ""){
-		alert("쿠폰 적용 종료일을 입력해주세요.");
-		return ;
-	}
-	if(obj.c_name.value == ""){
-		alert("쿠폰명을 입력해주세요.");
-		return ;
-	}
-	if(obj.c_info.value == ""){
-		alert("쿠폰 내용을 입력해주세요.");
-		return ;
-	}
 	obj.submit();
 }
 
@@ -60,10 +28,11 @@ function formchk(obj){
 		  $('#summernote').summernote({
 			  placeholder: '이벤트 내용을 작성해주세요.',
 			  width: 998,
-			  height: 308,                 // set editor height
+			  height: 337,                 // set editor height
 			  minHeight: 100,             // set minimum height of editor
-			  maxHeight: 308,             // set maximum height of editor
+			  maxHeight: 337,            // set maximum height of editor
 			  focus: true                  // set focus to editable area after initializing summernote
+			  
 			});
 		
 		  $("#resetBtn").click(function(){
@@ -96,42 +65,42 @@ function formchk(obj){
 				<div id="r_content_view">
 					<div id="mainContent">
 						<!-- form안의 Textarea를 GET 방식으로 넘기면 255자가 넘어간다고 Error가 난다. -->
-						<form method="get" name="frm1" action="mgrCoupon_readFrm.do" id="noteFrm">
-						<input type="hidden" name="cmd" value="wc">
+						<form method="get" name="frm1" action="mgrClient_writeFrm.do" id="noteFrm">
+						<input type="hidden" name="cmd" value="wca">
 						<input type="hidden" name="a_id" value="${ sessionScope.a_id }">
+						<input type="hidden" name="ClientNo" value="${ readClient.s_no }">
+						<input type="hidden" name="s_no" value="${ readClient.s_no }">
+						<input type="hidden" name="s_name" value="[답변완료] ${ readClient.s_name }">
 						
 						<table id="writeTable">
 							<tr>
-								<td>등록자</td>
-								<td width="370px;" colspan="3">${ sessionScope.a_id }( ${ sessionScope.a_name } )</td>
+								<td>문의번호</td>
+								<td width="370px;">${ readClient.s_no }</td>
+								<td>문의날짜</td>
+								<td width="370px;">${ readClient.s_inputdate }</td>
 							</tr>
 							<tr>
-								<td>쿠폰이미지</td>
-								<td colspan="3" style="padding-left: 10px;">${ readCoupon.c_image }</td>
-							</tr>
-                            <tr>
-								<td>쿠폰시작일자</td>
-								<td>${ readCoupon.start_year }년 ${ readCoupon.start_month }월 ${ readCoupon.start_day }일</td>
-   								<td>쿠폰종료일자</td>
-								<td>${ readCoupon.end_year }년 ${ readCoupon.end_month }월 ${ readCoupon.end_day }일</td>
-							</tr>
-                            <tr>
-								<td>쿠폰명</td>
-								<td>${ readCoupon.c_name }</td>
-								<td>할인율</td>
-								<td>${ readCoupon.discount }</td>
+								<td>문의자</td>
+								<td colspan="3">${ readClient.m_id }</td>
 							</tr>
 							<tr>
-								<td colspan="4">쿠폰내용 작성</td>
+								<td>문의제목</td>
+								<td colspan="3">[답변] ${ readClient.s_name }</td>
+							</tr>
+							<tr>
+								<td colspan="4">문의내용</td>
 							</tr>
                             <tr>
-                            	<td colspan="4"><textarea id="summernote" name="c_info">${ readCoupon.c_info }</textarea></td>
+                            	<td colspan="4" style="text-align: left;"><textarea id="summernote" name="s_info">
+										${ readClient.s_info } <br><br>
+										- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - <br><br> 
+										답변자 :  ${ sessionScope.a_id } <br> 
+										답변내용 :  </textarea></td>
                             </tr>
 						</table>
 							<div id="btnBox1">
-								<input type="button" value="목록" class="btn" id="listBtn" onclick="javascript:location.href='mgr_coupon.do'">
-								<input type="reset" value="초기화" class="btn" id="resetBtn">
-								<input type="button" value="등록" class="btn" id="writeBtn" onclick="formchk( document.frm1 )">
+								<input type="button" value="목록" class="btn" id="listBtn" onclick="javascript:location.href='mgr_clientService.do'">
+								<input type="button" value="답변저장" class="btn" id="writeBtn" onclick="formchk( document.frm1 )">
 							</div>
 						</form>
 					</div>

@@ -4,79 +4,81 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import kr.co.sist.admin.dao.HklandAdminDAO;
 import kr.co.sist.admin.domain.CouponDomain;
 import kr.co.sist.admin.domain.EventDomain;
+import kr.co.sist.admin.domain.LostDomain;
+import kr.co.sist.admin.domain.TicketDomain;
 import kr.co.sist.admin.vo.CouponVO;
 import kr.co.sist.admin.vo.EventVO;
+import kr.co.sist.admin.vo.LostVO;
 
 @Component
-public class CouponService {
+public class LostService {
 	private HklandAdminDAO hk_dao = HklandAdminDAO.getInstance();
 	
-	/*쿠폰 전체 조회*/
-	public List<CouponDomain> selectAllCoupon(){
-		List<CouponDomain> AllCouponList=null;
+	/*분실물 전체 조회*/
+	public List<LostDomain> selectAllLost(){
+		List<LostDomain> AllLostList=null;
 		try {
-			AllCouponList=hk_dao.selectAllCoupon();
+			AllLostList=hk_dao.selectAllLost();
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return AllCouponList;
-	}//selectAllEvent
+		return AllLostList;
+	}//selectAllLost
 	
-	/*쿠폰 검색 조회*/
-	public List<CouponDomain> searchCoupon(String searchBox){
-		List<CouponDomain> searchCouponList=null;
+	/*분실물 검색 조회*/
+	public List<LostDomain> searchLost(String searchBox){
+		List<LostDomain> searchLostList=null;
 		try {
-			searchCouponList=hk_dao.searchCoupon(searchBox);
+			searchLostList=hk_dao.searchLost(searchBox);
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return searchCouponList;
-	}//searchEvent
+		return searchLostList;
+	}//searchLost
 
-	/*쿠폰 등록*/
-	public int insertCoupon(CouponVO cv) {
+	/*분실물 등록*/
+	public int insertLost(LostVO lv) {
 		int cnt = 0;
 		try {
-			cnt = hk_dao.insertCoupon(cv);
+			cnt = hk_dao.insertLost(lv);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return cnt;
-	}//insertEvent
+	}//insertLost
 	
-	/*이벤트 삭제*/
-	public int removeCoupon(int c_no) {
+	/*분실물 삭제*/
+	public int removeLost(int l_no) {
 		int cnt = 0;
 		try {
-			cnt = hk_dao.removeCoupon(c_no);
+			cnt = hk_dao.removeLost(l_no);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return cnt;
-	}//removeCoupon
+	}//removeLost
 	
-	/*이벤트 읽기*/
-	public CouponDomain readCoupon(int c_no) {
-		CouponDomain cd = null;
-		try {
-			cd = hk_dao.readCoupon(c_no);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return cd;
-	}//readCoupon
+//	/*이벤트 읽기*/
+//	public CouponDomain readCoupon(int c_no) {
+//		CouponDomain cd = null;
+//		try {
+//			cd = hk_dao.readCoupon(c_no);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		return cd;
+//	}//readCoupon
 	
 }//class
 

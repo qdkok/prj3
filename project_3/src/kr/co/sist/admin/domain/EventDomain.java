@@ -1,9 +1,29 @@
 package kr.co.sist.admin.domain;
 
 public class EventDomain {
-	private String e_no, e_name, e_info, r_position, r_image, r_file, a_id;
+	private String e_no, e_name, e_info, r_position, r_image, r_file, a_id, e_name_sub, e_info_sub;
 	private int start_year, start_month, start_day, end_year, end_month, end_day;
 	
+	public String getE_name_sub() {
+		String E_name = getE_name();
+		if(E_name.length() >= 20) {
+			E_name = E_name.substring(0, 20)+". . .";
+		}
+		return E_name;
+	}
+	public void setE_name_sub(String e_name_sub) {
+		this.e_name_sub = e_name_sub;
+	}
+	public String getE_info_sub() {
+		String E_info = getE_info();
+		if(E_info.length() >= 20) {
+			E_info = E_info.substring(0, 20)+". . .";
+		}
+		return E_info;
+	}
+	public void setE_info_sub(String e_info_sub) {
+		this.e_info_sub = e_info_sub;
+	}
 	public String getE_no() {
 		return e_no;
 	}

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.sist.admin5">
+	<!-- 컬럼과 setter 매핑 -->
+	
+	<!-- 분실물 -->
+	<resultMap type="kr.co.sist.admin.domain.LostDomain" id="losts">
+		<result column="L_NO" property="l_no"/>
+		<result column="L_KATE" property="l_kate"/>
+		<result column="L_IMAGE" property="l_image"/>
+		<result column="L_NAME" property="l_name"/>
+		<result column="L_YEAR" property="l_year"/>
+		<result column="L_MONTH" property="l_month"/>
+		<result column="L_DAY" property="l_day"/>
+		<result column="L_RESULT" property="l_result"/>
+		<result column="A_ID" property="a_id"/>
+	</resultMap>
+		
+	<!-- 분실물 전체 조회 -->
+	<select id="AllLost" resultMap="losts">
+		SELECT TRIM(L_NO) L_NO, L_KATE, L_IMAGE, L_NAME, L_YEAR, L_MONTH, L_DAY, L_RESULT, A_ID
+		FROM LOST
+		ORDER BY CAST(L_NO AS DECIMAL) DESC	
+	</select>
+	
+	<!-- 분실물 검색 -->
+	<select id="searchLost" resultMap="losts" parameterType="String">
+		SELECT TRIM(L_NO) L_NO, L_KATE, L_IMAGE, L_NAME, L_YEAR, L_MONTH, L_DAY, L_RESULT, A_ID
+		FROM LOST
+		WHERE L_NAME LIKE '%'||#{ l_name }||'%'
+		ORDER BY CAST(L_NO as decimal) DESC
+	</select>
+	
+	<!-- 분실물 등록 -->
+	<insert id="insertLost" parameterType="kr.co.sist.admin.vo.LostVO">
+	  	INSERT INTO LOST(L_NO, L_KATE, L_IMAGE, L_NAME, L_YEAR, L_MONTH, L_DAY, L_RESULT, A_ID) 
+	  	VALUES (seq_lost.nextval,#{l_kate},#{l_image},#{l_name},#{l_year},#{l_month},#{l_day},#{l_result},#{a_id})
+	</insert>
+	
+	<!-- 분실물 삭제 -->
+	  <delete id="removeLost" parameterType="int">
+		DELETE
+		FROM LOST
+		WHERE TRIM(L_NO)=#{ l_no }
+	  </delete>
+	  
+	 <!--쿠폰 글 읽기
+	<select id="readCoupon" resultMap="coupons" parameterType="int">
+		SELECT TRIM(C_NO) C_NO, C_IMAGE, C_NAME, C_INFO, START_YEAR, START_MONTH, START_DAY, END_YEAR, END_MONTH, END_DAY, DISCOUNT, TRIM(A_ID) A_ID
+		FROM COUPON
+		WHERE TRIM(C_NO)=#{ c_no }
+	</select>  -->
+
+</mapper>

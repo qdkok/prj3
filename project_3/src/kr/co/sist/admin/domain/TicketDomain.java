@@ -18,5 +18,5 @@ public class TicketDomain {
 	public void setT_name(String t_name) {
 		this.t_name = t_name;
 	}
-		
+
 }

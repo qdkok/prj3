@@ -72,11 +72,15 @@ public class ad_EventController {
 		response.setContentType("text/html; charset=UTF-8");
 		try {
 			PrintWriter out = response.getWriter();
-			int cnt = e_service.removeEvent(Integer.parseInt(selID.trim()));
-			if(cnt == 1) {
-				out.println("<script>alert('이벤트 삭제완료'); location.href='mgr_event.do';</script>");
+			if(selID == "") {
+				out.println("<script>alert('삭제할 이벤트를 선택해주세요.'); location.href='mgr_event.do';</script>");
 			}else {
-				out.println("<script>alert('이벤트 삭제실패'); history.back();</script>");
+				int cnt = e_service.removeEvent(Integer.parseInt(selID.trim()));
+				if(cnt == 1) {
+					out.println("<script>alert('이벤트 삭제완료'); location.href='mgr_event.do';</script>");
+				}else {
+					out.println("<script>alert('이벤트 삭제실패'); history.back();</script>");
+				}
 			}
 			out.flush();
 			out.close();
@@ -104,20 +108,4 @@ public class ad_EventController {
 	}//include
 	
 	
-	
-	
-	
-
-	
-	@RequestMapping(value="mgr_lostArticle.do",method=GET)
-	public String mgr_lostArticle() {
-		return "/ad_content/ad_mgrLostArticle";
-	}//include
-	
-	@RequestMapping(value="mgr_clientService.do",method=GET)
-	public String mgr_clientService() {
-		return "/ad_content/ad_mgrClientService";
-	}//include
-	
-
 }

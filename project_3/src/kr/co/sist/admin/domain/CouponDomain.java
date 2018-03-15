@@ -1,8 +1,29 @@
 package kr.co.sist.admin.domain;
 
 public class CouponDomain {
-	private String c_no, c_image, c_name, c_info, a_id;
+	private String c_no, c_image, c_name, c_info, a_id, c_info_sub, c_name_sub;
 	private int start_year, start_month, start_day, end_year, end_month, end_day, discount;
+	
+	public String getC_info_sub() {
+		String C_info = getC_info();
+		if(C_info.length() >= 20) {
+			C_info = C_info.substring(0, 20)+". . .";
+		}
+		return C_info;
+	}
+	public void setC_info_sub(String c_info_sub) {
+		this.c_info_sub = c_info_sub;
+	}
+	public String getC_name_sub() {
+		String C_name = getC_name();
+		if(C_name.length() >= 20) {
+			C_name = C_name.substring(0, 20)+". . .";
+		}
+		return C_name;
+	}
+	public void setC_name_sub(String c_name_sub) {
+		this.c_name_sub = c_name_sub;
+	}
 	public String getC_no() {
 		return c_no;
 	}
