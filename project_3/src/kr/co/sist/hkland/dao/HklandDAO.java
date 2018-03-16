@@ -12,6 +12,8 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kr.co.sist.hkland.vo.LoginIdVO;
 import kr.co.sist.hkland.vo.ReservationVO;
+import kr.co.sist.hkland.vo.SearchIdVO;
+import kr.co.sist.hkland.vo.SearchPwVO;
 import kr.co.sist.hkland.domain.ReservationDomain;
 import kr.co.sist.hkland.domain.UtilizeDomain;
 import kr.co.sist.hkland.vo.JoinVO;
@@ -183,4 +185,35 @@ public class HklandDAO {
 		return list;
 	}
 	
+	public String searchId(SearchIdVO svo) throws IOException {
+		String list=null;
+		SqlSession ss = null;
+		
+		try {
+			ss = getSqlSessionFactory().openSession();
+			list = ss.selectOne("kr.co.sist.exam3.searchId",svo);
+		} finally {
+			if (ss != null) {
+				ss.close();
+			} // end if
+		} // end finally
+		
+		return list;
+	}
+	
+	public String searchPw(SearchPwVO spvo) throws IOException {
+		String list=null;
+		SqlSession ss = null;
+		
+		try {
+			ss = getSqlSessionFactory().openSession();
+			list = ss.selectOne("kr.co.sist.exam3.searchPw",spvo);
+		} finally {
+			if (ss != null) {
+				ss.close();
+			} // end if
+		} // end finally
+		
+		return list;
+	}
 }// class

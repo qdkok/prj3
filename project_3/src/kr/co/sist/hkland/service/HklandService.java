@@ -7,12 +7,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Component;
+import org.springframework.ui.Model;
 
 import kr.co.sist.hkland.dao.HklandDAO;
 import kr.co.sist.hkland.domain.ReservationDomain;
 import kr.co.sist.hkland.domain.UtilizeDomain;
 import kr.co.sist.hkland.vo.LoginIdVO;
 import kr.co.sist.hkland.vo.ReservationVO;
+import kr.co.sist.hkland.vo.SearchIdVO;
+import kr.co.sist.hkland.vo.SearchPwVO;
 import kr.co.sist.hkland.vo.JoinVO;
 
 @Component
@@ -103,6 +106,24 @@ public class HklandService {
 			e.printStackTrace();
 		}
 		return flag;
+	}
+	
+	public String searchIdPw(HttpServletRequest request) {
+		String chid=request.getParameter("p_id");
+		String data="";
+		
+		try {
+		if(chid!=null) {
+			SearchPwVO svo=new SearchPwVO(request.getParameter("p_id"),request.getParameter("p_name"), request.getParameter("p_email"));
+			data="비밀번호는"+hk_dao.searchPw(svo);
+		}else {
+			SearchIdVO svo=new SearchIdVO(request.getParameter("i_name"), request.getParameter("i_email"));
+			data="아이디는"+hk_dao.searchId(svo);
+		}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return data;
 	}
 	
 }

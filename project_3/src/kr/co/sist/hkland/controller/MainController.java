@@ -83,7 +83,10 @@ public class MainController {
 		return "sub/join_terms";
 	}
 	@RequestMapping(value="/searchId.do", method= {RequestMethod.POST, RequestMethod.GET})
-	public String searchId() {
+	public String searchId(HttpServletRequest request,Model model) {
+		if(request.getParameter("p_name")!=null||request.getParameter("i_name")!=null) {
+			model.addAttribute("data", service.searchIdPw(request)) ;
+		}//end if  
 		return "sub/searchId";
 	}
 	@RequestMapping(value="/sub_menu_ticket_value.do", method= {RequestMethod.POST, RequestMethod.GET})

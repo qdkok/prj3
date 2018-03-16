@@ -29,15 +29,17 @@
 	</style>
 
     <script type="text/javascript">
-	    function loginAccess(){
-	    	location.href='login.do';
-	    }
-	    function joinAccess(){
-	    	location.href='join_terms.do';
-	    }
-	    function searchIDAccess(){
-	    	location.href='searchId.do';
-	    }
+    	var obj1= document.ids;
+    	var obj2= document.pws;
+    	
+    	function sh_id(){
+    		document.ids.action="searchId.do";
+    		document.ids.submit();
+    	}
+    	function sh_pw(){
+    		document.pws.action="searchId.do";
+    		document.pws.submit();                
+    	}
     </script>
     
   </head>
@@ -52,8 +54,13 @@
 	  		
   	</header>
     <!-- Page Content -->
-	
     <div class="contain" >
+    	<%
+    		String data=(String)request.getAttribute("data");
+    		if(data!=null){
+    			out.print("<script type='text/javascript'>alert('조회하신'+data+'입니다.')</script>");
+    		}//end if
+    	%>
     	<div id="test_top" style="max-width: 1300px; margin: 0px auto;" >
 	  		<div style="background-color: #cd493c; width: 250px; height: 150px; float: left; font-size: 25px; padding: 50px; color: #fff">ID/PW 찾기</div>
 			<div style="background-color: #cd493c; width: 100%;  height: 150px; "></div>
@@ -66,31 +73,62 @@
 		  			<div><input type="button" class="button2" value="ID/PASS 찾기" onclick="searchIDAccess()"></div>
 			    </form>
 	  		</div>
-			<div style=" width: 100%;  height: 800px; ">
-				<form name="login_frm" method="post">
-					<table style="margin: 0px auto; border: 2px solid #ededed; margin-top: 50px; padding: 10px;">
+			<div style=" width: 100%;  height: 800px; " align="center">
+			<img src="http://localhost:8080/project_3/commons/images/HKlogo.png" width="250px;" onclick="#" />
+			<table style="text-align: center;">
+				<tr>
+					<td>
+						<form name="ids" method="post">
+					<span style="font-weight: bold; font-size: 30px;">아이디 찾기</span>
+					<table class="tt" style="margin: 0px auto; height:300px; border: 2px solid #ededed;">
 						<tr>
-							<td colspan="3" style="text-align: center; font-size: 30px; font-weight: bold;">
-								<img src="http://localhost:8080/project_3/commons/images/HKlogo.png" width="250px;" onclick="#" />
-							</td>
+							<td style="text-align: center;" >이름</td>
+							<td colspan="2"><input type="text" name="i_name"  style="width:200px;"/></td>
 						</tr>
 						<tr>
-							<td style="text-align: center;" width="80px;">ID</td>
-							<td colspan="2"><input type="text" name="id"  style="width:200px;"/></td>
+							<td style="text-align: center;" >이메일</td>
+							<td colspan="2"><input type="text" name="i_email"  style="width:200px;"/></td>
 						</tr>
 						<tr>
-							<td style="text-align: center;" >PW</td>
-							<td colspan="2"><input type="password" name="pw"  style="width:200px;"/></td>
+							<td colspan="3" >&nbsp;</td>
 						</tr>
 						<tr>
 							<td colspan="3" style="text-align: center; margin-top: 15px;">
-								<input type="button" class="btn" value="로그인"/>
-								<input type="button" class="btn" value="회원가입"/>
-								<input type="button" class="btn" value="ID/PW 찾기"/>
+								<input type="button" value="찾기" class="btn" style="background-color: green; width:100px; color:#fff; height: 50px;" id="id_btn" onclick=""/> 
+							</td>
+						</tr>
+					</table>
+				</form>					
+					</td>
+					<td>
+						&nbsp;&nbsp;
+					</td>
+					<td>
+						<form name="pws" method="post">
+					<span style="font-weight: bold; font-size: 30px;">비밀번호 찾기</span>
+					<table class="tt" style="margin: 0px auto; height:300px; border: 2px solid #ededed;">
+						<tr>
+							<td style="text-align: center;" >아이디</td>
+							<td colspan="2"><input type="text" name="p_id"  style="width:200px;"/></td>
+						</tr>
+						<tr>
+							<td style="text-align: center;" >이름</td>
+							<td colspan="2"><input type="text" name="p_name"  style="width:200px;"/></td>
+						</tr>
+						<tr>
+							<td style="text-align: center;" >이메일</td>
+							<td colspan="2"><input type="text" name="p_email"  style="width:200px;"/></td>
+						</tr>
+						<tr>
+							<td colspan="3" style="text-align: center; margin-top: 15px;">
+								<input type="button" value="찾기" class="btn" style="background-color: green; width:100px; color:#fff; height: 50px;" id="pw_btn" onclick=""/> 
 							</td>
 						</tr>
 					</table>
 				</form>
+					</td>
+				</tr>
+			</table>
 			</div>
 		</div>
     </div>	

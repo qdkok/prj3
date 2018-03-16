@@ -74,4 +74,15 @@
 		WHERE (r.u_no=u.u_no) and r.m_id=#{id} order by input_date desc
 	</select>
 	
+	<select id="searchId" resultType="String" parameterType="kr.co.sist.hkland.vo.SearchIdVO">
+		select m_id 
+		from member
+		where m_name=${name} and email='${email}'
+	</select>
+	
+	<select id="searchPw" resultType="String" parameterType="kr.co.sist.hkland.vo.SearchPwVO">
+		select m_pass
+		from member
+		where m_name=${name} and email=${email} and m_id={id}
+	</select>
 </mapper>
