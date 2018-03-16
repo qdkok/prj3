@@ -40,6 +40,16 @@
     		document.pws.action="searchId.do";
     		document.pws.submit();                
     	}
+    	
+    	function loginAccess(){
+	    	location.href='login.do';
+	    }
+	    function joinAccess(){
+	    	location.href='join_terms.do';
+	    }
+	    function searchIDAccess(){
+	    	location.href='searchId.do';
+	    }
     </script>
     
   </head>
