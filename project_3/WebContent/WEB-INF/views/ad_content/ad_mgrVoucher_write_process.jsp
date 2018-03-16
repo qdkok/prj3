@@ -56,7 +56,7 @@
 							등록에 실패했습니다.
 						</c:otherwise>
 					</c:choose>
-					<input type="button" onclick="javascript:location.href('mgr_voucher.do')"/>
+					<input type="button" style="width:100px; height: 50px;" value="목록으로 가기" onclick="javascript:location.href('mgr_voucher.do');"/>
 					</div>
 				</div>
 			</div>
