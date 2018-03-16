@@ -43,7 +43,7 @@
 <body>
 <div id="wrap">
 	<div id="header">
-		<span id="main_title"><a href="ad_index.do">HK LAND 관리자 페이지</a></span>
+		<span id="main_title"><a href="ad_home.do">HK LAND 관리자 페이지</a></span>
 	</div>
 	<div id="container">
 		<!-- LeftArea -->
@@ -54,7 +54,7 @@
 		<div id="rightArea">
 			<div id="r_content">
 				<div id="r_content_title">
-					<h2>고객서비스관리<small><span style="font-size: 15px;">고객 문의사항 확인</span></small></h2>
+					<h2><strong>고객서비스관리</strong><small><span style="margin-left:10px; font-size: 15px;">고객 문의사항 확인</span></small></h2>
 				</div>
 				<div id="r_content_view">
 					<c:catch var="e">
@@ -118,7 +118,7 @@
 			</div>
 		</div><!-- rightArea End -->
 	</div>
-	<div id="footer">footer</div>
+	<div id="footer">Copyrightⓒ 2018. SIST. Group2. HKLAND. All rights reserved</div>
 
 </body>
 </html>

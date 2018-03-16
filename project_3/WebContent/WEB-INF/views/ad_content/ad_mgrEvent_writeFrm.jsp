@@ -63,7 +63,7 @@
 	$(document).ready(function() {
 		  $('#summernote').summernote({
 			  placeholder: '이벤트 내용을 작성해주세요.',
-			  width: 998,
+			  width: 1150,
 			  height: 308,                 // set editor height
 			  minHeight: 100,             // set minimum height of editor
 			  maxHeight: 308,             // set maximum height of editor
@@ -76,6 +76,20 @@
 		  
 	});
 	
+</script>
+
+<script>
+	function readURL(input){
+		if(input.files && input.files[0]){
+			var reader = new FileReader();
+				reader.onload = function(e){
+					$('#UploadedImg').html("<img style='width:400px; height:85px;' id=img src=''>");
+					$('#img').attr('src', e.target.result);
+				}
+			reader.readAsDataURL(input.files[0]);
+		}  
+	}
+
 </script>
 
 <!-- Title -->
@@ -95,7 +109,7 @@
 		<div id="rightArea">
 			<div id="r_content">
 				<div id="r_content_title">
-					<h2>이벤트관리<small><span style="font-size: 15px;">등록된 이벤트 목록 확인</span></small></h2>
+					<h2><strong>이벤트관리</strong><small><span style="margin-left:10px; font-size: 15px;">등록된 이벤트 목록 확인</span></small></h2>
 				</div>
 				<div id="r_content_view">
 					<div id="mainContent">
@@ -109,7 +123,7 @@
 								<td>작성자</td>
 								<td width="370px;">${ sessionScope.a_id }( ${ sessionScope.a_name } )</td>
    								<td>이벤트 장소</td>
-								<td style="color:#333;"><input type="text" name="r_position" style="width: 350px;"></td>
+								<td style="color:#333;"><input type="text" name="r_position" style="width: 450px;"></td>
 							</tr>
                             <tr>
 								<td>시작날짜</td>
@@ -123,13 +137,19 @@
 							</tr>
                             <tr>
 	                            <td>첨부파일</td>
-								<td><input type="file" name="r_file"></td>
+								<td><input type="file" name="r_file" onchange="readURL(this)"></td>
+								<td rowspan="3">preview</td>
+								<td rowspan="3"><div id="UploadedImg"></div></td>
+							</tr>
+							<tr>
     	                        <td>첨부이미지</td>
 								<td><input type="file" name="r_image"></td>
 							</tr>
                             <tr>
 								<td>제목</td>
-								<td colspan="3"><input type="text" name="e_name" class="inputBox" style="width: 830px;"></td>
+								<td><input type="text" name="e_name" class="inputBox" style="width: 350px;"></td>
+								<td></td>
+								<td></td>
 							</tr>
 							<tr>
 								<td colspan="4">글내용 작성</td>
@@ -149,7 +169,7 @@
 			</div>
 		</div><!-- rightArea End -->
 	</div>
-	<div id="footer">footer</div>
+	<div id="footer">Copyrightⓒ 2018. SIST. Group2. HKLAND. All rights reserved</div>
 </div>
 
 </body>

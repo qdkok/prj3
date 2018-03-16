@@ -63,7 +63,7 @@
 	$(document).ready(function() {
 		  $('#summernote').summernote({
 			  placeholder: '이벤트 내용을 작성해주세요.',
-			  width: 998,
+			  width: 1150,
 			  height: 308,                 // set editor height
 			  minHeight: 100,             // set minimum height of editor
 			  maxHeight: 308,             // set maximum height of editor
@@ -95,7 +95,7 @@
 		<div id="rightArea">
 			<div id="r_content">
 				<div id="r_content_title">
-					<h2>이벤트관리<small><span style="font-size: 15px;">등록된 이벤트 목록 확인</span></small></h2>
+					<h2><strong>이벤트관리</strong><small><span style="margin-left:10px; font-size: 15px;">등록된 이벤트 목록 확인</span></small></h2>
 				</div>
 				<div id="r_content_view">
 					<div id="mainContent">
@@ -145,7 +145,7 @@
 			</div>
 		</div><!-- rightArea End -->
 	</div>
-	<div id="footer">footer</div>
+	<div id="footer">Copyrightⓒ 2018. SIST. Group2. HKLAND. All rights reserved</div>
 </div>
 
 </body>

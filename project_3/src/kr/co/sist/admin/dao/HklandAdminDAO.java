@@ -16,6 +16,7 @@ import kr.co.sist.admin.domain.EventDomain;
 import kr.co.sist.admin.domain.LostDomain;
 import kr.co.sist.admin.domain.MemberDomain;
 import kr.co.sist.admin.domain.NoticeDomain;
+import kr.co.sist.admin.domain.ProfitDomain;
 import kr.co.sist.admin.domain.TicketDomain;
 import kr.co.sist.admin.domain.UtilizeDomain;
 import kr.co.sist.admin.domain.VoucherDomain;
@@ -764,27 +765,21 @@ public class HklandAdminDAO {
 		return cnt;
 	}//updateClient
 	
-//	/*분실물 등록*/
-//	public int insertLost(LostVO lv) throws SQLException, IOException{
-//		int cnt =0; 
-//		SqlSession ss = null;
-//		try {
-//			ss = getSqlSessionFactory().openSession();
-//			cnt = ss.insert("kr.co.sist.admin5.insertLost",lv);
-//			if(cnt == 1) {
-//				ss.commit();
-//			}
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		} finally {
-//			if (ss != null) {
-//				ss.close();
-//			} // end if
-//		} // end finally
-//		
-//		return cnt;
-//	}//insertLost
-//	
+	/* 매출 조회*/
+	public List<ProfitDomain> selectAllProfit(String d_year) throws SQLException, IOException{
+		List<ProfitDomain> selectAllProfit = null;
+		SqlSession ss=null;
+		
+		try {
+			ss=getSqlSessionFactory().openSession();
+			selectAllProfit = ss.selectList("kr.co.sist.admin7.AllProfit",d_year);
+		}finally {
+			if(ss != null ) { ss.close(); }//end if
+		}//end finally
+		
+		return selectAllProfit;
+	}//selectAllProfit
+	
 
 ///khe//////////////////////////////////////////////////////////////
 	
@@ -792,11 +787,11 @@ public class HklandAdminDAO {
 /////// 쿼리확인용
 	public static void main(String[] args) {
 		HklandAdminDAO dmbs=HklandAdminDAO.getInstance();
-			List<MemberDomain> test = null;
+			List<ProfitDomain> test = null;
 			try {
-				test = dmbs.selectMember();
-				for(MemberDomain tt:test) {
-					System.out.println(tt.getId()+"/"+tt.getName()+"/"+tt.getBirth()+"/"+tt.getGender()+"/"+tt.getEmail()+"/"+tt.getPhone()+"/"+tt.getInputdate());
+				test = dmbs.selectAllProfit("2018");
+				for(ProfitDomain tt:test) {
+					System.out.println(tt.toString());
 				}
 			} catch (SQLException e1) {
 				e1.printStackTrace();

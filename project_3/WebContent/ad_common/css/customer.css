@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 /* ad_mgrNotice.jsp */
-#mainContent { width:1150px; height: 532px; border-top:1px solid #333; border-bottom: 1px solid #333; overflow: auto; }
+#mainContent { width:1150px; height: 532px; border-top:1px solid #333; border-bottom: 1px solid #333; }
 #customerList { text-align: center; }
 #btnBox { float: right; margin-top: 15px; }
 #allNoteList { margin-right:420px; }

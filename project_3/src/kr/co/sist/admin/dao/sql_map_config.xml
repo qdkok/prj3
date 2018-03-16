@@ -21,5 +21,6 @@
     <mapper resource="kr/co/sist/admin/dao/admin_query_coupon.xml"/>
     <mapper resource="kr/co/sist/admin/dao/admin_query_lost.xml"/>
     <mapper resource="kr/co/sist/admin/dao/admin_query_client.xml"/>
+    <mapper resource="kr/co/sist/admin/dao/admin_query_profit.xml"/>
   </mappers>  
 </configuration>

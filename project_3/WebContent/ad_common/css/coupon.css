@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 /* ad_mgrNotice.jsp */
-#mainContent { width:1150px; height: 532px; border-top:1px solid #333; border-bottom: 1px solid #333; overflow: auto;}
+#mainContent { width:1150px; height: 532px; border-top:1px solid #333; border-bottom: 1px solid #333; }
 #CouponList { text-align: center; }
 #btnBox { float: right; margin-top: 15px; }
 #allCouponList { margin-right:300px; }
@@ -9,8 +9,8 @@
 /* ad_mgrNotice_writeFrm.jsp */
 #noteFrm{ height: 532px; }
 #writeTable tr td:nth-child(odd) { background-color: #E9E9E9; width:130px; height: 30px;}
-#writeTable{ width:1000px; text-align: center;}
+#writeTable{ width:1150px; text-align: center;}
 #writeTable td{ border:1px solid #000; }
-#btnBox1 { margin:10px 0px 0px; padding:0px; width:1000px;}
+#btnBox1 { margin:10px 0px 0px; padding:0px; width:1150px;}
 #listBtn{ float:left; }
 #resetBtn, #writeBtn{ float:right; margin-left:5px; }

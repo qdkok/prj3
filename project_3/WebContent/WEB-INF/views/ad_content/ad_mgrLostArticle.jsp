@@ -43,7 +43,11 @@
 		
 		function statusChg(flag,l_no){
 			document.getElementById("l_no").value = l_no;
-			document.getElementById("l_result").value = flag=='x'?'o':flag;
+			if(flag=='x'){
+				document.getElementById("l_result").value = 'o';
+			}else{
+				document.getElementById("l_result").value = 'x';
+			}
 			
 			document.frm.submit();
 		}
@@ -68,7 +72,7 @@
 		<div id="rightArea">
 			<div id="r_content">
 				<div id="r_content_title">
-					<h2>분실물관리<small><span style="font-size: 15px;">분실물 목록 확인</span></small></h2>
+					<h2><strong>분실물관리</strong><small><span style="margin-left:10px; font-size: 15px;">분실물 목록 확인</span></small></h2>
 				</div>
 				<div id="r_content_view">
 						<c:catch var="e">
@@ -114,7 +118,7 @@
 								</c:if>
 							</td>
 							<td>
-									<input type="button" name="chgStatus" value="상태변경" onclick="statusChg('${AllLostList.l_result}',${AllLostList.l_no})">
+								<input type="button" name="chgStatus" value="상태변경" onclick="statusChg('${AllLostList.l_result}',${AllLostList.l_no})">
 							</td>
 							<td>${ AllLostList.a_id }</td>
 						</tr>
@@ -150,8 +154,7 @@
 			</div>
 		</div><!-- rightArea End -->
 	</div>
-	<div id="footer">footer</div>
-</div>
+	<div id="footer">Copyrightⓒ 2018. SIST. Group2. HKLAND. All rights reserved</div>
 
 </body>
 </html>

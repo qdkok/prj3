@@ -28,7 +28,6 @@
 		</div>
 		<div id="container">
 		
-		
 		</div>
 		<div id="footer">
 		<div style="float: right;font-weight: bold;padding-right: 20px;padding-top: 10px">&copy;2017  allRight reserved. class4 hongki.kim</div>

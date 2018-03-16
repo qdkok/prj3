@@ -17,6 +17,6 @@
 	    	<li class="menu_title"><a href="mgr_lostArticle.do">분실물관리</a></li>
 	    	<li class="menu_title"><a href="mgr_clientService.do">고객서비스관리</a></li>
 	    	<li class="menu_title"><a href="mgr_voucher.do">이용권관리</a></li>
-	    	<li class="menu_title"><a href="mgr_profit.do">매출현황</a></li>
+	    	<li class="menu_title"><a href="mgr_profit.do?d_year=2018">매출현황</a></li>
 	    </ul>
     </div>

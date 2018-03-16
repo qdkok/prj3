@@ -22,7 +22,7 @@
 	$(document).ready(function() {
 		  $('#summernote').summernote({
 			  placeholder: '당신의 경험을 글과 이미지로 남겨보세요.',
-			  width: 1000,
+			  width: 1150,
 			  height: 390,                 // set editor height
 			  minHeight: 100,             // set minimum height of editor
 			  maxHeight: 390,             // set maximum height of editor
@@ -56,7 +56,7 @@
 		<div id="rightArea">
 			<div id="r_content">
 				<div id="r_content_title">
-					<h2>공지사항관리<small><span style="font-size: 15px;">공지사항 목록 확인</span></small></h2>
+					<h2><strong>공지사항관리</strong><small><span style="margin-left:10px; font-size: 15px;">공지사항 목록 확인</span></small></h2>
 				</div>
 				<div id="r_content_view">
 					<div id="mainContent">
@@ -91,7 +91,7 @@
 			</div>
 		</div><!-- rightArea End -->
 	</div>
-	<div id="footer">footer</div>
+	<div id="footer">Copyrightⓒ 2018. SIST. Group2. HKLAND. All rights reserved</div>
 </div>
 
 </body>

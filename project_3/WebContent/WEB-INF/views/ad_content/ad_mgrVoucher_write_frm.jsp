@@ -120,7 +120,7 @@
 <body>
 <div id="wrap">
 	<div id="header">
-		<span id="main_title"><a href="ad_index.do">HK LAND 관리자 페이지</a></span>
+		<span id="main_title"><a href="ad_home.do">HK LAND 관리자 페이지</a></span>
 	</div>
 	<div id="container">
 		<!-- LeftArea -->
@@ -128,19 +128,19 @@
 			<jsp:include page="/common/leftArea.do"/>
 		</div><!-- leftArea End -->
 		<!--************************* RightArea : 각 페이지의 Content 디자인 및 내용을 안에 넣어주세요. *************************-->
-		<div id="rightArea" style="overflow: scroll;">
+		<div id="rightArea" >
 			<div id="r_content">
 				<div id="r_content_title">
-					<h2>이용권관리<small><span style="font-size: 15px;">HK Land 이용권 목록</span></small></h2>
+					<h2><strong>이용권관리</strong><small><span style="margin-left:10px; font-size: 15px;">HK Land 이용권 목록</span></small></h2>
 				</div>
-				<div id="r_content_view" style="width: 1000px;">
-					<div style=" margin-left: 100px;">
+				<div id="r_content_view" style="width: 1145px; height:532px; overflow: auto;">
+					<div>
 						<form action="Voucher_write_process.do" name="frm" method="post" enctype="multipart/form-data">
 						<div style="margin-left: 550px;margin-bottom: 10px;" >
 								<input type="hidden" name="selVoucher" value="<%=request.getParameter("selVoucher") %>" />
 						</div>
 						
-						<table class="table table-striped table-bordered" style="width: 700px;">
+						<table class="table table-striped table-bordered" style="width: 1145px;">
 							<tr>
 								<td colspan="3" class="center">
 									<img src="http://localhost:8080/project_3/uplioad/voucher/${load.u_image ne null?load.u_image:'180219_erd.PNG'}" style="width: 200px; height: 200px;" id="imgView" />
@@ -253,7 +253,7 @@
 			</div>
 		</div><!-- rightArea End -->
 	</div>
-	<div id="footer">footer</div>
+	<div id="footer">Copyrightⓒ 2018. SIST. Group2. HKLAND. All rights reserved</div>
 </div>
 
 </body>

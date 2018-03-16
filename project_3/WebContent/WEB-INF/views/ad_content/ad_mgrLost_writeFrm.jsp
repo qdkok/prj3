@@ -84,7 +84,7 @@
 		<div id="rightArea">
 			<div id="r_content">
 				<div id="r_content_title">
-					<h2>분실물관리<small><span style="font-size: 15px;">분실물 목록 확인</span></small></h2>
+					<h2><strong>분실물관리</strong><small><span style="margin-left:10px; font-size: 15px;">분실물 목록 확인</span></small></h2>
 				</div>
 				<div id="r_content_view">
 					<div id="mainContent">
@@ -116,8 +116,8 @@
 								<td>처리결과</td>
 								<td>
 									<select name="l_result">
-										<option value="O">방문수령</option>
-										<option value="X">보관중</option>
+										<option value="o">방문수령</option>
+										<option value="x" selected="selected">보관중</option>
 									</select>
 								</td>
 							</tr>
@@ -137,7 +137,7 @@
 			</div>
 		</div><!-- rightArea End -->
 	</div>
-	<div id="footer">footer</div>
+	<div id="footer">Copyrightⓒ 2018. SIST. Group2. HKLAND. All rights reserved</div>
 </div>
 
 </body>

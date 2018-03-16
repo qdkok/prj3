@@ -165,11 +165,6 @@ public class ad_PageController {
 		return "/ad_content/ad_mgrVoucher_write_frm";
 	}//include
 	
-	@RequestMapping(value="mgr_profit.do",method=GET)
-	public String mgr_profit() {
-		return "/ad_content/ad_mgrProfit";
-	}//include
-	
 	@RequestMapping(value="Voucher_write_process.do",method=POST)
 	public String writeProcess(HttpServletRequest request,Model model) {
 		//파라메터의 유효성 검증
